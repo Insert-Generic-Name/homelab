@@ -1,0 +1,7 @@
+resources:
+  - core.yaml
+  - media.yaml
+  - monitoring.yaml
+  - productivity.yaml
+  - security.yaml
+  - storage.yaml
