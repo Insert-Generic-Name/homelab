@@ -4,6 +4,7 @@ metadata:
   name: jellyfin
 spec:
   selector:
+    type: NodePort
     app: jellyfin
   ports:
   - port: 80
