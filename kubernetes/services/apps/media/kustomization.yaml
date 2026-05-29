@@ -4,9 +4,9 @@ kind: Kustomization
 namespace:  media
 
 resources:
-- arrstack
-- gamevault
-- invidious
+#- arrstack
+#- gamevault
+#- invidious
 - jellyfin
-- jellyseer
-- navidrome
+#- jellyseer
+#- navidrome
