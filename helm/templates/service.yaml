@@ -2,11 +2,19 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.appName }}
+  labels:
+    app: {{ .Values.appName }}
 spec:
+  {{- if eq .Values.appKind "StatefulSet" }}
+  clusterIP: None
+  {{- else }}
   type: {{ .Values.appServiceType | default "ClusterIP" }}
+  {{- end }}
   selector:
     app: {{ .Values.appName }}
-  ports:
-  - port: {{ .Values.appPort }}
-    targetPort: {{ .Values.appPort }}
-    protocol: {{ .Values.appPortProtocol }}
+  ports: {{- range .Values.appPorts }}
+    - name: {{ .name | default "http" }}
+      protocol: {{ .protocol | default "TCP" }}
+      port: {{ .port }} 
+      targetPort: {{ .targetPort | default .port }}
+    {{- end }} 

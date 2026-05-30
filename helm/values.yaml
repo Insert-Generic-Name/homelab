@@ -1,9 +1,11 @@
-appKind: Deployment
+appKind: StatefulSet
 appName: nginx
-appPort: 67
-appNamespace: default
-appReplicas: 5
-appPortProtocol: TCP
+
 appImage:
   name: nginx
   tag: latest
+
+appPorts:
+  - name: https 
+    protocol: udp
+    port: 68

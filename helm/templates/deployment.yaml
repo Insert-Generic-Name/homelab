@@ -2,11 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Values.appName }}
   labels:
     app: {{ .Values.appName }}
 spec:
-  replicas: {{ .Values.appReplicas }}
+  replicas: {{ .Values.appReplicas | default 1 }}
   selector:
     matchLabels:
       app: {{ .Values.appName }}
@@ -18,8 +18,11 @@ spec:
       containers:
       - name: {{ .Values.appName }}
         image: "{{ .Values.appImage.name }}:{{ .Values.appImage.tag }}"
-        ports:
-        - containerPort: {{ .Values.appPort }}
+        ports: {{- range .Values.appPorts }}
+        - name: {{ .name | default "http" }}
+          protocol: {{ .protocol | default "TCP" }}
+          containerPort: {{ .targetPort | default .port }}
+        {{- end }}
         envFrom:
         - configMapRef:
             name: {{ .Values.appName }}

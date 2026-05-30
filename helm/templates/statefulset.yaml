@@ -7,8 +7,8 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.appName }}
-  serviceName: "app"
-  replicas: {{ .Values.appReplicas }}
+  serviceName: {{ .Values.appName }}
+  replicas: {{ .Values.appReplicas | default 1 }}
   minReadySeconds: 10
   template:
     metadata:
@@ -19,8 +19,11 @@ spec:
       containers:
       - name: {{ .Values.appName }}
         image: "{{ .Values.appImage.name }}:{{ .Values.appImage.tag }}"
-        ports:
-        - containerPort: {{ .Values.appContainerPort }}
+        ports: {{- range .Values.appPorts }}
+        - name: {{ .name | default "http" }}
+          protocol: {{ .protocol | default "TCP" }}
+          containerPort: {{ .targetPort | default .port }}
+        {{- end }}
         envFrom:
         - configMapRef:
             name: {{ .Values.appName }}
