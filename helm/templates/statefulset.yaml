@@ -1,0 +1,39 @@
+{{ if eq .Values.appKind "StatefulSet" }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.appName }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
+  serviceName: "app"
+  replicas: {{ .Values.appReplicas }}
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: {{ .Values.appName }}
+        image: "{{ .Values.appImage.name }}:{{ .Values.appImage.tag }}"
+        ports:
+        - containerPort: {{ .Values.appContainerPort }}
+        envFrom:
+        - configMapRef:
+            name: {{ .Values.appName }}
+        volumeMounts:
+        - name: pvc
+          mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: pvc
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "longhorn"
+        resources:
+          requests:
+            storage: 5Gi
+{{- end }}
