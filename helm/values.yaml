@@ -1,11 +1,25 @@
-appKind: StatefulSet
-appName: nginx
+appKind: Deployment
+appName: pihole
 
 appImage:
-  name: nginx
+  name: pihole/pihole
   tag: latest
 
 appPorts:
-  - name: https 
-    protocol: udp
-    port: 68
+  - name: http 
+    protocol: TCP
+    port: 80
+  - name: dns 
+    protocol: UDP
+    port: 53
+
+# Testing    
+envVars:
+    TZ: "Europe/Madrid"
+    FTLCONF_dns_upstreams: "1.1.1.1;1.0.0.1"
+    FTLCONF_misc_dnsmasq_lines: "address=/*.home.arpa/192.168.1.10"
+    FTLCONF_webserver_interface_theme: "high-contrast-dark"
+    FTLCONF_webserver_api_password: ""
+    FTLCONF_dhcp_active: "false"
+    # Allow iCloud Relay to work under Pihole
+    FTLCONF_dns_specialDomains_iCloudPrivateRelay: "false"

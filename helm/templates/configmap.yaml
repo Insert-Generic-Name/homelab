@@ -3,3 +3,4 @@ kind: ConfigMap
 metadata:
   name: {{ .Values.appName }}
 data:
+{{- toYaml .Values.envVars | nindent 2 }} # test
