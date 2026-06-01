@@ -16,6 +16,7 @@ appPorts:
 envVars:
     TZ: "Europe/Madrid"
     FTLCONF_dns_upstreams: "1.1.1.1;1.0.0.1"
+    FTLCONF_dns_listeningMode: "ALL"
     FTLCONF_misc_dnsmasq_lines: "address=/*.home.arpa/192.168.1.10"
     FTLCONF_webserver_interface_theme: "high-contrast-dark"
     FTLCONF_webserver_api_password: ""
