@@ -26,4 +26,8 @@ spec:
         envFrom:
         - configMapRef:
             name: {{ .Values.appName }}
+        volumeMounts: {{- range .Values.appVolumeMounts }}
+        - name: {{ .name | default "pvc" }}
+          mountPath: {{ .mountPath | default "/data"}}
+        {{- end }}
 {{- end }}
