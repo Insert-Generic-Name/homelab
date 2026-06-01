@@ -9,13 +9,13 @@ spec:
       app: {{ .Values.appName }}
   serviceName: {{ .Values.appName }}
   replicas: {{ .Values.appReplicas | default 1 }}
-  minReadySeconds: 10
+  minReadySeconds: {{ .Values.appminReadySeconds | default 10 }}
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}
     spec:
-      terminationGracePeriodSeconds: 60
+      terminationGracePeriodSeconds: {{ .Values.appterminationGracePeriodSeconds | default 60 }}
       containers:
       - name: {{ .Values.appName }}
         image: "{{ .Values.appImage.name }}:{{ .Values.appImage.tag }}"
@@ -27,9 +27,10 @@ spec:
         envFrom:
         - configMapRef:
             name: {{ .Values.appName }}
-        volumeMounts:
-        - name: pvc
-          mountPath: /data
+        volumeMounts: {{- range .Values.appVolumeMounts }}
+        - name: {{ .name | default "pvc" }}
+          mountPath: {{ .mountPath | default "/data"}}
+        {{- end }}
   volumeClaimTemplates:
     - metadata:
         name: pvc

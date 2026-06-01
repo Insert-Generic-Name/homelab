@@ -12,8 +12,7 @@ appPorts:
   - name: dns 
     protocol: UDP
     port: 53
-
-# Testing    
+  
 envVars:
     TZ: "Europe/Madrid"
     FTLCONF_dns_upstreams: "1.1.1.1;1.0.0.1"
@@ -23,3 +22,7 @@ envVars:
     FTLCONF_dhcp_active: "false"
     # Allow iCloud Relay to work under Pihole
     FTLCONF_dns_specialDomains_iCloudPrivateRelay: "false"
+
+appVolumeMounts:
+  - name: etc-pihole
+    mountPath: /etc/pihole
