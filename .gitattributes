@@ -3,5 +3,5 @@
 *.yaml linguist-detectable=true
 
 # Force GitHub to recognize and count your Helm templates
-charts/**/templates/*.yaml linguist-language=Go-Template
-charts/**/templates/*.yaml linguist-detectable=true
+helm/templates/*.yaml linguist-language=Go-Template
+helm/templates/*.yaml linguist-detectable=true
