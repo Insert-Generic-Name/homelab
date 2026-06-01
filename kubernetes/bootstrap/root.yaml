@@ -1,20 +1,44 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: fluxcd.controlplane.io/v1
+kind: FluxInstance
 metadata:
-  name: root
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  name: flux
+  namespace: flux-system
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/Insert-Generic-Name/homelab.git
-    targetRevision: HEAD
-    path: kubernetes/gitops/applications
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  distribution:
+    version: "2.x"
+    registry: "ghcr.io/fluxcd"
+    artifact: "oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests"
+  components:
+    - source-controller
+    - source-watcher
+    - kustomize-controller
+    - helm-controller
+    - notification-controller
+    - image-reflector-controller
+    - image-automation-controller
+  cluster:
+    type: kubernetes
+    size: medium
+    multitenant: false
+    networkPolicy: true
+    domain: "cluster.local"
+  kustomize:
+    patches:
+      - target:
+          kind: Deployment
+        patch: |
+          - op: replace
+            path: /spec/template/spec/nodeSelector
+            value:
+              kubernetes.io/os: linux
+          - op: add
+            path: /spec/template/spec/tolerations
+            value:
+              - key: "CriticalAddonsOnly"
+                operator: "Exists"          
+  sync:
+    kind: OCIRepository
+    url: "oci://ghcr.io/my-org/my-fleet-manifests"
+    ref: "latest"
+    path: "clusters/my-cluster"
+    pullSecret: "ghcr-auth"
