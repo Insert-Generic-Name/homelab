@@ -4,8 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: block-pvc
 spec:
-  accessModes:
-    - ReadWriteOnce
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: "longhorn"
   resources:
     requests:
       storage: 10Gi
