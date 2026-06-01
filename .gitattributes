@@ -1,5 +1,3 @@
-# Add detection for misc langs
-*.yaml linguist-documentation=false
-*.yaml linguist-detectable=true
-helm/templates/*.yaml linguist-language=Go-Template
-helm/templates/*.yaml linguist-detectable=true
+# Add detection for misc languages
+*.yaml linguist-documentation=false linguist-detectable=true
+helm/templates/*.yaml linguist-language=Go-Template linguist-detectable=true
