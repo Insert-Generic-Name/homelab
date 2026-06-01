@@ -1,7 +1,5 @@
-# Force GitHub to count YAML files in the language stats
+# Add detection for misc langs
 *.yaml linguist-documentation=false
 *.yaml linguist-detectable=true
-
-# Force GitHub to recognize and count your Helm templates
 helm/templates/*.yaml linguist-language=Go-Template
 helm/templates/*.yaml linguist-detectable=true
