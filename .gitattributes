@@ -1,3 +1,0 @@
-# Add detection for misc languages
-*.yaml linguist-documentation=false linguist-detectable=true
-helm/templates/*.yaml linguist-language=Go-Template linguist-detectable=true
