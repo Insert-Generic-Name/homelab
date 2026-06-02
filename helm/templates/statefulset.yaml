@@ -29,7 +29,7 @@ spec:
             name: {{ .Values.appName }}
         volumeMounts: {{- range .Values.appVolumeMounts }}
         - name: {{ .name | default "pvc" }}
-          mountPath: {{ .mountPath | default "/data"}}
+          mountPath: {{ .mountPath | default "/data"}} # Remember EmptyDirs for cache
         {{- end }}
   volumeClaimTemplates:
     - metadata:
