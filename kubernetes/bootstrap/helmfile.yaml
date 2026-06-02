@@ -1,15 +1,26 @@
-repositories:
-  - name: flux-operator
-    url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator 
+helmDefaults:
+  wait: true
+  waitForJobs: true
+  timeout: 600
 
 releases:
+#  - name: cilium
+#    namespace: kube-system
+#    chart: oci://quay.io/cilium/charts/cilium
+#    version: 1.19.4
+#    values: ["values.yaml.gotmpl"]
+
   - name: flux-operator
     namespace: flux-system
+    chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
+    version: 0.50.0
+    values: ["values.yaml.gotmpl"]
     createNamespace: true
-    chart: prometheus-community/prometheus
-    values:
-      - server:
-          persistentVolume:
-            enabled: false
+#    needs: ["core/cilium"]
 
-          # Add stuff like Cilium here
+  - name: flux-instance
+    namespace: flux-system
+    chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
+    version: 0.50.0
+    needs: ["flux-system/flux-operator"]
+    values: ["values.yaml.gotmpl"]

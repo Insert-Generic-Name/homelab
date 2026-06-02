@@ -1,0 +1,3 @@
+{{ $helmReleasePath := printf "../../services/%s/%s/helm-release.yaml" .Release.Namespace .Release.Name }}
+{{ $helmRelease := fromYaml (readFile $helmReleasePath) }}
+{{ $helmRelease.spec.values | toYaml }}
