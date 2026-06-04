@@ -8,15 +8,13 @@ releases:
   #    namespace: kube-system
   #    chart: oci://quay.io/cilium/charts/cilium
   #    version: 1.19.4
-  #    values:
-  #     - ../services/core/cilium
+  #    values: ["values.yaml.gotmpl"]
 
   - name: flux-operator
     namespace: flux-system
     chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
     version: 0.50.0
-    values:
-      - ../gitops/flux
+    values: ["values.yaml.gotmpl"]
     createNamespace: true
   #    needs: ["core/cilium"]
 
@@ -25,5 +23,4 @@ releases:
     chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
     version: 0.50.0
     needs: ["flux-system/flux-operator"]
-    values:
-      - ../gitops/flux
+    values: ["values.yaml.gotmpl"]
