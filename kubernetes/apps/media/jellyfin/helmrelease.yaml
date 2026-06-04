@@ -11,6 +11,20 @@ spec:
       sourceRef:
         kind: GitRepository
         name: flux-system
-        namespace: flux-system
   values:
-    replicaCount: 2
+    Kind: Deployment
+
+    Image:
+      name: jellyfin/jellyfin
+      tag: latest
+
+    Ports:
+      - name: http
+        protocol: TCP
+        port: 8096
+
+    # environment:
+
+    VolumeMounts:
+      - name: media
+        mountPath: /media
