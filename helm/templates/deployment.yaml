@@ -1,32 +1,32 @@
-{{ if eq .Values.appKind "Deployment" }}
+{{ if eq .Values.Kind "Deployment" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appName }}
-  labels:
-    app: {{ .Values.appName }}
+  name: {{ .Release.Name }}
+  labels: 
+    app: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.appReplicas | default 1 }}
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}
+        app: {{ .Release.Name }}
     spec:
       containers:
-      - name: {{ .Values.appName }}
-        image: "{{ .Values.appImage.name }}:{{ .Values.appImage.tag }}"
-        ports: {{- range .Values.appPorts }}
+      - name: {{ .Release.Name }}
+        image: "{{ .Values.Image.name }}:{{ .Values.Image.tag }}"
+        ports: {{- range .Values.Ports }}
         - name: {{ .name | default "http" }}
           protocol: {{ .protocol | default "TCP" }}
           containerPort: {{ .targetPort | default .port }}
         {{- end }}
         envFrom:
         - configMapRef:
-            name: {{ .Values.appName }}
-        volumeMounts: {{- range .Values.appVolumeMounts }}
+            name: {{ .Release.Name }}
+        volumeMounts: {{- range .Values.VolumeMounts }}
         - name: {{ .name | default "pvc" }}
           mountPath: {{ .mountPath | default "/data"}}
         {{- end }}

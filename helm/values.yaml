@@ -1,11 +1,10 @@
-appKind: Deployment
-appName: pihole
+Kind: Deployment
 
-appImage:
+Image:
   name: pihole/pihole
   tag: latest
 
-appPorts:
+Ports:
   - name: http
     protocol: TCP
     port: 80
@@ -13,7 +12,7 @@ appPorts:
     protocol: UDP
     port: 53
 
-envVars:
+environment:
   TZ: "Europe/Madrid"
   FTLCONF_dns_upstreams: "1.1.1.1;1.0.0.1"
   FTLCONF_dns_listeningMode: "ALL"
@@ -24,6 +23,6 @@ envVars:
   # Allow iCloud Relay to work under Pihole
   FTLCONF_dns_specialDomains_iCloudPrivateRelay: "false"
 
-appVolumeMounts:
+VolumeMounts:
   - name: etc-pihole
     mountPath: /etc/pihole

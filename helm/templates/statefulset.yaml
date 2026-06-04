@@ -1,33 +1,33 @@
-{{ if eq .Values.appKind "StatefulSet" }}
+{{ if eq .Values.Kind "StatefulSet" }}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ .Values.appName }}
+  name: {{ .Release.Name }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
-  serviceName: {{ .Values.appName }}
-  replicas: {{ .Values.appReplicas | default 1 }}
-  minReadySeconds: {{ .Values.appminReadySeconds | default 10 }}
+      app: {{ .Release.Name }}
+  serviceName: {{ .Release.Name }}
+  replicas: {{ .Values.Replicas | default 1 }}
+  minReadySeconds: {{ .Values.minReadySeconds | default 10 }}
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}
+        app: {{ .Release.Name }}
     spec:
-      terminationGracePeriodSeconds: {{ .Values.appterminationGracePeriodSeconds | default 60 }}
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds | default 60 }}
       containers:
-      - name: {{ .Values.appName }}
-        image: "{{ .Values.appImage.name }}:{{ .Values.appImage.tag }}"
-        ports: {{- range .Values.appPorts }}
+      - name: {{ .Release.Name }}
+        image: "{{ .Values.Image.name }}:{{ .Values.Image.tag }}"
+        ports: {{- range .Values.Ports }}
         - name: {{ .name | default "http" }}
           protocol: {{ .protocol | default "TCP" }}
           containerPort: {{ .targetPort | default .port }}
         {{- end }}
         envFrom:
         - configMapRef:
-            name: {{ .Values.appName }}
-        volumeMounts: {{- range .Values.appVolumeMounts }}
+            name: {{ .Release.Name }}
+        volumeMounts: {{- range .Values.VolumeMounts }}
         - name: {{ .name | default "pvc" }}
           mountPath: {{ .mountPath | default "/data"}} # Remember EmptyDirs for cache
         {{- end }}
