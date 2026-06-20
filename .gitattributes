@@ -1,7 +1,6 @@
 *.yaml  linguist-detectable linguist-language=YAML
+*.yml  linguist-detectable linguist-language=YAML
 *.json  linguist-detectable linguist-language=JSON
 *.json5 linguist-detectable linguist-language=JSON5 
-*.md    linguist-detectable linguist-language=Markdown
 *.sh    linguist-detectable linguist-language=Shell
-helm/templates/*.yaml linguist-detectable linguist-language="Go Template"
  

@@ -1,0 +1,44 @@
+{
+    // Visuals and UI
+    "editor.bracketPairColorization.enabled": true,
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.guides.highlightActiveBracketPair": true,
+    "editor.hover.delay": 1000,
+    "editor.rulers": [
+        100
+    ],
+    "editor.stickyScroll.enabled": false,
+    "terminal.integrated.fontSize": 14,
+    "window.zoomLevel": 0,
+    // File and workspace management
+    "explorer.autoReveal": true,
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange",
+    "files.trimTrailingWhitespace": true,
+    // Icon theme settings
+    "material-icon-theme.files.associations": {
+        "README.md": "document",
+        "*.gotmpl": "go"
+    },
+    "material-icon-theme.folders.associations": {
+        "bootstrap": "seeders",
+        "flux-system": "gh-workflows",
+        "kube-system": "controller",
+        "productivity": "dist",
+        "security": "guard",
+        "storage": "database",
+        "monitoring": "review"
+    },
+    "workbench.productIconTheme": "icons-carbon",
+    // Language configuration
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[terraform]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    }
+}
