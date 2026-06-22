@@ -27,9 +27,11 @@ spec:
         envFrom:
         - configMapRef:
             name: {{ .Release.Name }}
-        volumeMounts: {{- range .Values.VolumeMounts }}
+        {{- if .Values.volumeMounts }}
+        volumeMounts: {{- range .Values.volumeMounts }}
         - name: {{ .name | default "pvc" }}
           mountPath: {{ .mountPath | default "/data"}} # Remember EmptyDirs for cache
+        {{- end }}
         {{- end }}
   volumeClaimTemplates:
     - metadata:

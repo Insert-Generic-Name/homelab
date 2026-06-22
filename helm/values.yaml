@@ -17,6 +17,6 @@
 #   CodingStatus: "Desperation"
 #   EncryptedWithBase64: "GotFired"
 #
-# VolumeMounts:
+# volumeMounts:
 #   - name: TrustMeBro
 #     mountPath: /dev/null

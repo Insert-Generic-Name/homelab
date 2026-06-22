@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}
-  labels: 
+  labels:
     app: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.Replicas | default 1 }}
@@ -24,10 +24,12 @@ spec:
           containerPort: {{ .targetPort | default .port }}
         {{- end }}
         envFrom:
-        - configMapRef: 
+        - configMapRef:
             name: {{ .Release.Name }}
-        volumeMounts: {{- range .Values.VolumeMounts }}
+        {{- if .Values.volumeMounts }}
+        volumeMounts: {{- range .Values.volumeMounts }}
         - name: {{ .name | default "pvc" }}
           mountPath: {{ .mountPath | default "/data"}}
+        {{- end }}
         {{- end }}
 {{- end }}
