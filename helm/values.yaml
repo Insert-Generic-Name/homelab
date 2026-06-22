@@ -1,28 +1,21 @@
-Kind: Deployment
-
-Image:
-  name: pihole/pihole
-  tag: latest
-
-Ports:
-  - name: http
-    protocol: TCP
-    port: 80
-  - name: dns
-    protocol: UDP
-    port: 53
-
-environment:
-  TZ: "Europe/Madrid"
-  FTLCONF_dns_upstreams: "1.1.1.1;1.0.0.1"
-  FTLCONF_dns_listeningMode: "ALL"
-  FTLCONF_misc_dnsmasq_lines: "address=/*.home.arpa/192.168.1.10"
-  FTLCONF_webserver_interface_theme: "high-contrast-dark"
-  FTLCONF_webserver_api_password: ""
-  FTLCONF_dhcp_active: "false"
-  # Allow iCloud Relay to work under Pihole
-  FTLCONF_dns_specialDomains_iCloudPrivateRelay: "false"
-
-VolumeMounts:
-  - name: etc-pihole
-    mountPath: /etc/pihole
+# Kind: Deployment/StatefulSet
+#
+# Image:
+#   name: docker/image
+#   tag: latest
+#
+# Ports:
+#   - name: http
+#     protocol: TCP
+#     port: 80
+#   - name: dns
+#     protocol: UDP
+#     port: 53
+#
+# environment:
+#   DevopsIsPain: true
+#   CodingStrategy: "Desperation"
+#
+# VolumeMounts:
+#   - name: TrustMeBro
+#     mountPath: /dev/null
