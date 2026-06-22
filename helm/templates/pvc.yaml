@@ -1,4 +1,4 @@
-{{ if eq .Values.Kind "Deployment"}}
+{{- if and (eq .Values.Kind "Deployment") .Values.volumeMounts }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
