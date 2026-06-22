@@ -9,7 +9,7 @@ spec:
   interval: 5m
   targetNamespace: flux-system
   sourceRef:
-    kind: OCIRepository
+    kind: GitRepository
     name: flux-operator
   path: "./kubernetes/apps/flux-system/flux-operator/app"
   prune: false
