@@ -24,5 +24,15 @@ releases:
     chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
     version: 0.52.0
     needs: ["flux-system/flux-operator"]
-    values: ["values.yaml.gotmpl"]
+    # values: ["values.yaml.gotmpl"]
+    values:
+      - instance:
+          name: flux-system
+          sync:
+            enabled: true
+            kind: GitRepository
+            url: https://github.com/Insert-Generic-Name/homelab
+            ref: refs/heads/main
+            path: kubernetes/apps
+            interval: 1m
     disableValidation: true # Avoid breaking deployment due to missing CRDs
