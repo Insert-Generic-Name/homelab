@@ -11,5 +11,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-operator
-  path: "./kubernetes/apps/flux-system/flux-operator/app"
+  path: "./kubernetes/apps/flux-system/flux-instance/app"
   prune: false
