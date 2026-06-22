@@ -10,6 +10,6 @@ spec:
   targetNamespace: flux-system
   sourceRef:
     kind: GitRepository
-    name: flux-operator
+    name: flux-system
   path: "./kubernetes/apps/flux-system/flux-operator/app"
   prune: false
