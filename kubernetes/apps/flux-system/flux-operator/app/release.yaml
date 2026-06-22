@@ -8,3 +8,5 @@ spec:
     name: flux-operator
   interval: 10m
   values:
+    web:
+      enabled: true

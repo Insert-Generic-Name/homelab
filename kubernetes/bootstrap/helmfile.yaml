@@ -1,4 +1,5 @@
 helmDefaults:
+  cleanupOnFail: true
   wait: true
   waitForJobs: true
   timeout: 600
