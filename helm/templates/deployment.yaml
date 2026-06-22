@@ -23,9 +23,11 @@ spec:
           protocol: {{ .protocol | default "TCP" }}
           containerPort: {{ .targetPort | default .port }}
         {{- end }}
+        {{- if .Values.environment }}
         envFrom:
         - configMapRef:
             name: {{ .Release.Name }}
+        {{- end }}
         {{- if .Values.volumeMounts }}
         volumeMounts: {{- range .Values.volumeMounts }}
         - name: {{ .name | default "pvc" }}
