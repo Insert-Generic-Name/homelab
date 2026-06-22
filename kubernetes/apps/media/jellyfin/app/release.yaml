@@ -16,7 +16,7 @@ spec:
 
     Image:
       name: jellyfin/jellyfin
-      tag: latest
+      tag: unstable
 
     Ports:
       - name: http
