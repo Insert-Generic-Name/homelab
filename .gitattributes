@@ -1,6 +1,5 @@
 *.yaml  linguist-detectable linguist-language=YAML
-*.yml  linguist-detectable linguist-language=YAML
+*.yml   linguist-detectable linguist-language=YAML
 *.json  linguist-detectable linguist-language=JSON
-*.json5 linguist-detectable linguist-language=JSON5 
+*.json5 linguist-detectable linguist-language=JSON5
 *.sh    linguist-detectable linguist-language=Shell
- 

@@ -7,3 +7,9 @@ spec:
     kind: OCIRepository
     name: flux-instance
   interval: 5m
+  values:
+    sync:
+      kind: GitRepository
+      url: https://github.com/Insert-Generic-Name/homelab
+      ref: refs/heads/main
+      path: kubernetes/apps

@@ -7,10 +7,10 @@ spec:
   chart:
     spec:
       chart: ./helm
-      version: "1.0.1"
+      version: "1.0.0"
       sourceRef:
         kind: GitRepository
-        name: flux-system
+        name: jellyfin
   values:
     Kind: Deployment
 
@@ -24,7 +24,3 @@ spec:
         port: 8096
 
     # environment:
-
-    VolumeMounts:
-      - name: media
-        mountPath: /media
