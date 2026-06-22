@@ -8,8 +8,8 @@ spec:
     name: flux-instance
   interval: 5m
   values:
-    sync:
-      instance:
+    instance:
+      sync:
         interval: 1m
         kind: GitRepository
         url: https://github.com/Insert-Generic-Name/homelab
