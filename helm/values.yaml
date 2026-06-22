@@ -1,4 +1,4 @@
-# Kind: Deployment/StatefulSet
+# Kind: Deployment or StatefulSet
 #
 # Image:
 #   name: docker/image
@@ -14,7 +14,8 @@
 #
 # environment:
 #   DevopsIsPain: true
-#   CodingStrategy: "Desperation"
+#   CodingStatus: "Desperation"
+#   EncryptedWithBase64: "GotFired"
 #
 # VolumeMounts:
 #   - name: TrustMeBro
