@@ -9,8 +9,9 @@ spec:
   interval: 5m
   values:
     sync:
-      interval: 1m
-      kind: GitRepository
-      url: https://github.com/Insert-Generic-Name/homelab
-      ref: refs/heads/main
-      path: kubernetes/apps
+      instance:
+        interval: 1m
+        kind: GitRepository
+        url: https://github.com/Insert-Generic-Name/homelab
+        ref: refs/heads/main
+        path: kubernetes/apps
