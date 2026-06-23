@@ -5,5 +5,5 @@ namespace: flux-system
 
 resources:
   - ./namespace.yaml
-  - ./flux-instance
-  - ./flux-operator
+  - ./flux-instance/fluxtomization.yaml
+  - ./flux-operator/fluxtomization.yaml
