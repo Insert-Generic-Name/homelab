@@ -12,4 +12,4 @@ spec:
     kind: GitRepository
     name: flux-system
   path: "./kubernetes/apps/media/jellyfin/app"
-  prune: false
+  prune: true
