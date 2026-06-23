@@ -1,4 +1,4 @@
-{{ if eq .Values.Kind "StatefulSet" }}
+{{ if eq .Values.kind "StatefulSet" }}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -8,7 +8,7 @@ spec:
     matchLabels:
       app: {{ .Release.Name }}
   serviceName: {{ .Release.Name }}
-  replicas: {{ .Values.Replicas | default 1 }}
+  replicas: {{ .Values.replicas | default 1 }}
   minReadySeconds: {{ .Values.minReadySeconds | default 10 }}
   template:
     metadata:
@@ -18,8 +18,8 @@ spec:
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds | default 60 }}
       containers:
       - name: {{ .Release.Name }}
-        image: "{{ .Values.Image.name }}:{{ .Values.Image.tag }}"
-        ports: {{- range .Values.Ports }}
+        image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        ports: {{- range .Values.ports }}
         - name: {{ .name | default "http" }}
           protocol: {{ .protocol | default "TCP" }}
           containerPort: {{ .targetPort | default .port }}

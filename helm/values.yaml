@@ -1,10 +1,10 @@
-# Kind: Deployment/StatefulSet
+# kind: Deployment/StatefulSet
 #
-# Image:
+# image:
 #   name: docker/image
 #   tag: latest
 #
-# Ports:
+# ports:
 #   - name: http
 #     protocol: TCP
 #     port: 80
