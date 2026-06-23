@@ -11,6 +11,8 @@ releases:
   #    version: 1.19.4
   #    values: ["values.yaml.gotmpl"]
 
+  # Rook/longhorn goes here
+
   - name: flux-operator
     namespace: flux-system
     chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
