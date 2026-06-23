@@ -10,6 +10,6 @@ spec:
   targetNamespace: media
   sourceRef:
     kind: GitRepository
-    name: jellyfin
+    name: flux-system
   path: "./kubernetes/apps/media/jellyfin/app"
   prune: false
