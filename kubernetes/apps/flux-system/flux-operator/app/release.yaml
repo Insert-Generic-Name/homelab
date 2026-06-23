@@ -6,7 +6,7 @@ spec:
   chartRef:
     kind: OCIRepository
     name: flux-operator
-  interval: 10m
+  interval: 5m
   values:
     web:
       enabled: true
