@@ -33,7 +33,7 @@
         "namespace.yaml": "kubernetes",
         "helmfile.yaml": "helm",
         "source.yaml": "parcel",
-        "fluxtomization.yaml": "rocket",
+        "ks.yaml": "rocket",
         "kustomization.yaml": "kubernetes",
     },
     "material-icon-theme.folders.associations": {
