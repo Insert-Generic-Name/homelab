@@ -8,6 +8,8 @@ spec:
     name: flux-operator
   interval: 5m
   values:
+    serviceMonitor:
+      create: true
     web:
       config:
         authentication:
