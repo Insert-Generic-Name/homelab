@@ -7,3 +7,6 @@ spec:
   url: https://github.com/Insert-Generic-Name/homelab
   ref:
     branch: main
+    sparseCheckout:
+  paths:
+    - helm/
