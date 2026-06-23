@@ -4,9 +4,6 @@ metadata:
   name: jellyfin
 spec:
   interval: 5m
-  url: https://github.com/Insert-Generic-Name/homelab
+  url: https://github.com/Insert-Generic-Name/Helm-Chart
   ref:
     branch: main
-    sparseCheckout:
-  paths:
-    - helm/
