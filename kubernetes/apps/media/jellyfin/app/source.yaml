@@ -4,6 +4,6 @@ metadata:
   name: jellyfin
 spec:
   interval: 5m
-  url: https://github.com/Insert-Generic-Name/Helm-Chart
+  url: https://github.com/Insert-Generic-Name/Helm-cart
   ref:
     branch: main
