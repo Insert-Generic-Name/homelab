@@ -9,7 +9,7 @@ spec:
   interval: 5m
   values:
     serviceMonitor:
-      create: true
+      create: false # CHANGE ME LATER
     web:
       config:
         authentication:
