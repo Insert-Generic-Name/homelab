@@ -15,8 +15,8 @@ spec:
     Kind: Deployment
 
     Image:
-      name: nginx #jellyfin/jellyfin
-      tag: latest #unstable
+      name: jellyfin/jellyfin
+      tag: unstable
 
     Ports:
       - name: http
