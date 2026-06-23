@@ -12,13 +12,13 @@ spec:
         kind: GitRepository
         name: jellyfin
   values:
-    Kind: Deployment
+    kind: Deployment
 
-    Image:
+    image:
       name: jellyfin/jellyfin
       tag: unstable
 
-    Ports:
+    ports:
       - name: http
         protocol: TCP
         port: 8096
