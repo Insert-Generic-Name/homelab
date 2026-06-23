@@ -30,6 +30,7 @@
         "README.md": "document",
         "*.gotmpl": "go",
         "release.yaml": "helm",
+        "namespace.yaml": "kubernetes",
         "helmfile.yaml": "helm",
         "source.yaml": "parcel",
         "fluxtomization.yaml": "rocket",
