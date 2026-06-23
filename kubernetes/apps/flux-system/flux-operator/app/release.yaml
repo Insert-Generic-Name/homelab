@@ -9,12 +9,12 @@ spec:
   interval: 5m
   values:
     web:
-      config:
-        authentication:
-          type: Anonymous
-          anonymous:
-            username: flux
-            groups:
-              - flux-admin
-      networkPolicy:
-        create: false
+    config:
+      authentication:
+        type: Anonymous
+        anonymous:
+          username: flux
+          groups:
+            - flux-admin
+    networkPolicy:
+      create: false
