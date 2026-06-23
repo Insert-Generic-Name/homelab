@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - download
   - flux-system
-  - infra
+  #- infra
   - kube-system
   - media
   - monitoring
