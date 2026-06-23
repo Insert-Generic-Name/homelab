@@ -1,0 +1,22 @@
+# kind: Deployment/StatefulSet
+#
+# image:
+#   name: docker/image
+#   tag: latest
+#
+# ports:
+#   - name: http
+#     protocol: TCP
+#     port: 80
+#   - name: dns
+#     protocol: UDP
+#     port: 53
+#
+# environment:
+#   DevopsIsPain: true
+#   CodingStatus: "Desperation"
+#   EncryptedWithBase64: "GotFired"
+#
+# volumeMounts:
+#   - name: TrustMeBro
+#     mountPath: /dev/null
