@@ -9,9 +9,16 @@ spec:
   interval: 5m
   values:
     instance:
+      cluster:
+        networkPolicy: false
+      components:
+        - source-controller
+        - kustomize-controller
+        - helm-controller
+        - notification-controller
       sync:
-        interval: 1m
         kind: GitRepository
         url: https://github.com/Insert-Generic-Name/homelab
         ref: refs/heads/main
         path: kubernetes/apps
+        interval: 1m
