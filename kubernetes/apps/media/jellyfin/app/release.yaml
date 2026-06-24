@@ -24,3 +24,9 @@ spec:
         port: 8096
 
     # environment:
+
+# volumeMounts:
+#   - name: config
+#     mountPath: /config
+#   - name: media
+#     mountPath: /media
