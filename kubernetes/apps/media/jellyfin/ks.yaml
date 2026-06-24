@@ -11,5 +11,5 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: "./kubernetes/apps/media/jellyfin/app"
+  path: ./kubernetes/apps/media/jellyfin/app
   prune: true
