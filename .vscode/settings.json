@@ -44,7 +44,7 @@
         "productivity": "dist",
         "security": "guard",
         "storage": "database",
-        "monitoring": "review"
+        "observability": "review"
     },
     "workbench.productIconTheme": "icons-carbon",
     // Language configuration
