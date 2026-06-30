@@ -5,7 +5,7 @@ metadata:
   name: block-pvc
 spec:
   accessModes: [ "ReadWriteOnce" ]
-  storageClassName: "longhorn"
+  storageClassName: "block"
   resources:
     requests:
       storage: 10Gi

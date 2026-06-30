@@ -43,8 +43,9 @@
         "kube-system": "controller",
         "productivity": "dist",
         "security": "guard",
-        "storage": "database",
-        "observability": "review"
+        "storage": "archive",
+        "observability": "review",
+        "rook-ceph": "aws",
     },
     "workbench.productIconTheme": "icons-carbon",
     // Language configuration
