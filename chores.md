@@ -1,0 +1,2 @@
+- Deploy Flux alert controller once observability stack is done
+- Enable flux operator compatibility with prometheus
