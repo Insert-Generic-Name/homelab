@@ -46,6 +46,7 @@
         "storage": "archive",
         "observability": "review",
         "rook-ceph": "aws",
+        "default": "home",
     },
     "workbench.productIconTheme": "icons-carbon",
     // Language configuration
