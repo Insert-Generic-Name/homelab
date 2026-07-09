@@ -11,6 +11,8 @@ spec:
     ipam:
       mode: kubernetes
     kubeProxyReplacement: true
+    bpf:
+      hostLegacyRouting: true
     securityContext:
       capabilities:
         ciliumAgent:
