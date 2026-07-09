@@ -2,29 +2,28 @@ helmDefaults:
   cleanupOnFail: true
   wait: true
   waitForJobs: true
-  timeout: 600
+  forceConflicts: true
+  timeout: 1000
+
+bases:
+  - default.yaml
+
+defaultInherit: default
 
 releases:
   - name: cilium
     namespace: kube-system
-    chart: oci://quay.io/cilium/charts/cilium
-    version: 1.19.5
-    values: ["values.yaml.gotmpl"]
+
 
   # Rook/longhorn goes here
 
   - name: flux-operator
     namespace: flux-system
     chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
-    version: 0.52.0
-    values: ["values.yaml.gotmpl"]
-    createNamespace: true
-    #    needs: ["core/cilium"]
+  #  createNamespace: true
+    needs: ["kube-system/cilium"]
 
   - name: flux-instance
     namespace: flux-system
-    chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
-    version: 0.52.0
     needs: ["flux-system/flux-operator"]
-    values: ["values.yaml.gotmpl"]
     disableValidation: true # Avoid breaking deployment due to missing CRDs

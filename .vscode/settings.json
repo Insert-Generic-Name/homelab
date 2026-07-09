@@ -47,10 +47,14 @@
         "observability": "review",
         "rook-ceph": "aws",
         "default": "home",
+        "helmfile": "helm",
     },
     "workbench.productIconTheme": "icons-carbon",
     // Language configuration
     "yaml.schemaStore.enable": true,
+    "yaml.schemas": {
+        "kubernetes": "./kubernetes/**/*.yaml"
+    },
     "[yaml]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },

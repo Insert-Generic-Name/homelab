@@ -1,3 +1,0 @@
-{{ $helmReleasePath := printf "../kubernetes/apps/%s/%s/app/release.yaml" .Release.Namespace .Release.Name }}
-{{ $helmRelease := fromYaml (readFile $helmReleasePath) }}
-{{ $helmRelease.spec.values | toYaml }}
