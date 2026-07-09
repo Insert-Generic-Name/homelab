@@ -1,0 +1,52 @@
+clusterName: k8s-c
+talosVersion: v1.13.6
+kubernetesVersion: v1.35.0
+endpoint: https://100.99.99.10:6443
+allowSchedulingOnMasters: true
+cniConfig:
+  name: none # Deploy Cilium with Helm
+controlPlane: &baseConfig
+  machineSpec:
+    mode: metal
+    arch: amd64
+    useUKI: true
+    secureboot: true
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/qemu-guest-agent
+          - siderolabs/iscsi-tools
+          - siderolabs/util-linux-tools
+  networkInterfaces:
+    - interface: ens18
+      dhcp: true
+worker:
+  <<: *baseConfig
+
+
+nodes:
+  - hostname: master-01
+    controlPlane: true
+    ipAddress: 100.99.99.10
+    installDisk: /dev/sda
+#  - hostname: master-02
+#    controlPlane: true
+#    ipAddress: 192.168.1.13
+#    installDisk: /dev/sda
+#  - hostname: master-03
+#    controlPlane: true
+#    ipAddress: 192.168.1.15
+#    installDisk: /dev/sda
+  # - hostname: worker-01
+  #   controlPlane: false
+  #   ipAddress: 192.168.1.12
+  #   installDisk: /dev/sda
+#  - hostname: worker-02
+#    controlPlane: true
+#    ipAddress: 192.168.1.14
+#    installDisk: /dev/sda
+#  - hostname: worker-03
+#    controlPlane: true
+#    ipAddress: 192.168.1.16
+#    installDisk: /dev/sda
