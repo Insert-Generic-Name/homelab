@@ -37,3 +37,5 @@ spec:
       hostRoot: /sys/fs/cgroup
     k8sServiceHost: localhost
     k8sServicePort: 7445
+    operator:
+      replicas: 2 # Change me later to 2
