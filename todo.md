@@ -1,4 +1,4 @@
 - Deploy Flux alert controller once observability stack is done
 - Enable flux operator compatibility with prometheus
 - Remove .vscode extensions ( terraform, ansible)
-- Enable Cilium HA when on real hardware
+- Change Cilium operator replicas to 2 when on real hardware
