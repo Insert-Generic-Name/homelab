@@ -24,7 +24,6 @@ controlPlane: &baseConfig
 worker:
   <<: *baseConfig
 
-
 nodes:
   - hostname: master-01
     controlPlane: true
@@ -38,10 +37,10 @@ nodes:
 #    controlPlane: true
 #    ipAddress: 192.168.1.15
 #    installDisk: /dev/sda
-  # - hostname: worker-01
-  #   controlPlane: false
-  #   ipAddress: 192.168.1.12
-  #   installDisk: /dev/sda
+# - hostname: worker-01
+#   controlPlane: false
+#   ipAddress: 192.168.1.12
+#   installDisk: /dev/sda
 #  - hostname: worker-02
 #    controlPlane: true
 #    ipAddress: 192.168.1.14
