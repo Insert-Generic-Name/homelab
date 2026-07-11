@@ -33,7 +33,6 @@ Personal testing battlefield
 - RSS Feeder ( or other tools like homepage/flux/bookmark manager)
 So when there is a new release of a service I get a notification with a link
 ( flux only alerts if deployments fails)
----------------------------
 
 #### Planned ####
 ---------------------------
