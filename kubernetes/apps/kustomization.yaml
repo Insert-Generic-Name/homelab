@@ -6,7 +6,7 @@ resources:
   # - ./download
   - ./flux-system
   #- ./infra
-  # - ./kube-system
+  - ./kube-system
   - ./media
   # - ./observability
   # - ./productivity
