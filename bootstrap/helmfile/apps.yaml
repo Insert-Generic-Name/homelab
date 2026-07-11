@@ -18,7 +18,6 @@ releases:
 
   - name: flux-operator
     namespace: flux-system
-    # createNamespace: true
     needs: ["kube-system/cilium"]
 
   - name: flux-instance
