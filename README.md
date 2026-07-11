@@ -23,7 +23,6 @@ Personal testing battlefield
 #### Not decided yet ####
 ---------------------------
 - SABnzbd/Others ( Usenet downloader)
-- Hubble ( Cilium UI)
 - Actual Budget
 - ntfy
 - Home assistant
@@ -40,7 +39,7 @@ So when there is a new release of a service I get a notification with a link
 ##### Tools #####
 ---------------------------
 - Authentik/Auhetlia
-- Cilium
+- Cilium + Hubble UI
 - Envoy
 - Flux
 - Rook-Ceph
