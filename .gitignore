@@ -3,3 +3,5 @@ planning.md
 values.forpihole
 TODO-CHART
 talslop/**
+!talslop/cleanup.sh
+!talslop/patch.yaml
