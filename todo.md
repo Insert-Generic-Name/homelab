@@ -2,3 +2,4 @@
 - Enable flux operator compatibility with prometheus
 - Remove .vscode extensions ( terraform, ansible)
 - Change Cilium operator replicas to 2 when on real hardware
+- Make helmfile create namespaces
