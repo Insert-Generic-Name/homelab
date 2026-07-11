@@ -1,9 +1,8 @@
 # Kubernetes homelabbing = Suffering #
----------------------------------------
 Personal testing battlefield
 
 ## Planning ##
----------------------------
+
 
 ### Tools & Techs ###
 ---------------------------
