@@ -1,9 +1,13 @@
-### Kubernetes homelabbing = Suffering ###
+# Kubernetes homelabbing = Suffering #
+---------------------------------------
 Personal testing battlefield
 
 ## Planning ##
+---------------------------
 
-# Tools & Techs #
+### Tools & Techs ###
+---------------------------
+
 - .gitattributes for YAML/JSON lang detection
 - .vscode ( to track extensions/settings )
 - Renovate
@@ -14,9 +18,11 @@ Personal testing battlefield
 - External Secrets Operator + OpenBao/Infiscal/Bitwarden ( Not decided) *ESO LIVES OUTSIDE CLUSTER*
 - Custom self-made Helm chart for templating ( avoid 4 manifests per service)
 
-# Services #
+### Services ###
 ---------------------------
-Not decided yet
+
+#### Not decided yet ####
+---------------------------
 - SABnzbd/Others ( Usenet downloader)
 - Hubble ( Cilium UI)
 - Actual Budget
@@ -28,9 +34,13 @@ Not decided yet
 So when there is a new release of a service I get a notification with a link
 ( flux only alerts if deployments fails)
 ---------------------------
-Will get added
 
-# Tools #
+#### Planned ####
+---------------------------
+
+
+##### Tools #####
+---------------------------
 - Authentik/Auhetlia
 - Cilium
 - Envoy
@@ -38,7 +48,9 @@ Will get added
 - Rook-Ceph
 - Tailscale
 
-# Main ( they serve me) #
+##### Main  #####
+---------------------------
+
 - Arrstack ( Sonarr + Radarr + Prowlarr + Lidarr + Recyclarr )
 - Bentopdf
 - Gamevault
@@ -67,9 +79,9 @@ Will get added
 - Uptime Kuma
 - Vaultwarden
 - Vikunja
------------
 
-DISCARDED:
+##### Discarded #####
+---------------------------
 
 - Gitea/Gitlab ( Dumb idea self hosting your source of truth)
 - Portainer ( Just let CD handle the deployment)
