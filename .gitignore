@@ -1,7 +1,4 @@
-README-NOW!.MD
-planning.md
-values.forpihole
-TODO-CHART
+vmisc/**
 talslop/**
 !talslop/cleanup.sh
 !talslop/patch.yaml
