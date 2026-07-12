@@ -7,7 +7,7 @@ resources:
   #  - ./gaming
   #- ./infra
   - ./media
-  # - ./observability
-  # - ./productivity
-  #- ./security
-  #- ./storage
+# - ./observability
+# - ./productivity
+#- ./security
+#- ./storage
