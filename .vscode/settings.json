@@ -39,6 +39,8 @@
     "material-icon-theme.folders.associations": {
         "bootstrap": "seeders",
         "talos": "linux",
+        "gaming": "console",
+        "envoy-gateway-system": "cluster",
         "flux-system": "generator",
         "kube-system": "controller",
         "productivity": "dist",

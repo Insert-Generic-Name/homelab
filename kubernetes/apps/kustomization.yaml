@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   # - ./default
   # - ./download
+  - ./envoy-gateway-system
   - ./flux-system
   #- ./infra
   - ./kube-system
