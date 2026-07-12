@@ -39,8 +39,8 @@ So when there is a new release of a service I get a notification with a link
 ##### Tools #####
 ---------------------------
 - Authentik/Authelia
-- Cilium + Hubble UI
-- Envoy
+- Cilium (CNI/LB) + Hubble UI
+- Envoy (GAPIC)
 - FluxCD
 - Rook-Ceph
 - Tailscale
