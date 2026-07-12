@@ -20,5 +20,5 @@ spec:
         kind: GitRepository
         url: https://github.com/Insert-Generic-Name/homelab
         ref: refs/heads/main
-        path: kubernetes/apps
+        path: kubernetes/deployment
         interval: 1m

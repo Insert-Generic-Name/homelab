@@ -49,6 +49,8 @@
         "observability": "review",
         "rook-ceph": "aws",
         "default": "home",
+        "deployment": "azure-pipelines",
+        "platform": "server",
         "helmfile": "helm",
     },
     "workbench.productIconTheme": "icons-carbon",

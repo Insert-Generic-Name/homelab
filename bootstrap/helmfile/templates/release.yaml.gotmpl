@@ -1,3 +1,3 @@
-{{- $main := fromYaml (readFile (printf "../../kubernetes/apps/%s/%s/app/source.yaml" .Release.Namespace .Release.Name)) -}}
+{{- $main := fromYaml (readFile (printf "../../kubernetes/deployment/platform/%s/%s/app/source.yaml" .Release.Namespace .Release.Name)) -}}
 chart: {{ $main.spec.url }}
 version: {{ $main.spec.ref.tag }}
