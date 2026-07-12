@@ -40,7 +40,7 @@ So when there is a new release of a service I get a notification with a link
 ---------------------------
 - Authentik/Authelia
 - Cilium (CNI/LB) + Hubble UI
-- Envoy (GAPIC)
+- Envoy gateway (GAPIC)
 - FluxCD
 - Rook-Ceph
 - Tailscale
