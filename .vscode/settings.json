@@ -64,8 +64,5 @@
     },
     "[json5]": {
         "editor.defaultFormatter": "blueglassblock.better-json5"
-    },
-    "[terraform]": {
-        "editor.defaultFormatter": "hashicorp.terraform"
     }
 }
