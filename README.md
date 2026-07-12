@@ -56,7 +56,6 @@ So when there is a new release of a service I get a notification with a link
 - Immich
 - Invidious
 - Jellyfin
-- seerr
 - Ludasavi
 - Mealie
 - Microbin
@@ -73,6 +72,7 @@ So when there is a new release of a service I get a notification with a link
 - Hotio Qbitorrent ( for VPN support)
 - Scrutiny
 - SearxNG
+- Seer
 - Uptime Kuma
 - Vaultwarden
 - Vikunja
