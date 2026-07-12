@@ -11,5 +11,5 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./kubernetes/apps/kube-system/cilium/app
+  path: ./kubernetes/deployment/platform/kube-system/cilium/app
   prune: false

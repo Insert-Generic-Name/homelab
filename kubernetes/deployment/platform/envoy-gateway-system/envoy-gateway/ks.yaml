@@ -11,5 +11,5 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./kubernetes/apps/envoy-gateway-system/envoy-gateway/app
+  path: ./kubernetes/deployment/platform/envoy-gateway-system/envoy-gateway/app
   prune: false
