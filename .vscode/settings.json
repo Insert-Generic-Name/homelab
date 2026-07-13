@@ -40,7 +40,7 @@
         "bootstrap": "seeders",
         "talos": "linux",
         "gaming": "console",
-        "envoy-gateway-system": "cluster",
+        "envoy-gateway-system": "context",
         "flux-system": "generator",
         "kube-system": "controller",
         "productivity": "dist",
