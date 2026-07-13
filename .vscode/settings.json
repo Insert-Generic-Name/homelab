@@ -52,6 +52,7 @@
         "deployment": "azure-pipelines",
         "platform": "server",
         "helmfile": "helm",
+        "ai": "gemini-ai",
     },
     "workbench.productIconTheme": "icons-carbon",
     // Language configuration
