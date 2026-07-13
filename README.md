@@ -56,7 +56,7 @@ So when there is a new release of a service I get a notification with a link
 - Immich
 - Invidious
 - Jellyfin
-- Ludasavi
+- Ludusavi
 - Mealie
 - Microbin
 - n8n
