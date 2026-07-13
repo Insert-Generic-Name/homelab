@@ -63,6 +63,6 @@
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
     "[json5]": {
-        "editor.defaultFormatter": "blueglassblock.better-json5"
+        "editor.defaultFormatter": "BlueGlassBlock.better-json5"
     }
 }
