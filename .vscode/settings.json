@@ -43,7 +43,7 @@
         "envoy-gateway-system": "context",
         "flux-system": "generator",
         "kube-system": "controller",
-        "productivity": "dist",
+        "productivity": "tasks",
         "security": "guard",
         "storage": "archive",
         "observability": "review",
