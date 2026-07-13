@@ -25,6 +25,7 @@ Personal testing battlefield
 - SABnzbd/Others ( Usenet downloader)
 - Actual Budget
 - ntfy
+- metube ( yt downloader)
 - Home assistant
 - MC Server
 - Mozhi
