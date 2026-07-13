@@ -53,6 +53,7 @@
         "platform": "server",
         "helmfile": "helm",
         "ai": "gemini-ai",
+        "lifestyle": "java",
     },
     "workbench.productIconTheme": "icons-carbon",
     // Language configuration
