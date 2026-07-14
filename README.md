@@ -22,7 +22,6 @@ Personal testing battlefield
 
 #### Not decided yet ####
 ---------------------------
-- SABnzbd/Others ( Usenet downloader)
 - Actual Budget
 - ntfy
 - metube ( yt downloader)
@@ -71,6 +70,7 @@ So when there is a new release of a service I get a notification with a link
 - Prometheus
 - Paperless-ngx
 - Hotio Qbitorrent ( for VPN support)
+- SABnzbd
 - Scrutiny
 - SearxNG
 - Seer
