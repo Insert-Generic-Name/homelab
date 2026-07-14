@@ -47,7 +47,7 @@ So when there is a new release of a service I get a notification with a link
 ##### Main  #####
 ---------------------------
 
-- Arrstack ( Sonarr + Radarr + Prowlarr + Recyclarr )
+- Arrstack ( Sonarr + Radarr + Prowlarr + Recyclarr + SABnzbd + Hotio qbittorrent)
 - Bentopdf
 - Gamevault
 - Grafana
@@ -69,8 +69,6 @@ So when there is a new release of a service I get a notification with a link
 - Pi-hole
 - Prometheus
 - Paperless-ngx
-- Hotio Qbitorrent ( for VPN support)
-- SABnzbd
 - Scrutiny
 - SearxNG
 - Seer
