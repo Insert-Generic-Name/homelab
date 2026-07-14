@@ -88,4 +88,4 @@ So when there is a new release of a service I get a notification with a link
 - Terraform ( ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^)
 - Ansible   (^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^)
 - Gluetun ((for qbittorrent)) ( Discarded due to Hotio Qbittorrent beeing a better solution)
-- Lidarr ( "non-mainstream" music lack, me-tube is a better alternative)
+- Lidarr ( "non-mainstream" music lack, me-tube is a better suit for my needs)
