@@ -24,7 +24,6 @@ Personal testing battlefield
 ---------------------------
 - Actual Budget
 - ntfy
-- metube ( yt downloader)
 - Home assistant
 - MC Server
 - Mozhi
@@ -48,7 +47,7 @@ So when there is a new release of a service I get a notification with a link
 ##### Main  #####
 ---------------------------
 
-- Arrstack ( Sonarr + Radarr + Prowlarr + Lidarr + Recyclarr )
+- Arrstack ( Sonarr + Radarr + Prowlarr + Recyclarr )
 - Bentopdf
 - Gamevault
 - Grafana
@@ -57,6 +56,7 @@ So when there is a new release of a service I get a notification with a link
 - Invidious
 - Jellyfin
 - Ludusavi
+- Me-Tube
 - Mealie
 - Microbin
 - n8n
@@ -88,3 +88,4 @@ So when there is a new release of a service I get a notification with a link
 - Terraform ( ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^)
 - Ansible   (^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^)
 - Gluetun ((for qbittorrent)) ( Discarded due to Hotio Qbittorrent beeing a better solution)
+- Lidarr ( "non-mainstream" music lack, me-tube is a better alternative)
