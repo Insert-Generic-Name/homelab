@@ -24,6 +24,7 @@ Personal testing battlefield
 ---------------------------
 - Actual Budget
 - ntfy
+- Feishin ( Navidrome frontend, desktop app it seems)
 - Home assistant
 - MC Server
 - Mozhi
