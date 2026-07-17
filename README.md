@@ -48,7 +48,7 @@ So when there is a new release of a service I get a notification with a link
 ##### Main  #####
 ---------------------------
 
-- Arrstack ( Sonarr + Radarr + Prowlarr + Recyclarr + SABnzbd + Hotio qbittorrent)
+- Arrstack ( Sonarr + Radarr + Prowlarr + Recyclarr + SABnzbd + Hotio qbittorrent + Metube)
 - Bentopdf
 - Gamevault
 - Grafana
@@ -57,7 +57,6 @@ So when there is a new release of a service I get a notification with a link
 - Invidious
 - Jellyfin
 - Ludusavi
-- Me-Tube
 - Mealie
 - Microbin
 - n8n
