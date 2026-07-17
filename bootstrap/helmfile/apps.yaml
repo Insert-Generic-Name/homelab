@@ -1,3 +1,7 @@
+# Bootstraps core applications that provide a minimal runtime base for the
+# cluster. These releases are installed first so the cluster has the resources
+# Flux needs before its own reconciliation begins.
+
 helmDefaults:
   cleanupOnFail: true
   wait: true

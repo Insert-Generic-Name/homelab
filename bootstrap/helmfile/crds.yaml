@@ -1,4 +1,16 @@
+# Installing CRDs out-of-band ensures they exist before Flux begins reconciling # workloads that reference them, avoiding the need for dependsOn chains on
+# nearly every Kustomization that consumes a CRD-backed resource.
+
 helmDefaults:
   args:
     - --include-crds
     - --no-hooks
+
+bases:
+  - default.yaml
+
+defaultInherit: default
+
+releases:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
