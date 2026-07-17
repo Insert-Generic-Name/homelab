@@ -7,3 +7,4 @@ spec:
     kind: OCIRepository
     name: envoy-gateway
   interval: 5m
+  values:
