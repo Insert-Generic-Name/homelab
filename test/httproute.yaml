@@ -7,7 +7,7 @@ spec:
     - name: envoy-gateway
       namespace: envoy-gateway-system
   hostnames:
-    - "nginx.home.arpa"
+    - nginx.home.arpa
   rules:
     - backendRefs:
         - name: nginx-svc
