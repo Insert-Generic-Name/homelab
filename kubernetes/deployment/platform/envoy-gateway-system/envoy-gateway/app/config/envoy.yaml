@@ -2,3 +2,12 @@ apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
 metadata:
   name: envoy-configuration
+spec:
+  logging:
+    level:
+      default: info
+  provider:
+    type: Kubernetes
+    Kubernetes:
+      envoyDeployment:
+        replicas: 1 #Change me later
