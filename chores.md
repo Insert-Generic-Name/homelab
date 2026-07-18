@@ -7,3 +7,4 @@ Todo:
 - Remove .vscode extensions ( terraform, ansible)
 - Change Cilium operator replicas to 2 when on real hardware
 - Enable Cilium compatibility with prometheus
+- Change Envoy deployment replicas to 2 when on real hardware
