@@ -11,3 +11,4 @@ spec:
     Kubernetes:
       envoyDeployment:
         replicas: 1 #Change me later
+
