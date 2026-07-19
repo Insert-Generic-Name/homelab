@@ -9,6 +9,6 @@ Todo:
 - Enable Cilium compatibility with prometheus
 - Change Envoy deployment replicas to 2 when on real hardware
 - Get all of envoy CRDs working ( EnvoyProxy, Client Policy,etc)
-- Readd https listener when cert-manager is configured
 - Reconfigure httpRoute for flux operator later on
 - Switch from Tailscale operator to BGP load balancing later on
+- Fine-tune Cilium ( values.yaml)
