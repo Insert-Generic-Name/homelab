@@ -3,4 +3,4 @@ talslop/**
 !talslop/cleanup.sh
 !talslop/patch.yaml
 utest/**
-tailscale-operator.yaml
+ztailscale-operator/**
