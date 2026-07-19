@@ -21,6 +21,7 @@ spec:
         certificateRefs:
           - kind: Secret
             name: secret-tls
+            namespace: default
       allowedRoutes:
         namespaces:
           from: All
