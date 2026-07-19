@@ -18,7 +18,7 @@ spec:
             username: flux
             groups:
               - flux-admin
-      httpRoute:
+      httpRoute: # changemelater
         enabled: true
         parentRefs:
           - name: envoy-gateway
