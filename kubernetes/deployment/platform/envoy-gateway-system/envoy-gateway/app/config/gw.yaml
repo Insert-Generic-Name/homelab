@@ -13,14 +13,14 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-    - name: https
-      protocol: HTTPS
-      port: 443
-      hostname: "*.home.arpa"
-      tls:
-        certificateRefs:
-          - kind: Secret
-            name: secret-tls
-      allowedRoutes:
-        namespaces:
-          from: All
+    # - name: https
+    #   protocol: HTTPS
+    #   port: 443
+    #   hostname: "*.home.arpa"
+    #   tls:
+    #     certificateRefs:
+    #       - kind: Secret
+    #         name: secret-tls
+    #   allowedRoutes:
+    #     namespaces:
+    #       from: All
