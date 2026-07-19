@@ -25,6 +25,7 @@ Personal testing battlefield
 - Actual Budget
 - ntfy
 - Feishin ( Navidrome frontend, desktop app it seems)
+- Slskd/Soularr etc ( For soulseek)
 - Home assistant
 - MC Server
 - Mozhi
