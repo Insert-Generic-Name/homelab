@@ -5,6 +5,7 @@ metadata:
 spec:
   parentRefs:
     - name: envoy-gateway
+      sectionName: http
       namespace: envoy-gateway-system
   hostnames:
     - nginx.home.arpa
