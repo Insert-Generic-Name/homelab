@@ -1,0 +1,10 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: "main"
+spec:
+  blocks:
+    - cidr: "100.64.0.0/10"
+    #   - cidr: "2004::0/112"
+    # - start: "100.64.0.0"
+    #   stop: "100.100.255.255"

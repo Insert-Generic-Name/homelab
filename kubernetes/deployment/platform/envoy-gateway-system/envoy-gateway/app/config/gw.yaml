@@ -9,7 +9,18 @@ spec:
     - name: http
       protocol: HTTP
       port: 80
-      #  hostname:
+      hostname: "*.home.arpa"
       allowedRoutes:
         namespaces:
-          from: All #Same
+          from: All
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: "*.home.arpa"
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: tls-cert
+      allowedRoutes:
+        namespaces:
+          from: All
