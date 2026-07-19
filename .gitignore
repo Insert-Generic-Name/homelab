@@ -2,5 +2,4 @@ vmisc/**
 talslop/**
 !talslop/cleanup.sh
 !talslop/patch.yaml
-utest/**
 ztailscale-operator/**
