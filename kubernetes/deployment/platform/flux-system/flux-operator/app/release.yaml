@@ -18,5 +18,13 @@ spec:
             username: flux
             groups:
               - flux-admin
-    networkPolicy:
-      create: false
+      httpRoute:
+        enabled: true
+        parentRefs:
+          - name: envoy-gateway
+            namespace: envoy-gateway-system
+            sectionName: http
+        hostnames:
+          - flux.home.arpa
+      networkPolicy:
+        create: false
