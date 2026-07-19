@@ -11,3 +11,4 @@ Todo:
 - Get all of envoy CRDs working ( EnvoyProxy, Client Policy,etc)
 - Readd https listener when cert-manager is configured
 - Reconfigure httpRoute for flux operator later on
+- Switch from ARP to BGP load balancing later on
