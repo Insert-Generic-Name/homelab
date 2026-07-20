@@ -10,14 +10,14 @@ ENVOY_SVC="envoy-network-system-envoy-gateway-b7e4c8a5"
 
 # VM bootstrap
 if virsh -c qemu:///system domstate "${VM_NAME}" 2>/dev/null | grep -q "running"; then
-    echo "######################################################"
-    echo "VM '${VM_NAME}' is already running."
-    echo "######################################################"
+echo "##############################################################"
+echo "VM '${VM_NAME}' is already running."
+echo "##############################################################"
 else
     virsh -c qemu:///system start "${VM_NAME}"
-    echo "######################################################"
-    echo "Setting up VM '${VM_NAME}'"
-    echo "######################################################"
+echo "##############################################################"
+echo "Setting up VM '${VM_NAME}'"
+echo "##############################################################"
     sleep 30
 fi
 # LoadBalancer bootstrap
