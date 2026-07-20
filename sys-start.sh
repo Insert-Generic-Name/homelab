@@ -6,10 +6,11 @@ set -euo pipefail
 # Setup: Run this command ONCE, it allows the script to run sudo-less.
 #:~$ sudo setcap 'cap_net_bind_service=+ep' $(readlink -f $(which kubectl))
 
+ENVOY_SVC=$(kubectl get svc -n network-system -l gateway.envoyproxy.io/owning-gateway-name=envoy-gateway -o jsonpath='{.items[0].metadata.name}')
+LISTENER_IP=$(tailscale ip -4)
+
 # Variables, set this manually
 VM_NAME="talslop"
-ENVOY_SVC="envoy-network-system-envoy-gateway-b7e4c8a5"
-LISTENER_IP=$(tailscale ip -4)
 FORWARDED_PORTS=(80 )
 
 # VM bootstrap
