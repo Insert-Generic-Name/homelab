@@ -16,22 +16,29 @@ FORWARDED_PORTS=(80 )
 
 # VM bootstrap
 if virsh -c qemu:///system domstate "${VM_NAME}" 2>/dev/null | grep -q "running"; then
+
 echo "Skipping task"
+
 else
-    virsh -c qemu:///system start "${VM_NAME}"
+
+virsh -c qemu:///system start "${VM_NAME}"
 echo "##############################################################"
 echo "Setting up VM '${VM_NAME}'"
 echo "##############################################################"
-    sleep 30
+sleep 30
+
 fi
+
 # LoadBalancer bootstrap
 echo "##############################################################"
 echo " Setting up fake loadbalancer. To stop it, press Ctrl+C twice"
 echo "##############################################################"
 while true; do
-    # The '|| true' keeps 'set -e' from exiting the script when kubectl drops
-    kubectl port-forward -n network-system "svc/${ENVOY_SVC}" "${FORWARDED_PORTS[@]}" --address "${LISTENER_IP}" || true
 
-    echo "Load Balancer dropped, reconnecting in 2 seconds..."
-    sleep 2
+# The '|| true' keeps 'set -e' from exiting the script when kubectl drops
+kubectl port-forward -n network-system "svc/${ENVOY_SVC}" "${FORWARDED_PORTS[@]}" --address "${LISTENER_IP}" || true
+
+echo "Load Balancer dropped, reconnecting in 2 seconds..."
+sleep 2
+
 done
