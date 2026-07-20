@@ -6,7 +6,7 @@ set -euo pipefail
 # Variables, set this manually
 VM_NAME="talslop"
 ENVOY_SVC="envoy-network-system-envoy-gateway-b7e4c8a5"
-LISTENER_IP="100.78.66.64"
+LISTENER_IP=$(tailscale ip -4)
 
 
 # VM bootstrap
