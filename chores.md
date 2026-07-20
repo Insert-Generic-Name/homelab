@@ -12,3 +12,4 @@ Todo:
 - Reconfigure httpRoute for flux operator later on
 - Switch from Tailscale operator to BGP load balancing later on
 - Fine-tune Cilium ( values.yaml)
+- Disable tailscale operator later on ( envoy.yaml)
