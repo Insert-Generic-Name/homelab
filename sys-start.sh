@@ -6,6 +6,7 @@ set -euo pipefail
 # Variables, set this manually
 VM_NAME="talslop"
 ENVOY_SVC="envoy-network-system-envoy-gateway-b7e4c8a5"
+CLIENT_IP="100.98.17.13"
 
 
 # VM bootstrap
@@ -26,7 +27,7 @@ echo " Setting up fake loadbalancer. To stop it, press Ctrl+C twice"
 echo "##############################################################"
 while true; do
     # The '|| true' keeps 'set -e' from exiting the script when kubectl drops
-    kubectl port-forward -n network-system "svc/${ENVOY_SVC}" 12000:80 --address 0.0.0.0 || true
+    kubectl port-forward -n network-system "svc/${ENVOY_SVC}" 12000:80 --address "${CLIENT_IP}" || true
 
     echo "Load Balancer dropped, reconnecting in 2 seconds..."
     sleep 2
