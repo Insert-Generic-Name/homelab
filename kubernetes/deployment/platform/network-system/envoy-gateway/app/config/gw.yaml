@@ -1,43 +1,10 @@
-# apiVersion: gateway.networking.k8s.io/v1
-# kind: Gateway
-# metadata:
-#   name: envoy-gateway
-#   namespace: network-system
-# spec:
-#   gatewayClassName: envoy
-#   listeners:
-#     - name: http
-#       protocol: HTTP
-#       port: 80
-#       hostname: "*.home.arpa"
-#       allowedRoutes:
-#         namespaces:
-#           from: All
-#     - name: https
-#       protocol: HTTPS
-#       port: 443
-#       hostname: "*.home.arpa"
-#       tls:
-#         certificateRefs:
-#           - kind: Secret
-#             name: secret-tls
-#       allowedRoutes:
-#         namespaces:
-#           from: All
-
-# Remove me later #
-# https://tailscale.com/docs/solutions/kubernetes-operator-byod-gateway-api
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: envoy-gateway
   namespace: network-system
-  # labels:
-  #   external-dns: enabled
-  # annotations:
-  #   cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  gatewayClassName: tailscale
+  gatewayClassName: envoy
   listeners:
     - name: http
       protocol: HTTP
@@ -46,15 +13,14 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-    # - name: https
-    #   protocol: HTTPS
-    #   port: 443
-    #   hostname: "*.home.arpa"
-    #   allowedRoutes:
-    #     namespaces:
-    #       from: All
-    #   tls:
-    #     mode: Terminate
-    #     certificateRefs:
-    #       - kind: Secret
-    #         name: secret-tls
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: "*.home.arpa"
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: secret-tls
+      allowedRoutes:
+        namespaces:
+          from: All

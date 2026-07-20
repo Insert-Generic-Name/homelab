@@ -1,32 +1,15 @@
-# apiVersion: gateway.envoyproxy.io/v1alpha1
-# kind: EnvoyProxy
-# metadata:
-#   name: envoy-configuration
-# spec:
-#   logging:
-#     level:
-#       default: info
-#   provider:
-#     type: Kubernetes
-#     kubernetes:
-#       envoyDeployment:
-#         replicas: 1 #Change me later
-#         container:
-#           image: mirror.gcr.io/envoyproxy/envoy:v1.38.3
-
-# Remove me later #
-# https://tailscale.com/docs/solutions/kubernetes-operator-byod-gateway-api
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
 metadata:
-  name: tailscale-proxy
-  namespace: network-system
+  name: envoy-configuration
 spec:
+  logging:
+    level:
+      default: info
   provider:
     type: Kubernetes
     kubernetes:
-      envoyService:
-        type: LoadBalancer
-        loadBalancerClass: tailscale
-        annotations:
-          tailscale.com/hostname: gateway-envoy
+      envoyDeployment:
+        replicas: 1 #Change me later
+        container:
+          image: mirror.gcr.io/envoyproxy/envoy:v1.38.3
