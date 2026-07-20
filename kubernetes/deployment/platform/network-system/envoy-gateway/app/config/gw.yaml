@@ -2,7 +2,7 @@
 # kind: Gateway
 # metadata:
 #   name: envoy-gateway
-#   namespace: envoy-gateway-system
+#   namespace: network-system
 # spec:
 #   gatewayClassName: envoy
 #   listeners:
