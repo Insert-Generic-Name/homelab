@@ -14,9 +14,7 @@ FORWARDED_PORTS=(80 )
 
 # VM bootstrap
 if virsh -c qemu:///system domstate "${VM_NAME}" 2>/dev/null | grep -q "running"; then
-echo "##############################################################"
-echo "VM '${VM_NAME}' is already running."
-echo "##############################################################"
+echo "Skipping task"
 else
     virsh -c qemu:///system start "${VM_NAME}"
 echo "##############################################################"
