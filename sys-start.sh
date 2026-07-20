@@ -6,6 +6,7 @@ set -euo pipefail
 # Setup: Run this command ONCE, it allows the script to run sudo-less.
 #:~$ sudo setcap 'cap_net_bind_service=+ep' $(readlink -f $(which kubectl))
 
+# Variables, dont touch this
 ENVOY_SVC=$(kubectl get svc -n network-system -l gateway.envoyproxy.io/owning-gateway-name=envoy-gateway -o jsonpath='{.items[0].metadata.name}')
 LISTENER_IP=$(tailscale ip -4)
 
