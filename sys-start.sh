@@ -22,7 +22,7 @@ else
 fi
 # LoadBalancer bootstrap
 echo "##############################################################"
-echo " Setting up fake loadbalancer. To stop it, close the terminal"
+echo " Setting up fake loadbalancer. To stop it, press Ctrl+C twice"
 echo "##############################################################"
 while true; do
     # The '|| true' keeps 'set -e' from exiting the script when kubectl drops
