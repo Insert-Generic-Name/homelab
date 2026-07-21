@@ -4,3 +4,4 @@ talslop/**
 !talslop/patch.yaml
 !talslop/drain.node.sh
 !talslop/setup-talos.sh
+envoy-crds.yaml

@@ -22,7 +22,7 @@ talosctl apply-config --insecure --nodes $CONTROL_PLANE_IP --file controlplane.y
 echo "Configuring endpoints"
 
 talosctl --talosconfig=./talosconfig config endpoints $CONTROL_PLANE_IP
-sleep 220
+sleep 10 #test
 
 echo "Bootstrapping etcd"
 
