@@ -20,9 +20,13 @@ releases:
 
   # Rook/longhorn goes here
 
+  - name: cert-manager
+    namespace: cert-manager
+    needs: ["kube-system/cilium"]
+
   - name: flux-operator
     namespace: flux-system
-    needs: ["kube-system/cilium"]
+    needs: ["cert-manager/cert-manager"]
 
   - name: flux-instance
     namespace: flux-system

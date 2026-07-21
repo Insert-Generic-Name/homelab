@@ -1,6 +1,8 @@
 Done:
 - Make helmfile create namespaces
 
+Context:
+- Refer to values.yaml (mainly) for tasks like "enable x feature"
 Todo:
 - Deploy Flux alert controller once observability stack is done
 - Enable flux operator compatibility with prometheus
@@ -13,3 +15,4 @@ Todo:
 - Switch from Tailscale operator to BGP load balancing later on
 - Fine-tune Cilium ( values.yaml)
 - Disable tailscale operator later on ( envoy.yaml)
+- Add both prometheus and HA compatibility to cert-manager later on
