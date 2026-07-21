@@ -4,9 +4,9 @@ metadata:
   name: cert-manager
 spec:
   interval: 5m
-  # layerSelector:
-  #   mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
-  #   operation: copy
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
   url: oci://quay.io/jetstack/charts/cert-manager
   ref:
     tag: 1.21.0
