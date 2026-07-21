@@ -2,3 +2,5 @@ vmisc/**
 talslop/**
 !talslop/cleanup.sh
 !talslop/patch.yaml
+!talslop/drain.node.sh
+!talslop/setup-talos.sh
