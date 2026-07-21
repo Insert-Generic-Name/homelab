@@ -20,9 +20,12 @@ releases:
 
   # Rook/longhorn goes here
 
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+    needs: ["kube-system/cilium"]
   - name: cert-manager
     namespace: cert-manager
-    needs: ["kube-system/cilium"]
+    needs: ["envoy-gateway-system/envoy-gateway"]
 
   - name: flux-operator
     namespace: flux-system
