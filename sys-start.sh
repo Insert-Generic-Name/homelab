@@ -36,7 +36,7 @@ echo " Setting up fake loadbalancer. To stop it, press Ctrl+C twice"
 echo "##############################################################"
 while true; do
 
-# Set this variable here to avoid script failing due to depending on the VM to be heatlhy.
+# Set this variable here to avoid script failing due to depending on the VM to be healthy.
 ENVOY_SVC=$(kubectl get svc -n envoy-gateway-system -l gateway.envoyproxy.io/owning-gateway-name=envoy-gateway -o jsonpath='{.items[0].metadata.name}')
 
 # The '|| true' keeps 'set -e' from exiting the script when kubectl drops
