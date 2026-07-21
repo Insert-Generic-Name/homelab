@@ -22,7 +22,7 @@ spec:
         enabled: true
         parentRefs:
           - name: envoy-gateway
-            namespace: network-system
+            namespace: envoy-gateway-system
             sectionName: http
         hostnames:
           - flux.home.arpa
