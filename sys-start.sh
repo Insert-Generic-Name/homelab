@@ -22,9 +22,11 @@ else
 
 virsh -c qemu:///system start "${VM_NAME}"
 echo "##############################################################"
-echo "Setting up VM '${VM_NAME}'"
+echo "Starting VM '${VM_NAME}'"
 echo "##############################################################"
 sleep 30
+echo "Waiting for kubernetes API to be ready"
+sleep 60
 
 fi
 
