@@ -6,7 +6,7 @@ metadata:
 
 spec:
   interval: 5m
-  targetNamespace: network-system
+  targetNamespace: envoy-gateway-system
   sourceRef:
     kind: GitRepository
     name: flux-system
