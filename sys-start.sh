@@ -6,8 +6,7 @@ set -euo pipefail
 # Setup: Run this command ONCE, it allows the script to run sudo-less.
 #:~$ sudo setcap 'cap_net_bind_service=+ep' $(readlink -f $(which kubectl))
 
-# Variables, dont touch this
-ENVOY_SVC=$(kubectl get svc -n network-system -l gateway.envoyproxy.io/owning-gateway-name=envoy-gateway -o jsonpath='{.items[0].metadata.name}')
+
 LISTENER_IP=$(tailscale ip -4)
 
 # Variables, set this manually
@@ -34,6 +33,9 @@ echo "##############################################################"
 echo " Setting up fake loadbalancer. To stop it, press Ctrl+C twice"
 echo "##############################################################"
 while true; do
+
+# Set this variable here to avoid script failing due to depending on the VM to be heatlhy.
+ENVOY_SVC=$(kubectl get svc -n network-system -l gateway.envoyproxy.io/owning-gateway-name=envoy-gateway -o jsonpath='{.items[0].metadata.name}')
 
 # The '|| true' keeps 'set -e' from exiting the script when kubectl drops
 kubectl port-forward -n network-system "svc/${ENVOY_SVC}" "${FORWARDED_PORTS[@]}" --address "${LISTENER_IP}" || true
