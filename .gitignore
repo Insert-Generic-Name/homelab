@@ -5,3 +5,4 @@ talslop/**
 !talslop/drain.node.sh
 !talslop/setup-talos.sh
 envoy-crds.yaml
+dumb-image.yaml
