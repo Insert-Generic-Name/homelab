@@ -43,6 +43,7 @@ So when there is a new release of a service I get a notification with a link
 - Cilium (CNI/LB) + Hubble UI
 - Envoy gateway (GAPIC)
 - FluxCD
+- Cert-Manager
 - Rook-Ceph
 - Tailscale
 

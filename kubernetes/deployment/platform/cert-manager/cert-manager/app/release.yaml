@@ -8,9 +8,11 @@ spec:
     name: cert-manager
   interval: 5m
   values:
-    replicaCount: 1 #changemelater
+    replicaCount: 1 #changemelater to 2
     webhook:
-      replicaCount: 1 #changemelater
+      replicaCount: 1 #changemelater to 3
+    cainjector:
+      replicaCount: 1 #changemelater to 2
     prometheus:
       enabled: true
       servicemonitor:
