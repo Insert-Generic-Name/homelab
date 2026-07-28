@@ -25,7 +25,8 @@ Personal testing battlefield
 - Actual Budget
 - ntfy
 - https://docs.stakater.com/reloader/latest/ For reloading certs/secrets in k8s,
-though it seems like envoy-gw does this automatically.
+though it seems like envoy-gw does this automatically. ( Use it only for apps that arent served
+by envoy, like authelia that sits in front of it )
 - Feishin ( Navidrome frontend, desktop app it seems)
 - Slskd/Soularr etc ( For soulseek)
 - Home assistant
