@@ -8,6 +8,8 @@ spec:
     name: cert-manager
   interval: 5m
   values:
+    dns01RecursiveNameserversOnly: true
+    dns01RecursiveNameservers: "1.1.1.1:53,1.0.0.1:53"
     replicaCount: 1 #changemelater to 2
     webhook:
       replicaCount: 1 #changemelater to 3
@@ -15,6 +17,8 @@ spec:
       replicaCount: 1 #changemelater to 2
     prometheus:
       enabled: true
+      podmonitor:
+        enabled: true
       servicemonitor:
         enabled: false # chagemelater
     podDisruptionBudget:
