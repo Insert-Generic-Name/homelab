@@ -5,7 +5,7 @@ metadata:
 spec:
   acme:
     email: secret-goes-here@com
-    profile: tlsserver
+    profile: shortlived
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: cloudflare-cissuer-account-key
