@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./cert-manager
   - ./envoy-gateway-system
+  - ./external-secrets
   - ./flux-system
   - ./kube-system
 # - ./rook-ceph

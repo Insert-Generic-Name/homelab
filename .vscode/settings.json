@@ -48,6 +48,7 @@
         "productivity": "tasks",
         "security": "guard",
         "storage": "archive",
+        "external-secrets": "secure",
         "observability": "review",
         "rook-ceph": "aws",
         "default": "home",

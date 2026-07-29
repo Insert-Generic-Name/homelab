@@ -24,9 +24,13 @@ releases:
     namespace: cert-manager
     needs: ["kube-system/cilium"]
 
+  - name: external-secrets
+    namespace: external-secrets
+    needs: ["cert-manager/cert-manager"]
+
   - name: flux-operator
     namespace: flux-system
-    needs: ["cert-manager/cert-manager"]
+    needs: ["external-secrets/external-secrets"]
 
   - name: flux-instance
     namespace: flux-system
