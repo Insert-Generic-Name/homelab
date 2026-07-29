@@ -1,6 +1,7 @@
 # Add to gitignore all of the garbage files that should never be part of the final system,
-# this excludes chores.md since its the current planning resource, although it will also be
-# deleted on the final deployment.
+# this excludes:
+# - chores.md since its the current planning resource, although it will also be deleted on the final deployment.
+# - compose.yaml as this represents a crucial "off-the-books" part of infrastructure for k8s ( The ESO)
 
 vmisc/**
 taloslop/**
