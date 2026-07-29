@@ -14,7 +14,6 @@ Personal testing battlefield
 - gitleaks
 - Woodpecker CI/Github Actions ( not decided )
 - Talos + Talhelper
-- External Secrets Operator + OpenBao/Infiscal/Bitwarden ( Not decided) *ESO LIVES OUTSIDE CLUSTER*
 - Custom self-made Helm chart for templating ( avoid 4 manifests per service)
 
 ### Services ###
@@ -45,6 +44,7 @@ So when there is a new release of a service I get a notification with a link
 - Authentik/Authelia
 - Cilium (CNI/LB) + Hubble UI
 - Envoy gateway (GAPIC)
+- External Secrets Operator ( OpenBao)
 - FluxCD
 - Cert-Manager
 - Rook-Ceph
