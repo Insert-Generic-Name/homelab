@@ -33,6 +33,7 @@
         "namespace.yaml": "kubernetes",
         "helmfile.yaml": "helm",
         "source.yaml": "parcel",
+        "secrets.yaml": "key",
         "ks.yaml": "rocket",
         "kustomization.yaml": "kubernetes",
     },
