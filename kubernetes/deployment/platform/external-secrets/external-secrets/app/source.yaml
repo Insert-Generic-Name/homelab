@@ -4,7 +4,7 @@ metadata:
   name: external-secrets
 spec:
   interval: 5m
-  url: oci://ghcr.io/external-secrets/external-secrets
+  url: oci://ghcr.io/external-secrets/charts/external-secrets
   layerSelector:
     mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
     operation: copy
