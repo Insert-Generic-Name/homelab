@@ -17,8 +17,6 @@ spec:
       replicaCount: 1 #changemelater to 2
     prometheus:
       enabled: true
-      podmonitor:
-        enabled: true
       servicemonitor:
         enabled: false # chagemelater
     podDisruptionBudget:
