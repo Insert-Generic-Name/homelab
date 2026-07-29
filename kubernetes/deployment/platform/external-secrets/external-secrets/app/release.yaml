@@ -8,3 +8,10 @@ spec:
     name: external-secrets
   interval: 5m
   values:
+    leaderElect: true
+    serviceMonitor:
+      enabled: true
+    grafanaDashboard:
+      enabled: true
+    webhook:
+      replicaCount: 2
