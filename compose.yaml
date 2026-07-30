@@ -6,49 +6,31 @@ services:
     environment:
       - BAO_DEV_ROOT_TOKEN_ID=${TOKEN}
       - BAO_DEV_LISTEN_ADDRESS=0.0.0.0:8200
-    ports:
-      - "8200:8200"
     # volumes:
     #   - ./data:/data
-    # expose:
-    #   - 80
+    expose:
+      - 8200
     networks:
-      - vault
+      - bao
 
-  vault:
-    image: hashicorp/vault:latest
-    container_name: vault
+  caddy:
+    image: caddy:latest
+    container_name: caddy
     restart: ${RESTART_POLICY}
-    environment:
-      - VAULT_DEV_ROOT_TOKEN_ID=${TOKEN}
-      - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8201
     ports:
-      - "8201:8201"
-    # volumes:
-    #   - ./data:/data
-    # expose:
-    #   - 80
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_bao_data:/data
+      - caddy_bao_config:/config
     networks:
-      - vault
+      - bao
 
-  # caddy:
-  #   image: caddy:latest
-  #   container_name: caddy
-  #   restart: ${RESTART_POLICY}
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #     - "443:443/udp"
-  #   volumes:
-  #     - ./Caddyfile:/etc/caddy/Caddyfile
-  #     - caddy_obao_data:/data
-  #     - caddy_obao_config:/config
-  #   networks:
-  #     - obao
-
-# volumes:
-#   caddy_obao_data:
-#   caddy_obao_config:
+volumes:
+  caddy_bao_data:
+  caddy_bao_config:
 
 networks:
-  vault:
+  bao:
