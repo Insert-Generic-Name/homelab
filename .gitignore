@@ -5,8 +5,8 @@
 
 .env
 vmisc/**
+zvault/openbao/**
 taloslop/**
 envoy-crds.yaml
 test-image.yaml
 sys-bootstrap.sh
-bao-config
