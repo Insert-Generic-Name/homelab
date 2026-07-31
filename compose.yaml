@@ -7,7 +7,7 @@ services:
       - BAO_DEV_ROOT_TOKEN_ID=${TOKEN}
       - BAO_DEV_LISTEN_ADDRESS=0.0.0.0:8200
     # volumes:
-    #   - ./data:/data
+    #   - ./bao-config:/openbao/config
     expose:
       - 8200
     networks:
