@@ -3,11 +3,13 @@ services:
     image: openbao/openbao:latest
     container_name: openbao
     restart: ${RESTART_POLICY}
-    environment:
-      - BAO_DEV_ROOT_TOKEN_ID=${TOKEN}
-      - BAO_DEV_LISTEN_ADDRESS=0.0.0.0:8200
-    # volumes:
-    #   - ./bao-config:/openbao/config
+    # environment:
+    #   - BAO_DEV_ROOT_TOKEN_ID=${TOKEN}
+    #   - BAO_DEV_LISTEN_ADDRESS=0.0.0.0:8200
+    volumes:
+      - ./openbao/config:/openbao/config
+      - ./openbao/logs:/openbao/logs
+      - ./openbao/file:/openbao/file
     expose:
       - 8200
     networks:
