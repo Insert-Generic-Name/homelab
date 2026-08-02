@@ -3,6 +3,9 @@ Done:
 
 Context:
 - Refer to values.yaml (mainly) for tasks like "enable x feature"
+Important Todo:
+- How to manage ExternalSecrets with the split app/config dir ( where does it go) Refer to envoy
+
 Todo:
 - Deploy Flux alert controller once observability stack is done
 - Enable flux operator compatibility with prometheus
