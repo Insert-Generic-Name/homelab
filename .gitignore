@@ -4,6 +4,7 @@
 # - openbao related, as it represents a crucial "off-the-books" part of infrastructure for k8s ( The ESO)
 
 .env
+bao-data/**
 vmisc/**
 zvault/openbao/**
 taloslop/**

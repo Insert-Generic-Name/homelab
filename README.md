@@ -44,8 +44,8 @@ So when there is a new release of a service I get a notification with a link
 - Authentik/Authelia
 - Cilium (CNI/LB) + Hubble UI
 - Envoy gateway (GAPIC)
-- External Secrets Operator ( OpenBao)
-- FluxCD
+- External Secrets Operator (OpenBao provider)
+- FluxCD + Operator
 - Cert-Manager
 - Rook-Ceph
 - Tailscale
