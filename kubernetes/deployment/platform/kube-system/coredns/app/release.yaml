@@ -1,0 +1,14 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: coredns
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: coredns
+  interval: 5m
+  values:
+    serviceAccount:
+      create: true
+    replicaCount: 2
+    # add prometheus compatibility

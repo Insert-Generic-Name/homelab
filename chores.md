@@ -19,3 +19,4 @@ Todo:
 - Fine-tune Cilium ( values.yaml)
 - Disable tailscale operator later on ( envoy.yaml)
 - Add both prometheus and HA compatibility to cert-manager later on
+- Add prometheus compatibility with coredns
