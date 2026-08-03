@@ -70,7 +70,4 @@
     "[json5]": {
         "editor.defaultFormatter": "BlueGlassBlock.better-json5"
     },
-    "[hcl]": {
-        "editor.defaultFormatter": "hashicorp.hcl"
-    }
 }
