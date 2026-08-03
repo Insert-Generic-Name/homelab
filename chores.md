@@ -3,10 +3,13 @@ Done:
 
 Context:
 - Refer to values.yaml (mainly) for tasks like "enable x feature"
+
 Important Todo:
+- Recheck all values.yaml refering to their charts in ArtifactHub and tune as needed ( especialyl for prometheus)
 - How to manage ExternalSecrets with the split app/config dir ( where does it go) Refer to envoy
 - Learn about Todo, and fix all of the values.yaml regarding prometheus since you can deploy it in different ways
 or so it seems ( tl:dr check if the values.yaml for prometheus are actually for k8s prometheus or raw prometheus, in which case fix them for k8s prometheus)
+
 Todo:
 - Deploy Flux alert controller once observability stack is done
 - Enable flux operator compatibility with prometheus

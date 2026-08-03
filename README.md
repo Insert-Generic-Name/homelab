@@ -3,19 +3,6 @@ Personal testing battlefield
 
 ## Planning ##
 
-
-### Tools & Techs ###
----------------------------
-
-- .gitattributes for YAML/JSON lang detection
-- .vscode ( to track extensions/settings )
-- Renovate
-- yamllint
-- gitleaks
-- Woodpecker CI/Github Actions ( not decided )
-- Talos + Talhelper
-- Custom self-made Helm chart for templating ( avoid 4 manifests per service)
-
 ### Services ###
 ---------------------------
 
@@ -40,7 +27,8 @@ So when there is a new release of a service I get a notification with a link
 
 
 ##### Tools #####
----------------------------
+--------------------------
+- Talos + Talhelper
 - Authentik/Authelia
 - Cilium (CNI/LB) + Hubble UI
 - Envoy gateway (GAPIC)
@@ -49,6 +37,12 @@ So when there is a new release of a service I get a notification with a link
 - Cert-Manager
 - Rook-Ceph
 - Tailscale
+- yamllint + gitleaks + .vscode + .gitattributes.
+- Woodpecker CI/Github Actions ( not decided )
+- Renovate
+- Talos + Talhelper
+- Custom self-made Helm chart for templating ( avoid 4 manifests per service)
+
 
 ##### Main  #####
 ---------------------------
