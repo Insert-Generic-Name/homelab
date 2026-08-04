@@ -4,9 +4,8 @@
 # - openbao related, as it represents a crucial "off-the-books" part of infrastructure for k8s ( The ESO)
 
 .env
-bao-data/**
+bao/**
 vmisc/**
-zvault/openbao/**
 taloslop/**
 envoy-crds.yaml
 test-image.yaml

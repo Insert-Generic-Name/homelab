@@ -7,7 +7,7 @@ storage "raft" {
   node_id  = "main"
 }
 
-audit "file"  {
+audit "file" "main" {
   options = {
     file_path  = "./bao/audit"
     log_raw    = "false"
