@@ -24,3 +24,4 @@ Todo:
 - Disable tailscale operator later on ( envoy.yaml)
 - Add both prometheus and HA compatibility to cert-manager later on
 - Add prometheus compatibility with coredns
+- Migrate from Cilium ARP to BGP announcements later on when I get rid off my shit ISP router

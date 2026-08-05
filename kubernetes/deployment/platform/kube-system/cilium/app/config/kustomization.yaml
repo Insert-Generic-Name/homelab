@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - ./lb.yaml
+  - ./l2policy.yaml

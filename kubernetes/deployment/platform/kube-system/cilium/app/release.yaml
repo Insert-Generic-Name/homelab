@@ -8,6 +8,9 @@ spec:
     name: cilium
   interval: 5m
   values:
+    # Disable me Later
+    l2announcements:
+      enabled: true
     ipam:
       mode: kubernetes
     kubeProxyReplacement: true

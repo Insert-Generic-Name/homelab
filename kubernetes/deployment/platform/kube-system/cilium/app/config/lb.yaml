@@ -1,9 +1,11 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumLoadBalancerIPPool
 metadata:
-  name: "main"
+  name: "cilium-lb-ip-pool"
 spec:
   allowFirstLastIPs: "No"
   blocks:
     #    - cidr: "192.168.1.0/24"
-    - cidr: "10.126.39.0/24"
+    - cidr: "192.168.1.0/24"
+    - start: "192.168.1.0"
+      stop: "192.168.1.10"

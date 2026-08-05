@@ -37,7 +37,8 @@
         "secrets.yaml": "key",
         "kustomization.yaml": "kubernetes",
         // Custom
-        "ks.yaml": "../../icons/flux-cd",
+        //"ks.yaml": "../../icons/flux-cd",
+        "ks.yaml": "rocket",
     },
     "material-icon-theme.folders.associations": {
         "bootstrap": "seeders",
