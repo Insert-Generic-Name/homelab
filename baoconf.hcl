@@ -28,8 +28,8 @@ audit "file" "Live" {
   }
 }
 
-audit "file" "Persistant" {
-  description = "Persistant logging via file path"
+audit "file" "Persistent" {
+  description = "Persistent logging via file path"
   options = {
     file_path = "/bao/logs"
     log_raw   = "false"
