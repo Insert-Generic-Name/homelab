@@ -20,16 +20,16 @@ storage "raft" {
 }
 
 # Auditors
-audit "file" "Front" {
-  description = "Live"
+audit "file" "Live" {
+  description = "Live logging via stdout"
   options {
     file_path = "stdout"
     log_raw   = "false"
   }
 }
 
-audit "file" "Back" {
-  description = "Persistant"
+audit "file" "Persistant" {
+  description = "Persistant logging via file path"
   options = {
     file_path = "/bao/logs"
     log_raw   = "false"
