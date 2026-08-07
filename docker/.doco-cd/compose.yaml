@@ -6,7 +6,7 @@ services:
     environment:
       TZ: Europe/Madrid
       LOG_LEVEL: INFO
-      DEPLOY_CONFIG_BASE_DIR: ./docker/
+      DEPLOY_CONFIG_BASE_DIR: ./docker/.doco_cd
       POLL_CONFIG: |
         - url: https://github.com/Insert-Generic-Name/homelab.git
           reference: main
