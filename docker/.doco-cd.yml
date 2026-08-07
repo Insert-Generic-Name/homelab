@@ -1,4 +1,4 @@
-name: Openbao
+name: openbao
 working_dir: ./docker/
 compose_files:
   - ./traefik/compose.yaml
