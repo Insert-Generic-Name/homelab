@@ -8,6 +8,9 @@ Maybe:
 - Migrate gitless gitops to ensure that the cluster is up regardless of the git provider ( github,gitlab,etc)
 in the case of a github blackout I dont have to patch manually URLs.
 
+Misc:
+- https://craftycontrol.com/
+- https://modrinth.com/mod/waylandcraft
 Important Todo:
 - Recheck all values.yaml refering to their charts in ArtifactHub and tune as needed ( especialyl for prometheus)
 - How to manage ExternalSecrets with the split app/config dir ( where does it go) Refer to envoy

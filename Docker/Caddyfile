@@ -1,3 +1,0 @@
-openbao.home.arpa {
-    reverse_proxy openbao:8200
-}

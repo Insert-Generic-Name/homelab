@@ -1,29 +1,72 @@
 services:
+  traefik:
+    image: traefik:v3.7
+    container_name: traefik
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    command:
+      # EntryPoints
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls=true"
+      # Providers
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.network=proxy"
+      # API & Dashboard
+      - "--api=false"
+      # Certificate management
+      - "--certificatesresolvers.cf.acme.email=${EMAIL}"
+      - "--certificatesresolvers.cf.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.cf.acme.storage=/certs/acme.json"
+      - "--certificatesresolvers.cf.acme.profile=shortlived"
+      - "--certificatesresolvers.cf.acme.dnsChallenge=true"
+      - "--certificatesresolvers.cf.acme.dnschallenge.provider=cloudflare"
+      - "--entrypoints.websecure.http.tls.certresolver=cf"
+      # Logs
+      - "--log.level=DEBUG"
+      - "--accesslog=true"
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - CLOUDFLARE_EMAIL=${EMAIL}
+      - CF_DNS_API_TOKEN=${CF_TOKEN}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/certs
+    networks:
+      - proxy
   openbao:
     image: openbao/openbao:2.6.1
     container_name: openbao
     restart: unless-stopped
-    command: ["server"]
+    command:
+      - "server"
     expose:
       - "8200"
+    #environment:
     volumes:
       - ./bao/config:/openbao/config
       - ./bao/data:/bao/raft
       - ./bao/logs:/var/log
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bao.rule=Host(`openbao.external.${DOMAIN}`)"
+      - "traefik.http.routers.bao.entrypoints=websecure"
+      - "traefik.http.routers.bao.tls=true"
+      - "traefik.http.routers.bao.tls.certresolver=cf"
+      - "traefik.http.services.bao.loadbalancer.server.port=8200"
+    networks:
+      - proxy
 
-  caddy:
-    image: caddy:latest
-    container_name: caddy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
+networks:
+  proxy:
+    name: proxy
 
 volumes:
-  caddy_data:
-  caddy_config:
+  certs:
