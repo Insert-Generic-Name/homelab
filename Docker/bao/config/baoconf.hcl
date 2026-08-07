@@ -1,21 +1,18 @@
 # General Settings
 ui            = true
 cluster_addr  = "http://127.0.0.1:8201"
-api_addr      = "http://127.0.0.1:8200"
+api_addr      = "http://0.0.0.0:8200"
 cluster_name  = "openbao-external"
 
 # Listeners
 listener "tcp" {
-  address          = "127.0.0.1:8200"
+  address          = "0.0.0.0:8200"
   tls_disable      = "true"
-  # get real certs!
-  # tls_cert_file  = "/bao/certs/cert.pem"
-  # tls_key_file   = "/bao/certs/key.pem"
 }
 
 # Storage
 storage "raft" {
-  path    = "./bao/data"
+  path    = "/bao/raft"
   node_id = "main"
 }
 
@@ -31,7 +28,7 @@ audit "file" "Live" {
 audit "file" "Persistent" {
   description = "Persistent logging via file path"
   options = {
-    file_path = "./bao/bao.logs"
+    file_path = "/var/log/openbao.log"
     log_raw   = "false"
   }
 }

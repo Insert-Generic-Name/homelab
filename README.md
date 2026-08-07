@@ -24,7 +24,8 @@ So when there is a new release of a service I get a notification with a link
 
 #### Planned ####
 ---------------------------
-
+Misc:
+Use https://dashboardicons.com/ for homepage
 
 ##### Tools #####
 --------------------------
