@@ -1,0 +1,4 @@
+name: Openbao
+working_dir: traefik/
+compose_files:
+  - compose.yml

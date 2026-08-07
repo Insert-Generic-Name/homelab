@@ -41,28 +41,6 @@ services:
       - certs:/certs
     networks:
       - proxy
-  openbao:
-    image: openbao/openbao:2.6.1
-    container_name: openbao
-    restart: unless-stopped
-    command:
-      - "server"
-    expose:
-      - "8200"
-    #environment:
-    volumes:
-      - ./bao/config:/openbao/config
-      - ./bao/data:/bao/raft
-      - ./bao/logs:/var/log
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.bao.rule=Host(`openbao.external.${DOMAIN}`)"
-      - "traefik.http.routers.bao.entrypoints=websecure"
-      - "traefik.http.routers.bao.tls=true"
-      - "traefik.http.routers.bao.tls.certresolver=cf"
-      - "traefik.http.services.bao.loadbalancer.server.port=8200"
-    networks:
-      - proxy
 
 networks:
   proxy:
