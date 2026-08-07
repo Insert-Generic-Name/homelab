@@ -1,17 +1,19 @@
 services:
   openbao:
-    image: openbao/openbao:latest
+    image: openbao/openbao:2.6.1
     container_name: openbao
+    restart: unless-stopped
+    command: ["server"]
     expose:
       - "8200"
     volumes:
       - ./bao/config:/openbao/config
       - ./bao/data:/bao/raft
-      - ./bao/logs:/var/log/
-    restart: unless-stopped
-    command: ["server"]
+      - ./bao/logs:/var/log
+
   caddy:
     image: caddy:latest
+    container_name: caddy
     restart: unless-stopped
     ports:
       - "80:80"
