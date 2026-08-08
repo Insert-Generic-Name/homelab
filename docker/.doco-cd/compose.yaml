@@ -3,6 +3,9 @@ services:
     container_name: doco-cd
     image: ghcr.io/kimdre/doco-cd:latest
     restart: unless-stopped
+    expose:
+      - "80"
+      - "9120"
     environment:
       TZ: Europe/Madrid
       LOG_LEVEL: INFO

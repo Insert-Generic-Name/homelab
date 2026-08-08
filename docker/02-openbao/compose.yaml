@@ -8,9 +8,9 @@ services:
       - "8200"
     #environment:
     volumes:
-      - ./baoconf.hcl:/etc/openbao/baoconf.hcl:ro
-      - ../data/bao/data:/bao/raft
-      - ../data/bao/logs:/var/log
+      - ./config:/etc/openbao/:ro
+      - /data/bao/data:/bao/raft
+      - /data/bao/logs:/var/log
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bao.rule=Host(`openbao.external.${DOMAIN}`)"
