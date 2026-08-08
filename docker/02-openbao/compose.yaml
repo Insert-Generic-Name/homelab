@@ -3,13 +3,12 @@ services:
     image: openbao/openbao:2.6.1
     container_name: openbao
     restart: unless-stopped
-    command:
-      - "server"
+    command: ["server", "-config=/etc/openbao/baoconf.hcl"]
     expose:
       - "8200"
     #environment:
     volumes:
-      - ./config:/openbao/config
+      - ./baoconf.hcl:/etc/openbao/baoconf.hcl:ro
       - ../data/bao/data:/bao/raft
       - ../data/bao/logs:/var/log
     labels:
