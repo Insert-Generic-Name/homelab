@@ -7,6 +7,7 @@ Context:
 Maybe:
 - Migrate gitless gitops to ensure that the cluster is up regardless of the git provider ( github,gitlab,etc)
 in the case of a github blackout I dont have to patch manually URLs.
+This applies to all CD runners incluiding dococd and maybe Argo
 
 Misc:
 - https://craftycontrol.com/
