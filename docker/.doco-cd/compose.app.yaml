@@ -11,7 +11,7 @@ services:
       POLL_CONFIG: |
         - url: https://github.com/Insert-Generic-Name/homelab.git
           reference: refs/heads/main
-          interval: "5s"
+          interval: "10s"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - data:/data
