@@ -19,10 +19,13 @@ releases:
     namespace: kube-system
 
   # Rook/longhorn goes here
+  - name: coredns
+    namespace: kube-system
+    needs: ["kube-system/cilium"]
 
   - name: cert-manager
     namespace: cert-manager
-    needs: ["kube-system/cilium"]
+    needs: ["kube-system/coredns"]
 
   - name: external-secrets
     namespace: external-secrets
