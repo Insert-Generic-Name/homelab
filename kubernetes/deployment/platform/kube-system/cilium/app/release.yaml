@@ -44,8 +44,8 @@ spec:
       replicas: 1 # Change me later to 2
     hubble:
       ui:
-        enabled: false
+        enabled: true
       relay:
-        enabled: false
+        enabled: true
     envoy:
       enabled: false
