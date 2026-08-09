@@ -1,6 +1,7 @@
 # Kubernetes homelabbing = Suffering #
 Personal testing battlefield
 
+- Dont forget to run helmfile init to install needed plugins!
 ## Planning ##
 
 ### Services ###
