@@ -1,2 +1,7 @@
 working_dir: ./docker/
-auto_discovery: true
+auto_discovery:
+  enabled: true
+  depth: 1
+  delete: true
+  remove_volumes: true
+reconciliation: true

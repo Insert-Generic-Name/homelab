@@ -9,7 +9,8 @@ services:
     #environment:
     volumes:
       - ./config:/etc/openbao/:ro
-      - ../data/bao/data:/bao/raft
+      # - ../data/bao/data:/bao/raft
+      - test:/bao/raft
       - ../data/bao/logs:/var/log
     labels:
       - "traefik.enable=true"
@@ -23,3 +24,6 @@ services:
 
 networks:
   proxy:
+
+volumes:
+  test:
