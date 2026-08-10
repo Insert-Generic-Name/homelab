@@ -12,7 +12,7 @@ listener "tcp" {
 
 # Storage
 storage "raft" {
-  path    = "/bao/raft"
+  path    = "/openbao/raft"
   node_id = "main"
 }
 
@@ -28,7 +28,7 @@ audit "file" "Live" {
 audit "file" "Persistent" {
   description = "Persistent logging via file path"
   options = {
-    file_path = "/var/log/openbao.log"
+    file_path = "/var/openbao/logs"
     log_raw   = "false"
   }
 }

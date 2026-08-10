@@ -1,0 +1,14 @@
+- name: Setup environment for Openbao
+  hosts: localhost
+  become: true
+  tasks:
+    # https://github.com/openbao/openbao/blob/e0f72eda3efd839222256c71e2ae965df98b472b/Dockerfile#L25-L26 inherits UID 100.
+    - name: Create folders for Openbao volumes
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: "100"
+        group: "1000"
+      loop:
+        - /openbao/data
+        - /openbao/logs
