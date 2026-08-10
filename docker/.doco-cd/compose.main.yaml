@@ -6,7 +6,6 @@ services:
     environment:
       TZ: Europe/Madrid
       LOG_LEVEL: info
-      HTTP_PORT: 80
       DEPLOY_CONFIG_BASE_DIR: ./docker/
       MAX_CONCURRENT_DEPLOYMENTS: 10
       POLL_CONFIG: |
