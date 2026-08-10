@@ -3,14 +3,14 @@ services:
     image: openbao/openbao:2.6.1
     container_name: openbao
     restart: unless-stopped
+    user: "0:0"
     command: ["server", "-config=/etc/openbao/baoconf.hcl"]
     expose:
       - "8200"
     #environment:
     volumes:
       - ./config:/etc/openbao/:ro
-      # - ../data/bao/data:/bao/raft
-      - test:/bao/raft
+      - ../data/bao/data:/bao/raft
       - ../data/bao/logs:/var/log
     labels:
       - "traefik.enable=true"
@@ -24,6 +24,3 @@ services:
 
 networks:
   proxy:
-
-volumes:
-  test:
