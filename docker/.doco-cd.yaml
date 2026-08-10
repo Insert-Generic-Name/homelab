@@ -1,12 +1,2 @@
-name: deploy
 working_dir: ./docker/
 auto_discovery: true
----
-name: doco-cd-updater
-reference: main
-working_dir: ./docker/doco-cd/
-compose_files:
-  - compose.updater.yaml
-force_recreate: true
-
----
