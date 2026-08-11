@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: /docker/
+    encrypted_regex: /
+    age: age1wz69etecu42rvh3nnypm6yzp3pejh7lfsw6tkpjfqfxulvtat9estnztdf

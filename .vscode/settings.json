@@ -29,6 +29,7 @@
     "material-icon-theme.files.associations": {
         // Builtin
         "README.md": "document",
+        ".sops.yaml": "assembly",
         "*.gotmpl": "go",
         "release.yaml": "helm",
         "namespace.yaml": "kubernetes",

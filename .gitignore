@@ -6,6 +6,7 @@
 # Do NOT REMOVE
 .env
 hosts.yaml
+sops_age_key.txt
 # Garbage
 vmisc/**
 taloslop/**
