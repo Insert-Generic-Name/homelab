@@ -2,12 +2,11 @@
 # only covers the required configuration for the docker workload.
 
 - name: Setup environment
-  hosts: localhost
+  hosts: main
+  become: true
   tasks:
     # Doco-cd cannot decrypt its own secrets if it has not started yet.
     - name: Copy .env file for Doco-cd
-      delegate_to: server
-      become: true
       ansible.builtin.copy:
         src: ../vars/.env
         dest: ../../../docker/.doco-cd/.env
