@@ -1,3 +1,6 @@
+# Note: This playbook assumes that the host is already provisioned with the required tools and
+# only covers the required configuration for the docker workload.
+
 - name: Setup environment
   hosts: target
   become: true
