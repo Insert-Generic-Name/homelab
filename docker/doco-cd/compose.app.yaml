@@ -13,6 +13,8 @@ services:
         - url: https://github.com/Insert-Generic-Name/homelab.git
           reference: main
           interval: 10
+      # APPRISE_API_URL: "http://apprise:8000/notify"
+      # APPRISE_NOTIFY_URLS: "doc"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - data:/data
