@@ -2,20 +2,19 @@
 # only covers the required configuration for the docker workload.
 
 - name: Setup environment
-  hosts: target
-  become: true
+  hosts: localhost
   tasks:
-    - name: Copy .env files
+    # Doco-cd cannot decrypt its own secrets if it has not started yet.
+    - name: Copy .env file for Doco-cd
+      delegate_to: server
+      become: true
       ansible.builtin.copy:
-        src: "{{ item.src }}"
-        dest: "{{ item.dest }}"
+        src: ../vars/.env
+        dest: ../../../docker/.doco-cd/.env
         owner: "1000"
         group: "1000"
         mode: "0600"
-      loop:
-        - { src: "./.doco-cd/.env", dest: "/env/.doco-cd/.env" }
-
-        # https://github.com/openbao/openbao/blob/e0f72eda3efd839222256c71e2ae965df98b472b/Dockerfile#L25-L26 inherits UID 100.
+    # https://github.com/openbao/openbao/blob/e0f72eda3efd839222256c71e2ae965df98b472b/Dockerfile#L25-L26 inherits UID 100.
     - name: Create folders for Openbao volumes
       ansible.builtin.file:
         path: "{{ item }}"
