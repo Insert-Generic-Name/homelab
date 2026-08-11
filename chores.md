@@ -11,7 +11,7 @@ Maybe:
 in the case of a github blackout I dont have to patch manually URLs.
 This applies to all CD runners incluiding dococd and maybe Argo
 - Add coredns deployment manually
-
+- Migrate from envoy-gw to Istio
 Misc:
 - https://craftycontrol.com/
 - https://modrinth.com/mod/waylandcraft

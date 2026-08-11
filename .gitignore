@@ -3,7 +3,10 @@
 # - chores.md since its the current planning resource, although it will also be deleted on the final deployment.
 # - openbao related, as it represents a crucial "off-the-books" part of infrastructure for k8s ( The ESO)
 
+# Do NOT REMOVE
 .env
+hosts.yaml
+# Garbage
 vmisc/**
 taloslop/**
 envoy-crds.yaml

@@ -1,0 +1,11 @@
+# Note: This is a template, values need to be replaced manually and the file must be renamed to
+# "hosts.yaml" manually.
+
+# This is done primarily to avoid adding more tools to the bootstrapping chain and keeping the
+# environment as simple as it can possibly get by breaking GitOps.
+
+hosts:
+  main:
+    ansible_host: 192.168.1.0
+    ansible_user: user
+    ansible_password: password

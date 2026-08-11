@@ -1,0 +1,24 @@
+- name: Setup environment
+  hosts: target
+  become: true
+  tasks:
+    - name: Copy .env files
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "1000"
+        group: "1000"
+        mode: "0600"
+      loop:
+        - { src: "./.doco-cd/.env", dest: "/env/.doco-cd/.env" }
+
+        # https://github.com/openbao/openbao/blob/e0f72eda3efd839222256c71e2ae965df98b472b/Dockerfile#L25-L26 inherits UID 100.
+    - name: Create folders for Openbao volumes
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: "100"
+        group: "1000"
+      loop:
+        - /openbao/data
+        - /openbao/logs
