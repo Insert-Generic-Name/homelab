@@ -1,0 +1,14 @@
+# I am failing 2 deploy because I am inside ./doco-cd dir
+services:
+  apprise:
+    image: caronc/apprise:latest
+    container_name: apprise
+    ports:
+      - "8000:8000"
+    environment:
+      APPRISE_STATEFUL_MODE: simple
+      APPRISE_WORKER_COUNT: 1
+      APPRISE_ADMIN: "y"
+    volumes:
+      - ../data/config:/config
+      - ../data/attach:/attach
