@@ -13,7 +13,7 @@ services:
       - /openbao/logs:/openbao/logs
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bao.rule=Host(`openbao.external.${DOMAIN}`)"
+      - "traefik.http.routers.bao.rule=Host(`openbao.external.${DOMAIN:?error}`)"
       - "traefik.http.routers.bao.entrypoints=websecure"
       - "traefik.http.routers.bao.tls=true"
       - "traefik.http.routers.bao.tls.certresolver=cf"

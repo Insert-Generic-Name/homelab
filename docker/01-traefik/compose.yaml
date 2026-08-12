@@ -20,7 +20,7 @@ services:
       # API & Dashboard
       - "--api=false"
       # Certificate management
-      - "--certificatesresolvers.cf.acme.email=${EMAIL}"
+      - "--certificatesresolvers.cf.acme.email=${EMAIL:?}"
       - "--certificatesresolvers.cf.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory" #https://acme-v02.api.letsencrypt.org/directory
       - "--certificatesresolvers.cf.acme.storage=/certs/acme.json"
       - "--certificatesresolvers.cf.acme.profile=shortlived"
@@ -34,8 +34,8 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      - CLOUDFLARE_EMAIL=${EMAIL}
-      - CF_DNS_API_TOKEN=${CF_TOKEN}
+      - CLOUDFLARE_EMAIL=${EMAIL:?}
+      - CF_DNS_API_TOKEN=${CF_TOKEN:?}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - certs:/certs

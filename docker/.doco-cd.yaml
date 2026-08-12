@@ -5,3 +5,7 @@ auto_discovery:
   delete: true
   remove_volumes: true
 reconciliation: true
+external_secrets:
+  DOMAIN: c4df6587-ffbc-47a1-a04c-b4a400dcbfb3
+  EMAIL: ec20c2a5-2c34-4591-a67c-b4a400dd2973
+  CF_TOKEN: ffdbd7f7-8110-48a9-b60a-b4a400dd8282
