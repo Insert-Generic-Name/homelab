@@ -1,0 +1,29 @@
+services:
+  app:
+    container_name: doco-cd-updater
+    image: ghcr.io/kimdre/doco-cd:latest
+    restart: unless-stopped
+    depends_on:
+      apprise:
+        condition: service_healthy
+    environment:
+      TZ: ${TZ}
+      HTTP_PORT: 8080
+      POLL_CONFIG: |
+        - url: https://github.com/example/infrastructure.git
+          reference: main
+          interval: 300
+          target: updater
+      SCHEDULER_ENABLED: false
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - updater-data:/data
+    networks:
+      - doco-cd
+
+networks:
+  doco-cd:
+    name: doco-cd
+
+volumes:
+  updater-data:

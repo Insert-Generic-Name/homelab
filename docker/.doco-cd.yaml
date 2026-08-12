@@ -1,4 +1,12 @@
-working_dir: ./docker/
+name: doco-cd-updater
+reference: main
+working_dir: ./docker/doco-cd
+compose_files:
+  - compose.updater.yaml
+force_recreate: true
+---
+name: main
+working_dir: ./docker/apps/
 auto_discovery:
   enabled: true
   depth: 1
