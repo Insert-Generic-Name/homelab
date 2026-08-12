@@ -8,10 +8,10 @@ services:
       apprise:
         condition: service_healthy
     environment:
-      #   SECRET_PROVIDER: bitwarden_sm
-      #   SECRET_PROVIDER_API_URL: https://vault.bitwarden.com/identity
-      #   SECRET_PROVIDER_IDENTITY_URL: https://vault.bitwarden.com/identity
-      #   SECRET_PROVIDER_ACCESS_TOKEN: ${SECRET_PROVIDER_ACCESS_TOKEN}
+      SECRET_PROVIDER: bitwarden_sm
+      SECRET_PROVIDER_API_URL: https://vault.bitwarden.com/identity
+      SECRET_PROVIDER_IDENTITY_URL: https://vault.bitwarden.com/identity
+      SECRET_PROVIDER_ACCESS_TOKEN: ${SECRET_PROVIDER_ACCESS_TOKEN}
       TZ: ${TZ}
       LOG_LEVEL: INFO
       HTTP_PORT: 80
