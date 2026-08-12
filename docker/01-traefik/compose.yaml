@@ -20,7 +20,7 @@ services:
       # API & Dashboard
       - "--api=false"
       # Certificate management
-      - "--certificatesresolvers.cf.acme.email=${EMAIL:?}"
+      # - "--certificatesresolvers.cf.acme.email=${EMAIL:?}"
       - "--certificatesresolvers.cf.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.cf.acme.storage=/certs/acme.json"
       - "--certificatesresolvers.cf.acme.profile=shortlived"
