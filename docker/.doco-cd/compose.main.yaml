@@ -37,6 +37,7 @@ services:
       retries: 3
   # Notifications
   apprise:
+    container_name: doco-cd-notifier
     image: caronc/apprise:latest
     restart: unless-stopped
     expose:
