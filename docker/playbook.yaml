@@ -5,14 +5,6 @@
   hosts: main
   become: true
   tasks:
-    # Doco-cd cannot decrypt its own secrets if it has not started yet.
-    - name: Copy .env file for Doco-cd
-      ansible.builtin.copy:
-        src: ../vars/.env
-        dest: ../../../docker/.doco-cd/.env
-        owner: "1000"
-        group: "1000"
-        mode: "0600"
     # https://github.com/openbao/openbao/blob/e0f72eda3efd839222256c71e2ae965df98b472b/Dockerfile#L25-L26 inherits UID 100.
     - name: Create folders for Openbao volumes
       ansible.builtin.file:
