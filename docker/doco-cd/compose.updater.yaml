@@ -3,14 +3,15 @@ services:
     container_name: doco-cd-updater
     image: ghcr.io/kimdre/doco-cd:latest
     restart: unless-stopped
-    depends_on:
-      apprise:
-        condition: service_healthy
     environment:
+      APPRISE_API_URL: "http://apprise:8000/notify"
+      APPRISE_NOTIFY_URLS: ${APPRISE_NOTIFY_URLS}
+      APPRISE_NOTIFY_LEVEL: info
+
       TZ: ${TZ}
       HTTP_PORT: 8080
       POLL_CONFIG: |
-        - url: https://github.com/example/infrastructure.git
+        - url: https://github.com/Insert-Generic-Name/homelab.git
           reference: main
           interval: 300
           target: updater

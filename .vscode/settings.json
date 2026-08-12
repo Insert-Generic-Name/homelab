@@ -37,6 +37,7 @@
         "secrets.yaml": "key",
         "kustomization.yaml": "kubernetes",
         ".doco-cd.yaml": "rocket",
+        ".doco-cd.updater.yaml": "rocket",
         "ks.yaml": "rocket",
     },
     "material-icon-theme.folders.associations": {
