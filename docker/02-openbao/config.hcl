@@ -28,7 +28,7 @@ audit "file" "Live" {
 audit "file" "Persistent" {
   description = "Persistent logging via file path"
   options = {
-    file_path = "/var/openbao/logs"
+    file_path = "/openbao/logs"
     log_raw   = "false"
   }
 }
