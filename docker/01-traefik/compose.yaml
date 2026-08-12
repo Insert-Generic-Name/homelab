@@ -21,11 +21,12 @@ services:
       - "--api=false"
       # Certificate management
       - "--certificatesresolvers.cf.acme.email=${EMAIL:?}"
-      - "--certificatesresolvers.cf.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory" #https://acme-staging-v02.api.letsencrypt.org/directory
+      - "--certificatesresolvers.cf.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.cf.acme.storage=/certs/acme.json"
       - "--certificatesresolvers.cf.acme.profile=shortlived"
       - "--certificatesresolvers.cf.acme.dnsChallenge=true"
       - "--certificatesresolvers.cf.acme.dnschallenge.provider=cloudflare"
+      - "--certificatesresolvers.cf.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53"
       - "--entrypoints.websecure.http.tls.certresolver=cf"
       # Logs
       - "--log.level=DEBUG"
