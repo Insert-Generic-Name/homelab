@@ -3,9 +3,9 @@ services:
     container_name: doco-cd
     image: ghcr.io/kimdre/doco-cd:latest
     restart: unless-stopped
-    depends_on:
-      apprise:
-        condition: service_healthy
+    # depends_on:
+    #   apprise:
+    #     condition: service_healthy
     environment:
       # APPRISE_API_URL: "http://apprise:8000/notify"
       # APPRISE_NOTIFY_URLS: ${APPRISE_NOTIFY_URLS}
