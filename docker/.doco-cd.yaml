@@ -4,6 +4,9 @@ working_dir: ./docker/doco-cd
 compose_files:
   - compose.updater.yaml
 force_recreate: true
+external_secrets:
+  APPRISE_NOTIFY_URLS: b917d015-7107-4354-9727-b4a500c499c8
+  SECRET_PROVIDER_ACCESS_TOKEN: d0a4189b-13de-41e2-8a0b-b4a500c60261
 ---
 name: main
 working_dir: ./docker/apps/
@@ -14,6 +17,6 @@ auto_discovery:
   remove_volumes: true
 reconciliation: true
 external_secrets:
-  DOMAIN: c4df6587-ffbc-47a1-a04c-b4a400dcbfb3
-  EMAIL: ec20c2a5-2c34-4591-a67c-b4a400dd2973
-  CF_TOKEN: ffdbd7f7-8110-48a9-b60a-b4a400dd8282
+  DOMAIN: 8c0d8996-a896-4873-933f-b4a500c30c5d
+  EMAIL: 43f0364b-b9c3-4dff-8453-b4a500c2f4c7
+  CF_TOKEN: cdddf02e-b2bf-4948-ba0e-b4a500c3f539

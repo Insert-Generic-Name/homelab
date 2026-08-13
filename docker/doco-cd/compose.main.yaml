@@ -1,20 +1,19 @@
 services:
-  # Main instance
   app:
     container_name: doco-cd
     image: ghcr.io/kimdre/doco-cd:latest
     restart: unless-stopped
     environment:
+      APPRISE_API_URL: "http://apprise:8000/notify"
+      APPRISE_NOTIFY_URLS: ${APPRISE_NOTIFY_URLS}
+      APPRISE_NOTIFY_LEVEL: info
+
       SECRET_PROVIDER: bitwarden_sm
       SECRET_PROVIDER_API_URL: https://vault.bitwarden.com/api
       SECRET_PROVIDER_IDENTITY_URL: https://vault.bitwarden.com/identity
       SECRET_PROVIDER_ACCESS_TOKEN: ${SECRET_PROVIDER_ACCESS_TOKEN:?error}
 
-      APPRISE_API_URL: "http://apprise:8000/notify"
-      APPRISE_NOTIFY_URLS: ${APPRISE_NOTIFY_URLS}
-      APPRISE_NOTIFY_LEVEL: info
-      TZ: ${TZ}
-      LOG_LEVEL: INFO
+      TZ: Europe/Madrid
       HTTP_PORT: 80
       DEPLOY_CONFIG_BASE_DIR: ./docker/
       MAX_CONCURRENT_DEPLOYMENTS: 10
@@ -35,6 +34,7 @@ services:
       retries: 3
     networks:
       - doco-cd
+
   apprise:
     container_name: doco-cd-notifier
     image: caronc/apprise:latest
@@ -42,7 +42,7 @@ services:
     expose:
       - "8000"
     environment:
-      TZ: ${TZ?:error}
+      TZ: Europe/Madrid
       APPRISE_WORKER_COUNT: 1
     healthcheck:
       test:
