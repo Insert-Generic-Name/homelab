@@ -3,3 +3,5 @@ reference: main
 working_dir: ./docker/doco-cd
 compose_files:
   - compose.main.yaml
+external_secrets:
+  APPRISE_NOTIFY_URLS: b917d015-7107-4354-9727-b4a500c499c8

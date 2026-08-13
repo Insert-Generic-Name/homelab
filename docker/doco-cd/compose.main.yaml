@@ -1,5 +1,4 @@
 services:
-  # Main instance
   app:
     container_name: doco-cd
     image: ghcr.io/kimdre/doco-cd:latest
@@ -13,7 +12,7 @@ services:
       APPRISE_API_URL: "http://apprise:8000/notify"
       APPRISE_NOTIFY_URLS: ${APPRISE_NOTIFY_URLS}
       APPRISE_NOTIFY_LEVEL: info
-      TZ: ${TZ}
+      TZ: Europe/Madrid
       LOG_LEVEL: INFO
       HTTP_PORT: 80
       DEPLOY_CONFIG_BASE_DIR: ./docker/
@@ -42,7 +41,7 @@ services:
     expose:
       - "8000"
     environment:
-      TZ: ${TZ?:error}
+      TZ: Europe/Madrid
       APPRISE_WORKER_COUNT: 1
     healthcheck:
       test:
