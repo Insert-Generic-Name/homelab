@@ -22,7 +22,7 @@ services:
     networks:
       - doco-cd-updater
   apprise:
-    container_name: doco-cd-notifier
+    container_name: doco-cd-updater-notifier
     image: caronc/apprise:latest
     restart: unless-stopped
     expose:
