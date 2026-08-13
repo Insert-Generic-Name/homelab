@@ -13,11 +13,16 @@ services:
       - /openbao/logs:/openbao/logs
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bao.rule=Host(`openbao.external.${DOMAIN:?error}`)"
-      - "traefik.http.routers.bao.entrypoints=websecure"
-      - "traefik.http.routers.bao.tls=true"
-      - "traefik.http.routers.bao.tls.certresolver=cf"
-      - "traefik.http.services.bao.loadbalancer.server.port=8200"
+      - "traefik.http.routers.bao-external.rule=Host(`openbao.external.${DOMAIN:?error}`)"
+      - "traefik.http.routers.bao-external.entrypoints=websecure"
+      - "traefik.http.routers.bao-external.tls=true"
+      - "traefik.http.routers.bao-external.tls.certresolver=cf"
+      - "traefik.http.services.bao-external.loadbalancer.server.port=8200"
+
+      - "traefik.http.routers.bao-internal.rule=Host(`openbao.home.arpa`)"
+      - "traefik.http.routers.bao-internal.entrypoints=websecure"
+      - "traefik.http.routers.bao-internal.tls=true"
+      - "traefik.http.services.bao-internal.loadbalancer.server.port=8200"
     networks:
       - proxy
 
