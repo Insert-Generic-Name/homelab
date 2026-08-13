@@ -4,8 +4,6 @@ working_dir: ./docker/doco-cd
 compose_files:
   - compose.updater.yaml
 force_recreate: true
-env_files:
-  - .env
 ---
 name: main
 working_dir: ./docker/apps/
