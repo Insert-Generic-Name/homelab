@@ -5,9 +5,10 @@
 
 # Do NOT REMOVE
 .env
-hosts.yaml
-sops_age_key.txt
+# To move
+openbao/**
 # Garbage
+
 vmisc/**
 taloslop/**
 envoy-crds.yaml
