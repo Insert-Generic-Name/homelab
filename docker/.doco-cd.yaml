@@ -4,9 +4,8 @@ working_dir: ./docker/doco-cd
 compose_files:
   - compose.updater.yaml
 force_recreate: true
-external_secrets:
-  APPRISE_NOTIFY_URLS: b917d015-7107-4354-9727-b4a500c499c8
-  SECRET_PROVIDER_ACCESS_TOKEN: d0a4189b-13de-41e2-8a0b-b4a500c60261
+env_file:
+  - .env
 ---
 name: main
 working_dir: ./docker/apps/
