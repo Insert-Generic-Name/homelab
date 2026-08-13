@@ -28,7 +28,7 @@ services:
       - doco-cd
 
 networks:
-  doco-cd-updater:
+  doco-cd:
     name: doco-cd
 
 volumes:
