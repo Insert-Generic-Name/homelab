@@ -3,3 +3,5 @@ reference: main
 working_dir: ./docker/doco-cd
 compose_files:
   - compose.main.yaml
+external_secrets:
+  SECRET_PROVIDER_ACCESS_TOKEN: d0a4189b-13de-41e2-8a0b-b4a500c60261
