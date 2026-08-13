@@ -15,8 +15,11 @@ services:
 
       TZ: Europe/Madrid
       HTTP_PORT: 80
+<<<<<<< HEAD
       DEPLOY_CONFIG_BASE_DIR: ./docker/
       SCHEDULER_ENABLED: false
+=======
+>>>>>>> 105483aba8d5d74ab07b9405e18a345afa9ecb56
       POLL_CONFIG: |
         - url: https://github.com/Insert-Generic-Name/homelab.git
           reference: main
