@@ -14,7 +14,7 @@ services:
       SECRET_PROVIDER: bitwarden_sm
       SECRET_PROVIDER_API_URL: https://vault.bitwarden.com/api
       SECRET_PROVIDER_IDENTITY_URL: https://vault.bitwarden.com/identity
-      SECRET_PROVIDER_ACCESS_TOKEN: ${SECRET_PROVIDER_ACCESS_TOKEN:?error}
+      SECRET_PROVIDER_ACCESS_TOKEN: ${SECRET_PROVIDER_ACCESS_TOKEN}
 
       TZ: Europe/Madrid
       HTTP_PORT: 80
