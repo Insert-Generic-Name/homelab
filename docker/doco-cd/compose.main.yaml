@@ -13,15 +13,7 @@ services:
       SECRET_PROVIDER_IDENTITY_URL: https://vault.bitwarden.com/identity
       SECRET_PROVIDER_ACCESS_TOKEN: ${SECRET_PROVIDER_ACCESS_TOKEN:?error}
 
-<<<<<<< HEAD
       TZ: Europe/Madrid
-=======
-      APPRISE_API_URL: "http://apprise:8000/notify"
-      APPRISE_NOTIFY_URLS: ${APPRISE_NOTIFY_URLS}
-      APPRISE_NOTIFY_LEVEL: info
-      TZ: Europe/Madrid
-      LOG_LEVEL: INFO
->>>>>>> 105483aba8d5d74ab07b9405e18a345afa9ecb56
       HTTP_PORT: 80
       DEPLOY_CONFIG_BASE_DIR: ./docker/
       MAX_CONCURRENT_DEPLOYMENTS: 10
