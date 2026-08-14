@@ -10,6 +10,7 @@ Personal testing battlefield
 #### Not decided yet ####
 ---------------------------
 - Actual Budget
+- Local git instance to get FluxCD webhooks without port forwarding ( mirrors my main instance or otherwise)
 - ntfy
 - https://docs.stakater.com/reloader/latest/ For reloading certs/secrets in k8s,
 though it seems like envoy-gw does this automatically. ( Use it only for apps that arent served
