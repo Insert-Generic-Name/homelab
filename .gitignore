@@ -5,10 +5,10 @@
 
 # Do NOT REMOVE
 .env
+.envrc
 # To move
 openbao/**
 # Garbage
-
 vmisc/**
 taloslop/**
 envoy-crds.yaml
