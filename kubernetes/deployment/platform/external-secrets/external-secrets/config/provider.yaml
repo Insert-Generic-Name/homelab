@@ -12,5 +12,5 @@ spec:
           mountPath: "kubernetes"
           role: "vault-backend"
           serviceAccountRef:
-            name: "vault-backend"
+            name: "vault-backend-auth"
             namespace: external-secrets
