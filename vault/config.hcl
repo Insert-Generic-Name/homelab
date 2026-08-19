@@ -12,7 +12,7 @@ listener "tcp" {
 
 # Storage
 storage "raft" {
-  path    = "./openbao/raft"
+  path    = "/openbao/data"
   node_id = "main"
 }
 
@@ -28,7 +28,7 @@ audit "file" "Live" {
 audit "file" "Persistent" {
   description = "Persistent logging via file path"
   options = {
-    file_path = "./openbao/logs/bao.logs"
+    file_path = "/openbao/audit"
     log_raw   = "false"
   }
 }
@@ -39,3 +39,4 @@ user_lockout "all" {
   lockout_duration      = "24h"
   lockout_counter_reset = "24h"
 }
+

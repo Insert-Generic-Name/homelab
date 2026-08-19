@@ -89,3 +89,5 @@ Use https://dashboardicons.com/ for homepage
 - Ansible   (^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^)
 - Gluetun ((for qbittorrent)) ( Discarded due to Hotio Qbittorrent beeing a better solution)
 - Lidarr ( "non-mainstream" music lack, me-tube is a better suit for my needs)
+
+###### Readded ######

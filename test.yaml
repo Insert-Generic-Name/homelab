@@ -8,3 +8,5 @@ stringData:
     ${CF_TOKEN}
 
 How do I approach secrets now? Do I just use the CLI to patch them like onedr0p or use age/sops?
+
+Fuck this move to Approle

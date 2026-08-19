@@ -61,6 +61,7 @@
         "helmfile": "helm",
         "ai": "gemini-ai",
         "lifestyle": "java",
+        "openbao": "guard",
     },
     "workbench.productIconTheme": "icons-carbon",
     // Language configuration

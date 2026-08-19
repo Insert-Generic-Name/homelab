@@ -6,6 +6,8 @@
 # Do NOT REMOVE
 .env
 .envrc
+kubernetes/private/**
+!kubernetes/private/secret-template.yaml
 # To move
 openbao/**
 # Garbage

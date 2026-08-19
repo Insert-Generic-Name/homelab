@@ -22,6 +22,7 @@ Important Todo:
 or so it seems ( tl:dr check if the values.yaml for prometheus are actually for k8s prometheus or raw prometheus, in which case fix them for k8s prometheus)
 
 Todo:
+- Rewrite bootstrap.sh to Justfile
 - Deploy Flux alert controller once observability stack is done
 - Enable flux operator compatibility with prometheus
 - Remove .vscode extensions ( terraform, ansible)
