@@ -5,6 +5,7 @@
     "redhat.vscode-yaml",
     "blueglassblock.better-json5",
     "hashicorp.hcl",
+    "hashicorp.terraform",
     // Visual
     "pkief.material-icon-theme",
     "antfu.icons-carbon"
