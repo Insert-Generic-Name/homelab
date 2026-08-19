@@ -23,12 +23,12 @@ releases:
   #   namespace: kube-system
   #   # needs: ["kube-system/cilium"]
 
-  - name: cert-manager
-    namespace: cert-manager
-    needs: ["kube-system/cilium"]
-
   - name: external-secrets
     namespace: external-secrets
+    needs: ["kube-system/cilium"]
+
+  - name: cert-manager
+    namespace: cert-manager
     needs: ["cert-manager/cert-manager"]
 
   - name: flux-operator
