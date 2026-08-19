@@ -12,6 +12,7 @@ spec:
         kind: Kustomization
         metadata:
           name: _
+          namespace: flux-system
         spec:
           wait: true
           interval: 5m
@@ -25,7 +26,6 @@ spec:
             substituteFrom:
               - kind: Secret
                 name: domain
-                namespace: flux-system
       target:
         kind: Kustomization
         group: kustomize.toolkit.fluxcd.io
