@@ -24,7 +24,7 @@ spec:
           postBuild:
             substituteFrom:
               - kind: Secret
-                name: flux-patches
+                name: domain
                 namespace: flux-system
       target:
         kind: Kustomization
