@@ -7,4 +7,5 @@ resources:
   - ./external-secrets
   - ./flux-system
   - ./kube-system
+  - ./openbao
 # - ./rook-ceph
