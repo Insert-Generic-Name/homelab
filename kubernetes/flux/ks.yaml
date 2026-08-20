@@ -5,30 +5,71 @@ metadata:
   name: flux-configuration
   namespace: flux-system
 
+# check patching on folders!
+# https://github.com/m00nwtchr/homelab-cluster/blob/master/kubernetes/flux/cluster/resourceset.yaml
+# Think on about forking this work, integrate resourceSets with this patching as components.
+#
 spec:
-  patches:
-    - patch: |-
-        apiVersion: kustomize.toolkit.fluxcd.io/v1
-        kind: Kustomization
-        metadata:
-          name: _
-          namespace: flux-system
-        spec:
-          wait: true
-          interval: 5m
-          prune: true
-          deletionPolicy: WaitForTermination
-          sourceRef:
-            kind: GitRepository
-            name: flux-system
-            namespace: flux-system
-          postBuild:
-            substituteFrom:
-              - kind: Secret
-                name: domain
-      target:
-        kind: Kustomization
-        group: kustomize.toolkit.fluxcd.io
+  # patches:
+  #   - patch: |-
+  #       apiVersion: kustomize.toolkit.fluxcd.io/v1
+  #       kind: Kustomization
+  #       metadata:
+  #         name: _
+  #         namespace: flux-system
+  #       spec:
+  #         wait: true
+  #         interval: 5m
+  #         prune: true
+  #         deletionPolicy: WaitForTermination
+  #         sourceRef:
+  #           kind: GitRepository
+  #           name: flux-system
+  #           namespace: flux-system
+  #         postBuild:
+  #           substituteFrom:
+  #             - kind: Secret
+  #               name: domain
+  #         patches:
+  #           - patch: |-
+  #               apiVersion: helm.toolkit.fluxcd.io/v2
+  #               kind: HelmRelease
+  #               metadata:
+  #                 name: _
+  #                 namespace: flux-system
+  #               spec:
+  #                 driftDetection:
+  #                   mode: enabled
+  #                 install:
+  #                   crds: CreateReplace
+  #                 upgrade:
+  #                   crds: CreateReplace
+  #                   cleanupOnFail: true
+  #                   strategy:
+  #                     name: RemediateOnFailure
+  #                 rollback:
+  #                   cleanupOnFail: true
+  #                 interval: 5m
+  #             target:
+  #               kind: HelmRelease
+  #               group: helm.toolkit.fluxcd.io
+  #           - patch: |-
+  #               apiVersion: source.toolkit.fluxcd.io/v1
+  #               kind: OCIRepository
+  #               metadata:
+  #                 name: _
+  #                 namespace: flux-system
+  #               spec:
+  #                 interval: 5m
+  #                 layerSelector:
+  #                   mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+  #                   operation: copy
+  #             target:
+  #               kind: OCIRepository
+  #               group: source.toolkit.fluxcd.io
+  #     target:
+  #       kind: Kustomization
+  #       group: kustomize.toolkit.fluxcd.io
   interval: 5m
   sourceRef:
     kind: GitRepository
