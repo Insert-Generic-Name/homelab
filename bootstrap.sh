@@ -8,4 +8,9 @@ set -euo pipefail
 cd ~/homelab
 
 kubectl apply --server-side -f envoy-crds.yaml
-kubectl apply -f ./kubernetes/private/secret.yaml
+
+kubectl create namespace external-secrets
+
+kubectl create secret generic vault-token \
+  --namespace external-secrets \
+  --from-literal=token="$(bao kv get -mount=kubernetes-kv -field=BAO_TOKEN k8s-token)"

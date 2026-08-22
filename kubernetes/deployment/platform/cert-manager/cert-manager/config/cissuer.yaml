@@ -4,7 +4,6 @@ metadata:
   name: cloudflare-cissuer
 spec:
   acme:
-    email: secret-goes-here@com
     profile: shortlived
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
@@ -14,13 +13,5 @@ spec:
           cloudflare:
             apiTokenSecretRef:
               name: cloudflare-api-token-secret
+              namespace: cert-manager
               key: api-token
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloudflare-api-token-secret
-  namespace: cert-manager
-type: Opaque
-stringData:
-  api-token: secret-goeshere

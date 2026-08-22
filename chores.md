@@ -12,6 +12,7 @@ in the case of a github blackout I dont have to patch manually URLs.
 This applies to all CD runners incluiding dococd and maybe Argo
 - Add coredns deployment manually
 - Migrate from envoy-gw to Istio
+- Make the domain secret used by Flux postbuild be provided by ESO ( Investigate bootstrapping problems, e.g cilium needs DOMAIN but cant get it because ESO is supposed to be alive blah blah)
 Misc:
 - https://craftycontrol.com/
 - https://modrinth.com/mod/waylandcraft
@@ -22,6 +23,7 @@ Important Todo:
 or so it seems ( tl:dr check if the values.yaml for prometheus are actually for k8s prometheus or raw prometheus, in which case fix them for k8s prometheus)
 
 Todo:
+- Update Openbao URL in ESO provider.yaml
 - Rewrite bootstrap.sh to Justfile
 - Deploy Flux alert controller once observability stack is done
 - Enable flux operator compatibility with prometheus

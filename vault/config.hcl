@@ -1,13 +1,17 @@
+
+# VERY IMPORTANT: CHECK CONFIG INSIDE OPENBAO VM
 # General Settings
 ui            = true
-cluster_addr  = "http://127.0.0.1:8201"
+cluster_addr  = "http://0.0.0.0:8201"
 api_addr      = "http://0.0.0.0:8200"
-cluster_name  = "openbao-external"
+cluster_name  = "openbao"
 
 # Listeners
 listener "tcp" {
   address          = "0.0.0.0:8200"
-  tls_disable      = "true"
+  # Use default signed certs that get installed ( atleast on debian)
+  tls_cert_file = "/openbao/tls/tls.crt"
+  tls_key_file  = "/openbao/tls/tls.key"
 }
 
 # Storage

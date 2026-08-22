@@ -5,12 +5,11 @@ metadata:
 spec:
   provider:
     vault:
-      server: "http://192.168.1.60"
-      path: "kubernetes"
+      server: "https://192.168.1.35:8200" #change me later
+      path: "kubernetes-kv"
+      version: "v2"
       auth:
-        kubernetes:
-          mountPath: "kubernetes"
-          role: "vault-backend"
-          serviceAccountRef:
-            name: "vault-backend-auth"
-            namespace: external-secrets
+        tokenSecretRef:
+          name: vault-token
+          namespace: external-secrets
+          key: token
