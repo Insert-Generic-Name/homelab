@@ -29,11 +29,11 @@ releases:
 
   - name: cert-manager
     namespace: cert-manager
-    needs: ["cert-manager/cert-manager"]
+    needs: ["external-secrets/external-secrets"]
 
   - name: flux-operator
     namespace: flux-system
-    needs: ["external-secrets/external-secrets"]
+    needs: ["cert-manager/cert-manager"]
 
   - name: flux-instance
     namespace: flux-system
