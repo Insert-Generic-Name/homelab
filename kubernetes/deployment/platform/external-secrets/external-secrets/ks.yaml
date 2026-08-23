@@ -1,31 +1,31 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
 
-metadata:
-  name: external-secrets-app
+# metadata:
+#   name: external-secrets-app
 
-spec:
-  interval: 5m
-  targetNamespace: external-secrets
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-  path: ./kubernetes/deployment/platform/external-secrets/external-secrets/app
-  prune: false
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
+# spec:
+#   interval: 5m
+#   targetNamespace: external-secrets
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#     namespace: flux-system
+#   path: ./kubernetes/deployment/platform/external-secrets/external-secrets/app
+#   prune: false
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
 
-metadata:
-  name: external-secrets-config
+# metadata:
+#   name: external-secrets-config
 
-spec:
-  interval: 5m
-  targetNamespace: external-secrets
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-  path: ./kubernetes/deployment/platform/external-secrets/external-secrets/config
-  prune: true
+# spec:
+#   interval: 5m
+#   targetNamespace: external-secrets
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#     namespace: flux-system
+#   path: ./kubernetes/deployment/platform/external-secrets/external-secrets/config
+#   prune: true
