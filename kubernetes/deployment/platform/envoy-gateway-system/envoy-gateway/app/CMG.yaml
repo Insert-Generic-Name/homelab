@@ -1,0 +1,4 @@
+configMapGenerator:
+  - name: envoy-gateway
+    files:
+      - ./values.yaml

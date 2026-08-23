@@ -1,0 +1,4 @@
+configMapGenerator:
+  - name: cert-manager
+    files:
+      - ./values.yaml

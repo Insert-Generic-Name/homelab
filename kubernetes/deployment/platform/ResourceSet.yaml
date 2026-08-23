@@ -18,6 +18,24 @@ spec:
         url: oci://ghcr.io/external-secrets/charts/external-secrets
         tag: 2.8.0
 
+    - name: cert-manager
+      namespace: cert-manager
+      source:
+        url: oci://quay.io/jetstack/charts/cert-manager
+        tag: 1.21.0
+
+    - name: envoy-gateway
+      namespace: envoy-gateway-system
+      source:
+        url: oci://docker.io/envoyproxy/gateway-helm
+        tag: 1.8.2
+
+    - name: cilium
+      namespace: kube-system
+      source:
+        url: oci://quay.io/cilium/charts/cilium
+        tag: 1.19.5
+
   resources:
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
       kind: Kustomization
@@ -45,6 +63,7 @@ spec:
       metadata:
         name: << inputs.name >>
         namespace: flux-system
+
       spec:
         interval: 5m
         chartRef:

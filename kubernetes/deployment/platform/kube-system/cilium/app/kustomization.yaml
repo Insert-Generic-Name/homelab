@@ -3,5 +3,3 @@ kind: Kustomization
 
 resources:
   - ./config
-  - ./release.yaml
-  - ./source.yaml
