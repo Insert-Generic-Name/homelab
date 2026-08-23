@@ -1,11 +1,8 @@
-{{- /* Read the ResourceSet file containing all inputs */ -}}
 {{- $resourceSet := fromYaml (readFile "../../kubernetes/flux/cluster/platform/inputprovider.yaml") -}}
 
-{{- /* Initialize variables */ -}}
 {{- $chartUrl := "" -}}
 {{- $chartTag := "" -}}
 
-{{- /* Loop through inputs to find the one matching the current release name */ -}}
 {{- range $resourceSet.spec.defaultValues -}}
   {{- if eq .name $.Release.Name -}}
     {{- $chartUrl = .source.url -}}
@@ -13,7 +10,6 @@
   {{- end -}}
 {{- end -}}
 
-{{- /* Optional: Fail if no matching release was found */ -}}
 {{- if not $chartUrl -}}
   {{- fail (printf "Could not find resource input matching release name: %s" .Release.Name) -}}
 {{- end -}}
