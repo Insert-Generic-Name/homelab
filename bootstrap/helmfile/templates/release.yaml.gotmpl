@@ -1,3 +1,22 @@
-{{- $main := fromYaml (readFile (printf "../../kubernetes/deployment/platform/%s/%s/app/values.yaml" .Release.Namespace .Release.Name)) -}}
-chart: {{ $main.spec.url }}
-version: {{ $main.spec.ref.tag }}
+{{- /* Read the ResourceSet file containing all inputs */ -}}
+{{- $resourceSet := fromYaml (readFile "../../kubernetes/flux/cluster/infra/resourceset.yaml") -}}
+
+{{- /* Initialize variables */ -}}
+{{- $chartUrl := "" -}}
+{{- $chartTag := "" -}}
+
+{{- /* Loop through inputs to find the one matching the current release name */ -}}
+{{- range $resourceSet.inputs -}}
+  {{- if eq .name $.Release.Name -}}
+    {{- $chartUrl = .source.url -}}
+    {{- $chartTag = .source.tag -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Optional: Fail if no matching release was found */ -}}
+{{- if not $chartUrl -}}
+  {{- fail (printf "Could not find resource input matching release name: %s" .Release.Name) -}}
+{{- end -}}
+
+chart: {{ $chartUrl }}
+version: {{ $chartTag }}
