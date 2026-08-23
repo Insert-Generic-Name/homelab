@@ -17,18 +17,21 @@ spec:
       source:
         url: oci://ghcr.io/external-secrets/charts/external-secrets
         tag: 2.8.0
+      dependsOn: cilium
 
     - name: cert-manager
       namespace: cert-manager
       source:
         url: oci://quay.io/jetstack/charts/cert-manager
         tag: 1.21.0
+      dependsOn: external-secrets
 
     - name: envoy-gateway
       namespace: envoy-gateway-system
       source:
         url: oci://docker.io/envoyproxy/gateway-helm
         tag: 1.8.2
+      dependsOn: cert-manager
 
     - name: cilium
       namespace: kube-system
@@ -43,6 +46,8 @@ spec:
         name: << inputs.name >>
         namespace: flux-system
       spec:
+        dependsOn:
+          - name: << inputs.dependsOn >>
         wait: true
         interval: 5m
         prune: << inputs.prune | default true >>
