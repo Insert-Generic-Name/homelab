@@ -3,5 +3,4 @@ kind: Kustomization
 
 resources:
   - ./rbac.yaml
-  - ./release.yaml
-  - ./source.yaml
+  - ./values.yaml
