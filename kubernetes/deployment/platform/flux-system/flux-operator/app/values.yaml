@@ -1,0 +1,21 @@
+values:
+  serviceMonitor:
+    create: false # CHANGE ME LATER
+  web:
+    config:
+      authentication:
+        type: Anonymous
+        anonymous:
+          username: flux
+          groups:
+            - flux-admin
+    httpRoute: # changemelater
+      enabled: true
+      parentRefs:
+        - name: envoy-gateway
+          namespace: envoy-gateway-system
+          sectionName: http
+      hostnames:
+        - flux.home.arpa
+    networkPolicy:
+      create: false

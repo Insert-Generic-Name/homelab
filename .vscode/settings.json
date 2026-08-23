@@ -30,7 +30,8 @@
         // Builtin
         "README.md": "document",
         "*.gotmpl": "go",
-        "release.yaml": "helm",
+        "values.yaml": "helm",
+        "configMapGenerator.yaml": "kubernetes",
         "namespace.yaml": "kubernetes",
         "helmfile.yaml": "helm",
         "source.yaml": "parcel",
@@ -38,7 +39,6 @@
         "kustomization.yaml": "kubernetes",
         ".doco-cd.yaml": "rocket",
         ".doco-cd.updater.yaml": "rocket",
-        "ks.yaml": "rocket",
     },
     "material-icon-theme.folders.associations": {
         "bootstrap": "seeders",

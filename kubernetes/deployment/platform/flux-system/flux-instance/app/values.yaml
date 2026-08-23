@@ -1,0 +1,15 @@
+values:
+  instance:
+    cluster:
+      networkPolicy: false
+    components:
+      - source-controller
+      - kustomize-controller
+      - helm-controller
+      - notification-controller
+    sync:
+      kind: GitRepository
+      url: https://github.com/Insert-Generic-Name/homelab
+      ref: refs/heads/main
+      path: ./kubernetes/flux/cluster/platform
+      interval: 1m
