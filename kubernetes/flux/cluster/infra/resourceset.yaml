@@ -11,33 +11,10 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux-operator
-  inputs:
-    - name: external-secrets
-      namespace: external-secrets
-      source:
-        url: oci://ghcr.io/external-secrets/charts/external-secrets
-        tag: 2.8.0
-      dependsOn: cilium
-
-    - name: cert-manager
-      namespace: cert-manager
-      source:
-        url: oci://quay.io/jetstack/charts/cert-manager
-        tag: 1.21.0
-      dependsOn: external-secrets
-
-    - name: envoy-gateway
-      namespace: envoy-gateway-system
-      source:
-        url: oci://docker.io/envoyproxy/gateway-helm
-        tag: 1.8.2
-      dependsOn: cert-manager
-
-    - name: cilium
-      namespace: kube-system
-      source:
-        url: oci://quay.io/cilium/charts/cilium
-        tag: 1.19.5
+  inputsFrom:
+    - apiVersion: fluxcd.controlplane.io/v1
+      kind: ResourceSetInputProvider
+      name: platform-inputs
 
   resources:
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
