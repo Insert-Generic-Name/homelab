@@ -1,9 +1,9 @@
-{{- $resourceSet := fromYaml (readFile "../../kubernetes/flux/cluster/platform/inputprovider.yaml") -}}
+{{- $resourceSet := fromYaml (readFile "../../kubernetes/flux/cluster/platform/resourceset.yaml") -}}
 
 {{- $chartUrl := "" -}}
 {{- $chartTag := "" -}}
 
-{{- range $resourceSet.spec.defaultValues -}}
+{{- range $resourceSet.spec.inputs -}}
   {{- if eq .name $.Release.Name -}}
     {{- $chartUrl = .source.url -}}
     {{- $chartTag = .source.tag -}}
