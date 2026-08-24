@@ -17,7 +17,6 @@ spec:
       source:
         url: oci://quay.io/cilium/charts/cilium
         tag: 1.19.5
-      dependsOn: _
 
     - name: external-secrets
       namespace: external-secrets
@@ -62,7 +61,7 @@ spec:
         namespace: flux-system
       spec:
         dependsOn:
-          - name: << inputs.dependsOn >>
+          - name: << get inputs "dependsOn" | default _ >>
         wait: true
         interval: 5m
         prune: << get inputs "prune" | default true >>
@@ -77,31 +76,6 @@ spec:
           substituteFrom:
             - kind: Secret
               name: domain
-
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      metadata:
-        name: << inputs.name >>
-        namespace: flux-system
-      spec:
-        interval: 5m
-        chartRef:
-          kind: OCIRepository
-          name: << inputs.name >>
-        valuesFrom:
-          - kind: ConfigMap
-            name: << inputs.name >>
-        driftDetection:
-          mode: enabled
-        install:
-          crds: CreateReplace
-        upgrade:
-          crds: CreateReplace
-          cleanupOnFail: true
-          strategy:
-            name: RemediateOnFailure
-        rollback:
-          cleanupOnFail: true
 
     - apiVersion: source.toolkit.fluxcd.io/v1
       kind: OCIRepository
