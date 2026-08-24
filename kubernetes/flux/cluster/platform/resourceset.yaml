@@ -20,21 +20,21 @@ spec:
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
       kind: Kustomization
       metadata:
-        name: << inputs.name >>
+        name: << inputs.charts.name >>
         namespace: flux-system
       spec:
         dependsOn:
-          - name: << inputs.dependsOn >>
+          - name: << inputs.charts.dependsOn >>
         wait: true
         interval: 5m
-        prune: << inputs.prune | default true >>
+        prune: << inputs.chart.prune | default true >>
         deletionPolicy: WaitForTermination
         sourceRef:
           kind: GitRepository
           name: flux-system
           namespace: flux-system
-        path: ./kubernetes/deployment/platform/<< inputs.namespace >>/<< inputs.name >>
-        targetNamespace: << inputs.namespace >>
+        path: ./kubernetes/deployment/platform/<< inputs.charts.namespace >>/<< inputs.charts.name >>
+        targetNamespace: << inputs.charts.namespace >>
         postBuild:
           substituteFrom:
             - kind: Secret
@@ -43,17 +43,17 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
       metadata:
-        name: << inputs.name >>
+        name: << inputs.charts.name >>
         namespace: flux-system
 
       spec:
         interval: 5m
         chartRef:
           kind: OCIRepository
-          name: << inputs.name >>
+          name: << inputs.charts.name >>
         valuesFrom:
           - kind: ConfigMap
-            name: << inputs.name >>
+            name: << inputs.charts.name >>
         driftDetection:
           mode: enabled
         install:
@@ -69,13 +69,13 @@ spec:
     - apiVersion: source.toolkit.fluxcd.io/v1
       kind: OCIRepository
       metadata:
-        name: << inputs.name >>
+        name: << inputs.charts.name >>
         namespace: flux-system
       spec:
         interval: 5m
-        url: << inputs.source.url >>
+        url: << inputs.charts.source.url >>
         ref:
-          tag: << inputs.source.tag >>
+          tag: << inputs.charts.source.tag >>
         layerSelector:
           mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
           operation: copy
