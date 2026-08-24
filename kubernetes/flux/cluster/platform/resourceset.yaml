@@ -70,7 +70,7 @@ spec:
             - kind: Secret
               name: domain
         patches:
-          - path: ../../components/templates/release.yaml
+          - path: ../../../../../components/templates/release.yaml
             target:
               group: helm.toolkit.fluxcd.io
               kind: HelmRelease
