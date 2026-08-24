@@ -76,6 +76,11 @@ spec:
           substituteFrom:
             - kind: Secret
               name: domain
+        patches:
+          - path: ../../components/templates/release.yaml
+            target:
+              group: helm.toolkit.fluxcd.io
+              kind: HelmRelease
 
     - apiVersion: source.toolkit.fluxcd.io/v1
       kind: OCIRepository
