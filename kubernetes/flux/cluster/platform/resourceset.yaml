@@ -27,7 +27,7 @@ spec:
           - name: << inputs.charts.dependsOn >>
         wait: true
         interval: 5m
-        prune: << inputs.chart.prune | default true >>
+        prune: << inputs.charts.prune | default true >>
         deletionPolicy: WaitForTermination
         sourceRef:
           kind: GitRepository
