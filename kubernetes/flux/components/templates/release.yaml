@@ -4,15 +4,15 @@
         name: _
         namespace: flux-system
     spec:
-    interval: 5m
-    driftDetection:
-        mode: enabled
-    install:
-        crds: CreateReplace
-    upgrade:
-        crds: CreateReplace
-        cleanupOnFail: true
-        strategy:
-        name: RemediateOnFailure
-    rollback:
-        cleanupOnFail: true
+        interval: 5m
+        driftDetection:
+            mode: enabled
+        install:
+            crds: CreateReplace
+        upgrade:
+            crds: CreateReplace
+            cleanupOnFail: true
+            strategy:
+            name: RemediateOnFailure
+        rollback:
+            cleanupOnFail: true
