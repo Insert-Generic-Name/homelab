@@ -57,7 +57,7 @@ spec:
       spec:
         wait: true
         interval: 5m
-        prune: << get inputs "prune" | default true >>
+        prune: << get inputs "prune" | default "true" >>
         deletionPolicy: WaitForTermination
         sourceRef:
           kind: GitRepository
