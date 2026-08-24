@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: flux-operator
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: flux-operator
+  values:
+    serviceMonitor:
+      create: false # CHANGE ME LATER
+    web:
+      config:
+        authentication:
+          type: Anonymous
+          anonymous:
+            username: flux
+            groups:
+              - flux-admin
+      httpRoute: # changemelater
+        enabled: true
+        parentRefs:
+          - name: envoy-gateway
+            namespace: envoy-gateway-system
+            sectionName: http
+        hostnames:
+          - flux.home.arpa
+      networkPolicy:
+        create: false

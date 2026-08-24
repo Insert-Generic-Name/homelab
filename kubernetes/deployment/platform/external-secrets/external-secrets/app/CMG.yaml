@@ -1,4 +1,0 @@
-configMapGenerator:
-  - name: external-secrets
-    files:
-      - ./values.yaml
