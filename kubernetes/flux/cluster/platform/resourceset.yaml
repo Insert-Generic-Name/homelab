@@ -39,19 +39,19 @@ spec:
         tag: 1.8.2
       dependsOn: cert-manager
 
-    - name: flux-operator
-      namespace: flux-system
-      source:
-        url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
-        tag: 0.55.0
-      dependsOn: envoy-gateway
+    # - name: flux-operator
+    #   namespace: flux-system
+    #   source:
+    #     url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
+    #     tag: 0.55.0
+    #   dependsOn: envoy-gateway
 
-    - name: flux-instance
-      namespace: flux-system
-      source:
-        url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
-        tag: 0.54.1
-      dependsOn: flux-operator
+    # - name: flux-instance
+    #   namespace: flux-system
+    #   source:
+    #     url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
+    #     tag: 0.54.1
+    #   dependsOn: flux-operator
 
   resources:
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
