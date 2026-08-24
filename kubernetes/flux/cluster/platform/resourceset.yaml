@@ -70,10 +70,28 @@ spec:
             - kind: Secret
               name: domain
         patches:
-          - path: ../../../../../components/templates/release.yaml
-            target:
-              group: helm.toolkit.fluxcd.io
+          - patch: |-
+              apiVersion: helm.toolkit.fluxcd.io/v2
               kind: HelmRelease
+              metadata:
+                name: _
+                namespace: flux-system
+              spec:
+                driftDetection:
+                  mode: enabled
+                install:
+                  crds: CreateReplace
+                upgrade:
+                  crds: CreateReplace
+                  cleanupOnFail: true
+                  strategy:
+                    name: RemediateOnFailure
+                rollback:
+                  cleanupOnFail: true
+                interval: 5m
+            target:
+              kind: HelmRelease
+              group: helm.toolkit.fluxcd.io
 
     - apiVersion: source.toolkit.fluxcd.io/v1
       kind: OCIRepository
