@@ -11,30 +11,67 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux-operator
-  inputsFrom:
-    - apiVersion: fluxcd.controlplane.io/v1
-      kind: ResourceSetInputProvider
-      name: platform-inputs
+  inputs:
+    - name: cilium
+      namespace: kube-system
+      source:
+        url: oci://quay.io/cilium/charts/cilium
+        tag: 1.19.5
+
+    - name: external-secrets
+      namespace: external-secrets
+      source:
+        url: oci://ghcr.io/external-secrets/charts/external-secrets
+        tag: 2.8.0
+      dependsOn: cilium
+
+    - name: cert-manager
+      namespace: cert-manager
+      source:
+        url: oci://quay.io/jetstack/charts/cert-manager
+        tag: 1.21.0
+      dependsOn: external-secrets
+
+    - name: envoy-gateway
+      namespace: envoy-gateway-system
+      source:
+        url: oci://docker.io/envoyproxy/gateway-helm
+        tag: 1.8.2
+      dependsOn: cert-manager
+
+    - name: flux-operator
+      namespace: flux-system
+      source:
+        url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
+        tag: 0.55.0
+      dependsOn: envoy-gateway
+
+    - name: flux-instance
+      namespace: flux-system
+      source:
+        url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
+        tag: 0.54.1
+      dependsOn: flux-operator
 
   resources:
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
       kind: Kustomization
       metadata:
-        name: << inputs.charts.name >>
+        name: << inputs.name >>
         namespace: flux-system
       spec:
         dependsOn:
-          - name: << inputs.charts.dependsOn >>
+          - name: << inputs.dependsOn >>
         wait: true
         interval: 5m
-        prune: << inputs.charts.prune | default true >>
+        prune: << inputs.prune | default true >>
         deletionPolicy: WaitForTermination
         sourceRef:
           kind: GitRepository
           name: flux-system
           namespace: flux-system
-        path: ./kubernetes/deployment/platform/<< inputs.charts.namespace >>/<< inputs.charts.name >>
-        targetNamespace: << inputs.charts.namespace >>
+        path: ./kubernetes/deployment/platform/<< inputs.namespace >>/<< inputs.name >>
+        targetNamespace: << inputs.namespace >>
         postBuild:
           substituteFrom:
             - kind: Secret
@@ -43,17 +80,16 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
       metadata:
-        name: << inputs.charts.name >>
+        name: << inputs.name >>
         namespace: flux-system
-
       spec:
         interval: 5m
         chartRef:
           kind: OCIRepository
-          name: << inputs.charts.name >>
+          name: << inputs.name >>
         valuesFrom:
           - kind: ConfigMap
-            name: << inputs.charts.name >>
+            name: << inputs.name >>
         driftDetection:
           mode: enabled
         install:
@@ -69,13 +105,13 @@ spec:
     - apiVersion: source.toolkit.fluxcd.io/v1
       kind: OCIRepository
       metadata:
-        name: << inputs.charts.name >>
+        name: << inputs.name >>
         namespace: flux-system
       spec:
         interval: 5m
-        url: << inputs.charts.source.url >>
+        url: << inputs.source.url >>
         ref:
-          tag: << inputs.charts.source.tag >>
+          tag: << inputs.source.tag >>
         layerSelector:
           mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
           operation: copy
