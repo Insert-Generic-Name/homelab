@@ -77,6 +77,8 @@ spec:
                 name: _
                 namespace: flux-system
               spec:
+                chartRef:
+                  namespace: flux-system
                 driftDetection:
                   mode: enabled
                 install:
