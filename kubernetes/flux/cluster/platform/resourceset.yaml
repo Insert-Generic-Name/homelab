@@ -49,6 +49,13 @@ spec:
         tag: 0.54.1
 
   resources:
+    - apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: << inputs.namespace >>
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled
+
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
       kind: Kustomization
       metadata:
