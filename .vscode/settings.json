@@ -46,6 +46,7 @@
         "envoy-gateway-system": "context",
         "cert-manager": "license",
         "flux-system": "generator",
+        "flux": "generator",
         "doco-cd": "generator",
         "kube-system": "controller",
         "productivity": "tasks",
