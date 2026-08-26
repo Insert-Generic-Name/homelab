@@ -23,6 +23,7 @@ by envoy, like authelia that sits in front of it )
 - RSS Feeder ( or other tools like homepage/flux/bookmark manager)
 So when there is a new release of a service I get a notification with a link
 ( flux only alerts if deployments fails)
+- Make terraform bootstrap Openbao l0 + Talos l1 + Kubernetes l2  to avoid relying on external tools (*l=layer)
 
 #### Planned ####
 ---------------------------
