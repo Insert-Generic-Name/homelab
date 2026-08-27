@@ -42,7 +42,6 @@ Use https://dashboardicons.com/ for homepage
 - Rook-Ceph
 - Tailscale
 - yamllint + gitleaks + .vscode + .gitattributes.
-- Woodpecker CI/Github Actions ( not decided )
 - Renovate
 - Talos + Talhelper
 - Custom self-made Helm chart for templating ( avoid 4 manifests per service)

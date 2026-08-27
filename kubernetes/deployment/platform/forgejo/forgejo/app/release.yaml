@@ -1,9 +1,9 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: woodpecker
+  name: forgejo
 spec:
   chartRef:
     kind: OCIRepository
-    name: woodpecker
+    name: forgejo
   values:
