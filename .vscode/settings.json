@@ -53,7 +53,7 @@
         "storage": "archive",
         "external-secrets": "secure",
         "observability": "review",
-        "rook-ceph": "migrations",
+        "rook-ceph": "dump",
         "default": "home",
         "deployment": "azure-pipelines",
         "platform": "server",
