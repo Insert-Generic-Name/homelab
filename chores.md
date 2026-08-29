@@ -23,7 +23,6 @@ Important Todo:
 or so it seems ( tl:dr check if the values.yaml for prometheus are actually for k8s prometheus or raw prometheus, in which case fix them for k8s prometheus)
 
 Todo:
-- Change back Git source URL in FluxInstance from testing ResourceSet branch to main
 - Update Openbao URL in ESO provider.yaml
 - Rewrite bootstrap.sh to Justfile
 - Deploy Flux alert controller once observability stack is done

@@ -18,6 +18,6 @@ spec:
       sync:
         kind: GitRepository
         url: https://github.com/Insert-Generic-Name/homelab
-        ref: refs/heads/resourceset-testing #switch me later to refs/heads/main
+        ref: refs/heads/main
         path: ./kubernetes/flux-system/cluster/platform
         interval: 1m
