@@ -18,18 +18,18 @@ releases:
   - name: cilium
     namespace: kube-system
 
-  # Rook goes here
-  - name: external-secrets
-    namespace: external-secrets
-    needs: ["kube-system/cilium"]
+  # # Rook goes here
+  # - name: external-secrets
+  #   namespace: external-secrets
+  #   needs: ["kube-system/cilium"]
 
-  - name: cert-manager
-    namespace: cert-manager
-    needs: ["external-secrets/external-secrets"]
+  # - name: cert-manager
+  #   namespace: cert-manager
+  #   needs: ["external-secrets/external-secrets"]
 
   - name: flux-operator
     namespace: flux-system
-    needs: ["cert-manager/cert-manager"]
+    needs: ["kube-system/cilium"]
 
   - name: flux-instance
     namespace: flux-system
