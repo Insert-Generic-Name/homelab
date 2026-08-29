@@ -20,7 +20,7 @@ spec:
         type: OCIRepository
         url: oci://quay.io/cilium/charts/cilium
         tag: 1.19.5
-      dependsOn: ""
+      # dependsOn: ""
 
     - name: external-secrets
       namespace: external-secrets
