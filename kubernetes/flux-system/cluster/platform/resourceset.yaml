@@ -24,6 +24,26 @@ spec:
         url: oci://ghcr.io/external-secrets/charts/external-secrets
         tag: 2.8.0
 
+    - name: ceph-operator
+      namespace: rook-ceph
+      source:
+        type: HelmRepository
+        url: https://charts.rook.io/release
+        tag: 1.20.6
+
+    - name: ceph-csi-driver
+      namespace: rook-ceph
+      source:
+        type: HelmRepository
+        url: https://ceph.github.io/ceph-csi-operator
+        tag: 1.0.4
+
+    - name: ceph-cluster
+      namespace: rook-ceph
+      type: HelmRepository
+      url: https://charts.rook.io/release
+      tag: 1.20.6
+
     - name: cert-manager
       namespace: cert-manager
       source:
