@@ -145,7 +145,7 @@ spec:
       name: << inputs.name >>
       namespace: flux-system
     spec:
-      <<- if get inputs "dependsOn" >>
+      <<- if get inputs "dependsOn" | default ""  >>
       dependsOn:
         - name: << get inputs "dependsOn" >>
       <<- end >>
