@@ -11,7 +11,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux-operator
-  # Note: If the input source is a HelmRepository, the input name and the chart name MUST be equal.
+  # Note: If the input source is a HelmRepository, then the input name and the chart name MUST be equal.
   # This can be verified with $ helm search repo << myrepo >>.
   inputs:
     - name: cilium
@@ -35,6 +35,7 @@ spec:
         type: HelmRepository
         url: https://charts.rook.io/release
         tag: 1.20.6
+      dependsOn: cilium
 
     - name: ceph-csi-drivers
       namespace: rook-ceph
@@ -42,6 +43,7 @@ spec:
         type: HelmRepository
         url: https://ceph.github.io/ceph-csi-operator
         tag: 1.0.4
+      dependsOn: rook-ceph
 
     - name: rook-ceph-cluster
       namespace: rook-ceph
@@ -49,6 +51,7 @@ spec:
         type: HelmRepository
         url: https://charts.rook.io/release
         tag: 1.20.6
+      dependsOn: ceph-csi-drivers
 
     - name: cert-manager
       namespace: cert-manager
