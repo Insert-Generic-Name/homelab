@@ -11,34 +11,39 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux-operator
+  # Note: If the input source is a HelmRepository, the input name and the chart name MUST be equal.
+  # This can be verified with $ helm search repo << myrepo >>.
   inputs:
     - name: cilium
       namespace: kube-system
       source:
+        type: OCIRepository
         url: oci://quay.io/cilium/charts/cilium
         tag: 1.19.5
 
     - name: external-secrets
       namespace: external-secrets
       source:
+        type: OCIRepository
         url: oci://ghcr.io/external-secrets/charts/external-secrets
         tag: 2.8.0
+      dependsOn: cilium
 
-    - name: ceph-operator
+    - name: rook-ceph
       namespace: rook-ceph
       source:
         type: HelmRepository
         url: https://charts.rook.io/release
         tag: 1.20.6
 
-    - name: ceph-csi-driver
+    - name: ceph-csi-drivers
       namespace: rook-ceph
       source:
         type: HelmRepository
         url: https://ceph.github.io/ceph-csi-operator
         tag: 1.0.4
 
-    - name: ceph-cluster
+    - name: rook-ceph-cluster
       namespace: rook-ceph
       source:
         type: HelmRepository
@@ -48,97 +53,132 @@ spec:
     - name: cert-manager
       namespace: cert-manager
       source:
+        type: OCIRepository
         url: oci://quay.io/jetstack/charts/cert-manager
         tag: 1.21.0
+      dependsOn: external-secrets
 
     - name: envoy-gateway
       namespace: envoy-gateway-system
       source:
+        type: OCIRepository
         url: oci://docker.io/envoyproxy/gateway-helm
         tag: 1.8.2
+      dependsOn: cert-manager
 
     - name: flux-operator
       namespace: flux-system
       source:
+        type: OCIRepository
         url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
         tag: 0.55.0
 
     - name: flux-instance
       namespace: flux-system
       source:
+        type: OCIRepository
         url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
         tag: 0.54.1
 
     - name: forgejo
       namespace: forgejo
       source:
+        type: OCIRepository
         url: oci://code.forgejo.org/forgejo-helm/forgejo
         tag: 17.1.5
 
-  resources:
-    - apiVersion: v1
-      kind: Namespace
-      metadata:
-        name: << inputs.namespace >>
-        annotations:
-          kustomize.toolkit.fluxcd.io/prune: disabled
+  resourcesTemplate: |
+    <<- if eq inputs.source.type "OCIRepository" >>
+    ---
+    apiVersion: source.toolkit.fluxcd.io/v1
+    kind: OCIRepository
+    metadata:
+      name: << inputs.name >>
+      namespace: flux-system
+    spec:
+      interval: 5m
+      url: << inputs.source.url >>
+      ref:
+        tag: << inputs.source.tag >>
+      layerSelector:
+        mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+        operation: copy
+    <<- end >>
 
-    - apiVersion: kustomize.toolkit.fluxcd.io/v1
-      kind: Kustomization
-      metadata:
+
+    <<- if eq inputs.source.type "HelmRepository" >>
+    ---
+    apiVersion: source.toolkit.fluxcd.io/v1
+    kind: HelmRepository
+    metadata:
+      name: << inputs.name >>
+      namespace: flux-system
+    spec:
+      interval: 5m
+      url: << inputs.source.url >>
+    ---
+    apiVersion: source.toolkit.fluxcd.io/v1
+    kind: HelmChart
+    metadata:
+      name: << inputs.name >>
+      namespace: flux-system
+    spec:
+      interval: 5m
+      chart: << inputs.name >>
+      sourceRef:
+        kind: HelmRepository
         name: << inputs.name >>
+      version: << inputs.source.tag | quote >>
+    <<- end >>
+
+
+    ---
+    apiVersion: kustomize.toolkit.fluxcd.io/v1
+    kind: Kustomization
+    metadata:
+      name: << inputs.name >>
+      namespace: flux-system
+    spec:
+      <<- if inputs.dependsOn >>
+      dependsOn:
+        - name: << inputs.dependsOn >>
+      <<- end >>
+      wait: true
+      interval: 5m
+      prune: << get inputs "prune" | default true >>
+      deletionPolicy: WaitForTermination
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
         namespace: flux-system
-      spec:
-        wait: true
-        interval: 5m
-        prune: << get inputs "prune" | default true >>
-        deletionPolicy: WaitForTermination
-        sourceRef:
-          kind: GitRepository
-          name: flux-system
-          namespace: flux-system
-        path: ./kubernetes/deployment/platform/<< inputs.namespace >>/<< inputs.name >>
-        targetNamespace: << inputs.namespace >>
-        postBuild:
-          substituteFrom:
-            - kind: Secret
-              name: domain
-        patches:
-          - patch: |-
-              apiVersion: helm.toolkit.fluxcd.io/v2
-              kind: HelmRelease
-              metadata:
-                name: _
+      path: ./kubernetes/deployment/platform/<< inputs.namespace >>/<< inputs.name >>
+      targetNamespace: << inputs.namespace >>
+      postBuild:
+        substituteFrom:
+          - kind: Secret
+            name: domain
+      patches:
+        - patch: |-
+            apiVersion: helm.toolkit.fluxcd.io/v2
+            kind: HelmRelease
+            metadata:
+              name: _
+              namespace: flux-system
+            spec:
+              chartRef:
                 namespace: flux-system
-              spec:
-                chartRef:
-                  namespace: flux-system
-                driftDetection:
-                  mode: enabled
-                install:
-                  crds: CreateReplace
-                upgrade:
-                  crds: CreateReplace
-                  cleanupOnFail: true
-                  strategy:
-                    name: RemediateOnFailure
-                rollback:
-                  cleanupOnFail: true
-                interval: 5m
-            target:
-              kind: HelmRelease
-              group: helm.toolkit.fluxcd.io
-
-    - apiVersion: source.toolkit.fluxcd.io/v1
-      kind: OCIRepository
-      metadata:
-        name: << inputs.name >>
-        namespace: flux-system
-      spec:
-        interval: 5m
-        url: << inputs.source.url >>
-        ref:
-          tag: << inputs.source.tag >>
-        layerSelector:
-          mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
-          operation: copy
+              driftDetection:
+                mode: enabled
+              install:
+                crds: CreateReplace
+              upgrade:
+                crds: CreateReplace
+                cleanupOnFail: true
+                strategy:
+                  name: RemediateOnFailure
+              rollback:
+                cleanupOnFail: true
+              interval: 5m
+          target:
+            kind: HelmRelease
+            group: helm.toolkit.fluxcd.io
