@@ -40,9 +40,10 @@ spec:
 
     - name: ceph-cluster
       namespace: rook-ceph
-      type: HelmRepository
-      url: https://charts.rook.io/release
-      tag: 1.20.6
+      source:
+        type: HelmRepository
+        url: https://charts.rook.io/release
+        tag: 1.20.6
 
     - name: cert-manager
       namespace: cert-manager
