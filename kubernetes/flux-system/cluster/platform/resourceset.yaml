@@ -147,7 +147,7 @@ spec:
     spec:
       <<- if inputs.dependsOn >>
       dependsOn:
-        - name: << inputs.dependsOn >>
+        - name: << get inputs "dependsOn" >>
       <<- end >>
       wait: true
       interval: 5m
