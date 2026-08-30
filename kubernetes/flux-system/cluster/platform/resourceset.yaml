@@ -178,3 +178,10 @@ spec:
           target:
             kind: HelmRelease
             group: helm.toolkit.fluxcd.io
+    ---
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: << inputs.namespace >>
+      annotations:
+        << get inputs.namespace "annotations" | default "kustomize.toolkit.fluxcd.io/prune: disabled" | toYaml | nindent 4 >>
