@@ -7,3 +7,6 @@ spec:
     kind: HelmChart
     name: rook-ceph
   values:
+    csi:
+      serviceMonitor:
+        enabled: true

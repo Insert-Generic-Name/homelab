@@ -30,6 +30,7 @@ spec:
 
     - name: rook-ceph
       namespace: rook-ceph
+      createNamespace: false
       source:
         type: HelmRepository
         url: https://charts.rook.io/release
@@ -38,6 +39,7 @@ spec:
 
     - name: ceph-csi-drivers
       namespace: rook-ceph
+      createNamespace: false
       source:
         type: HelmRepository
         url: https://ceph.github.io/ceph-csi-operator
@@ -46,6 +48,7 @@ spec:
 
     - name: rook-ceph-cluster
       namespace: rook-ceph
+      createNamespace: false
       source:
         type: HelmRepository
         url: https://charts.rook.io/release
@@ -88,7 +91,24 @@ spec:
         tag: 17.1.5
 
   resourcesTemplate: |
-    <<- if eq inputs.source.type "OCIRepository" >>
+    <<- if ne get inputs "createNamespace" false >>
+    ---
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: << inputs.namespace >>
+      annotations:
+        kustomize.toolkit.fluxcd.io/prune: disabled
+    <<- end >>
+
+
+    <<-     ---
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: << inputs.namespace >>
+      annotations:
+        kustomize.toolkit.fluxcd.io/prune: disabled inputs.source.type "OCIRepository" >>
     ---
     apiVersion: source.toolkit.fluxcd.io/v1
     kind: OCIRepository
@@ -178,10 +198,3 @@ spec:
           target:
             kind: HelmRelease
             group: helm.toolkit.fluxcd.io
-    ---
-    apiVersion: v1
-    kind: Namespace
-    metadata:
-      name: << inputs.namespace >>
-      annotations:
-        kustomize.toolkit.fluxcd.io/prune: disabled
