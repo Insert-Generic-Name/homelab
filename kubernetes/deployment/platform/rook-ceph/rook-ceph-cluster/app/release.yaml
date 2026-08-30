@@ -7,3 +7,10 @@ spec:
     kind: HelmChart
     name: rook-ceph-cluster
   values:
+    monitoring:
+      enabled: false #changeme
+    cephClusterSpec:
+      mon:
+        count: 1 #change me to 3
+      mgr:
+        count: 1 #change me to 2

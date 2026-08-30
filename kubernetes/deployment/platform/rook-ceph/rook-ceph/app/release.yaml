@@ -10,3 +10,5 @@ spec:
     csi:
       serviceMonitor:
         enabled: true
+    monitoring:
+      enabled: false #changeme
