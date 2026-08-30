@@ -91,7 +91,7 @@ spec:
         tag: 17.1.5
 
   resourcesTemplate: |
-    <<- if ne get inputs "createNamespace" false >>
+    <<- if ne inputs.createNamespace false >>
     ---
     apiVersion: v1
     kind: Namespace
