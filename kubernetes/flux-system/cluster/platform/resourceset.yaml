@@ -119,6 +119,7 @@ spec:
         operation: copy
     <<- end >>
 
+
     <<- if eq inputs.source.type "HelmRepository" >>
     ---
     apiVersion: source.toolkit.fluxcd.io/v1
