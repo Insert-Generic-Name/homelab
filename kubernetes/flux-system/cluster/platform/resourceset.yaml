@@ -102,13 +102,7 @@ spec:
     <<- end >>
 
 
-    <<-     ---
-    apiVersion: v1
-    kind: Namespace
-    metadata:
-      name: << inputs.namespace >>
-      annotations:
-        kustomize.toolkit.fluxcd.io/prune: disabled inputs.source.type "OCIRepository" >>
+    <<- if eq inputs.source.type "OCIRepository" >>
     ---
     apiVersion: source.toolkit.fluxcd.io/v1
     kind: OCIRepository
@@ -124,7 +118,6 @@ spec:
         mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
         operation: copy
     <<- end >>
-
 
     <<- if eq inputs.source.type "HelmRepository" >>
     ---
