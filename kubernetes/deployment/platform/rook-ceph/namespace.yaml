@@ -1,3 +1,5 @@
+# Namespace must be created manually due to needing special labels.
+# It is referenced by the kustomization that deploys rook-ceph.
 apiVersion: v1
 kind: Namespace
 metadata:
