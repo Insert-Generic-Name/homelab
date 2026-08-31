@@ -1,9 +1,0 @@
-# Namespace must be created manually due to needing special labels.
-# It is referenced by the kustomization that deploys rook-ceph.
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: rook-ceph
-  labels:
-    kustomize.toolkit.fluxcd.io/prune: disabled
-    pod-security.kubernetes.io/enforce: privileged

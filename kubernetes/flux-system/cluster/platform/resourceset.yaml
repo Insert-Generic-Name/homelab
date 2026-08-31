@@ -30,7 +30,8 @@ spec:
 
     - name: rook-ceph
       namespace: rook-ceph
-      createNamespace: "No"
+      namespaceLabels:
+        - pod-security.kubernetes.io/enforce: privileged
       source:
         type: HelmRepository
         url: https://charts.rook.io/release
@@ -39,7 +40,8 @@ spec:
 
     - name: ceph-csi-drivers
       namespace: rook-ceph
-      createNamespace: "No"
+      namespaceLabels:
+        - pod-security.kubernetes.io/enforce: privileged
       source:
         type: HelmRepository
         url: https://ceph.github.io/ceph-csi-operator
@@ -48,7 +50,8 @@ spec:
 
     - name: rook-ceph-cluster
       namespace: rook-ceph
-      createNamespace: "No"
+      namespaceLabels:
+        - pod-security.kubernetes.io/enforce: privileged
       source:
         type: HelmRepository
         url: https://charts.rook.io/release
@@ -91,16 +94,16 @@ spec:
         tag: 17.1.5
 
   resourcesTemplate: |
-    <<- if ne ( get inputs "createNamespace" ) "No" >>
     ---
     apiVersion: v1
     kind: Namespace
     metadata:
       name: << inputs.namespace >>
-      labels:
+      annotations:
         kustomize.toolkit.fluxcd.io/prune: disabled
-    <<- end >>
-
+      <<- if ( get inputs "namespaceLabels")
+      labels:  << inputs.namespaceLabels | toYaml | nindent 4 >>
+      <<- end >>
 
     <<- if eq inputs.source.type "OCIRepository" >>
     ---
