@@ -31,7 +31,7 @@ spec:
     - name: rook-ceph
       namespace: rook-ceph
       namespaceLabels:
-        - pod-security.kubernetes.io/enforce: privileged
+        pod-security.kubernetes.io/enforce: privileged
       source:
         type: HelmRepository
         url: https://charts.rook.io/release
@@ -41,7 +41,7 @@ spec:
     - name: ceph-csi-drivers
       namespace: rook-ceph
       namespaceLabels:
-        - pod-security.kubernetes.io/enforce: privileged
+        pod-security.kubernetes.io/enforce: privileged
       source:
         type: HelmRepository
         url: https://ceph.github.io/ceph-csi-operator
@@ -51,7 +51,7 @@ spec:
     - name: rook-ceph-cluster
       namespace: rook-ceph
       namespaceLabels:
-        - pod-security.kubernetes.io/enforce: privileged
+        pod-security.kubernetes.io/enforce: privileged
       source:
         type: HelmRepository
         url: https://charts.rook.io/release
