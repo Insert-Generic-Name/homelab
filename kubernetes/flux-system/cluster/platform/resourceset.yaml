@@ -30,7 +30,7 @@ spec:
 
     - name: rook-ceph
       namespace: rook-ceph
-      createNamespace: no
+      createNamespace: "No"
       source:
         type: HelmRepository
         url: https://charts.rook.io/release
@@ -39,7 +39,7 @@ spec:
 
     - name: ceph-csi-drivers
       namespace: rook-ceph
-      createNamespace: no
+      createNamespace: "No"
       source:
         type: HelmRepository
         url: https://ceph.github.io/ceph-csi-operator
@@ -48,7 +48,7 @@ spec:
 
     - name: rook-ceph-cluster
       namespace: rook-ceph
-      createNamespace: no
+      createNamespace: "No"
       source:
         type: HelmRepository
         url: https://charts.rook.io/release
@@ -91,7 +91,7 @@ spec:
         tag: 17.1.5
 
   resourcesTemplate: |
-    <<- if ne ( get inputs "createNamespace" ) "no" >>
+    <<- if ne ( get inputs "createNamespace" ) "No" >>
     ---
     apiVersion: v1
     kind: Namespace
