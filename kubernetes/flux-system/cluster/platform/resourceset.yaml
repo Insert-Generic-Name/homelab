@@ -101,7 +101,7 @@ spec:
       name: << inputs.namespace >>
       annotations:
         kustomize.toolkit.fluxcd.io/prune: disabled
-      <<- if ( get inputs "namespaceLabels")
+      <<- if ( get inputs "namespaceLabels") >>
       labels:  << inputs.namespaceLabels | toYaml | nindent 4 >>
       <<- end >>
 
