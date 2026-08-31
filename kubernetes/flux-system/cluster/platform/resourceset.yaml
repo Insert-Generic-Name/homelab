@@ -97,7 +97,7 @@ spec:
     kind: Namespace
     metadata:
       name: << inputs.namespace >>
-      annotations:
+      labels:
         kustomize.toolkit.fluxcd.io/prune: disabled
     <<- end >>
 
