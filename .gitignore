@@ -13,6 +13,3 @@ openbao/**
 # Garbage
 vmisc/**
 taloslop/**
-envoy-crds.yaml
-test-image.yaml
-sys-bootstrap.sh
