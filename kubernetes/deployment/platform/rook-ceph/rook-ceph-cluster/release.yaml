@@ -10,28 +10,31 @@ spec:
     monitoring:
       enabled: false #changeme
     cephBlockPools:
-      spec:
-        replicated:
-          size: 1 #changeme to 3
-      storageClass:
-        reclaimPolicy: Retain
+      - name: ceph-blockpool
+        spec:
+          replicated:
+            size: 1 #changeme to 3
+        storageClass:
+          reclaimPolicy: Retain
     cephFileSystems:
-      spec:
-        metadataPool:
-          replicated:
-            size: 1 #changeme to 3
-        dataPools:
-          replicated:
-            size: 1 #changeme to 3
-      storageClass:
-        reclaimPolicy: Retain
+      - name: ceph-filesystem
+        spec:
+          metadataPool:
+            replicated:
+              size: 1 #changeme to 3
+          dataPools:
+            replicated:
+              size: 1 #changeme to 3
+        storageClass:
+          reclaimPolicy: Retain
     cephObjectStores:
-      spec:
-        metadataPool:
-          replicated:
-            size: 1 #change me to 3
-      storageClass:
-        reclaimPolicy: Retain
+      - name: ceph-objectstore
+        spec:
+          metadataPool:
+            replicated:
+              size: 1 #change me to 3
+        storageClass:
+          reclaimPolicy: Retain
         # Enable HTTPRoute
     #   route:
     #   # Enable an ingress for the ceph-objectstore
