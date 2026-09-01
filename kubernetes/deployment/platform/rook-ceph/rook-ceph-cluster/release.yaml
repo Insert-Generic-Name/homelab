@@ -23,8 +23,8 @@ spec:
             replicated:
               size: 1 #changeme to 3
           dataPools:
-            replicated:
-              size: 1 #changeme to 3
+            - replicated:
+                size: 1 #changeme to 3
         storageClass:
           reclaimPolicy: Retain
     cephObjectStores:
