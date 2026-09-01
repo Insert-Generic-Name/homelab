@@ -7,7 +7,7 @@ spec:
     kind: OCIRepository
     name: forgejo
   values:
-    replicaCount: 2
+    replicaCount: 3
     serviceAccount:
       create: true
     persistence:
