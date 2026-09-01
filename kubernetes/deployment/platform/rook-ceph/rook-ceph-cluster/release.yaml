@@ -25,6 +25,9 @@ spec:
           dataPools:
             - replicated:
                 size: 1 #changeme to 3
+          metadataServer:
+            activeCount: 1
+            activeStandby: true
         storageClass:
           reclaimPolicy: Retain
     cephObjectStores:
