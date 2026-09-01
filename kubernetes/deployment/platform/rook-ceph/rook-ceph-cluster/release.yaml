@@ -14,9 +14,10 @@ spec:
         spec:
           replicated:
             size: 1 #changeme to 3
-        # storageClass:
-        #   enabled: true
-        #   reclaimPolicy: Retain
+        storageClass:
+          enabled: true
+          name: ceph-blockpool
+          reclaimPolicy: Retain
     cephFileSystems:
       - name: ceph-filesystem
         spec:
@@ -29,16 +30,20 @@ spec:
           metadataServer:
             activeCount: 1
             activeStandby: true
-        # storageClass:
-        #   reclaimPolicy: Retain
+        storageClass:
+          enabled: true
+          name: ceph-filesystem
+          reclaimPolicy: Retain
     cephObjectStores:
       - name: ceph-objectstore
         spec:
           metadataPool:
             replicated:
               size: 1 #change me to 3
-        # storageClass:
-        #   reclaimPolicy: Retain
+        storageClass:
+          enabled: true
+          name: ceph-objectstore
+          reclaimPolicy: Retain
         # Enable HTTPRoute
     #   route:
     #   # Enable an ingress for the ceph-objectstore
