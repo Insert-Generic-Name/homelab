@@ -23,6 +23,7 @@ Important Todo:
 or so it seems ( tl:dr check if the values.yaml for prometheus are actually for k8s prometheus or raw prometheus, in which case fix them for k8s prometheus)
 
 Todo:
+- Change values inside Rook-ceph-cluster to monitor proper number of daemons
 - Update ceph dashboard so its accessible via istio
 - Update Openbao URL in ESO provider.yaml
 - Rewrite bootstrap.sh to Justfile
