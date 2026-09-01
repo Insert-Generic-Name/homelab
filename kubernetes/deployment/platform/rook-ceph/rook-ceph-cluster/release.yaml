@@ -15,6 +15,7 @@ spec:
           replicated:
             size: 1 #changeme to 3
         storageClass:
+          enabled: true
           reclaimPolicy: Retain
     cephFileSystems:
       - name: ceph-filesystem
