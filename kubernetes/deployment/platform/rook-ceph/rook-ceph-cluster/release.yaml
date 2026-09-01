@@ -34,11 +34,6 @@ spec:
     #   #   - name: internal
     #   #     namespace: kube-system
     #   #     sectionName: https
-    cephClusterSpec:
-      mon:
-        count: 3
-      mgr:
-        count: 2
 # route:
 #   # -- Enable an HTTPRoute for the ceph-dashboard
 #   dashboard: {}
