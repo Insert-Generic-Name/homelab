@@ -9,11 +9,50 @@ spec:
   values:
     monitoring:
       enabled: false #changeme
-    cephClusterSpec:
-      mon:
-        count: 1 #change me to 3
-      mgr:
-        count: 1 #change me to 2
+    cephBlockPools:
+      spec:
+        replicated:
+          size: 1 #changeme to 3
+      storageClass:
+        reclaimPolicy: Retain
+    cephFileSystems:
+      spec:
+        metadataPool:
+          replicated:
+            size: 1 #changeme to 3
+        dataPools:
+          replicated:
+            size: 1 #changeme to 3
+      storageClass:
+        reclaimPolicy: Retain
+    cephObjectStores:
+      spec:
+        metadataPool:
+          replicated:
+            size: 1 #change me to 3
+      storageClass:
+        reclaimPolicy: Retain
+        # Enable HTTPRoute
+    #   route:
+    #   # Enable an ingress for the ceph-objectstore
+    #   enabled: false
+    #   # The ingress port by default will be the object store's "securePort" (if set), or the gateway "port".
+    #   # To override those defaults, set this ingress port to the desired port.
+    #   # port: 80
+    #   # annotations: {}
+    #   # host:
+    #   #   name: objectstore.example.com
+    #   #   path: /
+    #   #   pathType: PathPrefix
+    #   # parentRefs:
+    #   #   - name: internal
+    #   #     namespace: kube-system
+    #   #     sectionName: https
+    # cephClusterSpec:
+    #   mon:
+    #     count: 1 #change me to 3
+    #   mgr:
+    #     count: 1 #change me to 2
 # route:
 #   # -- Enable an HTTPRoute for the ceph-dashboard
 #   dashboard: {}
