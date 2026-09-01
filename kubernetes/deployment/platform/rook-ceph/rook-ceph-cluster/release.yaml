@@ -22,7 +22,7 @@ spec:
           metadataPool:
             replicated:
               size: 1 #changeme to 3
-          dataPools:
+          dataPool:
             replicated:
               size: 1 #changeme to 3
         storageClass:
