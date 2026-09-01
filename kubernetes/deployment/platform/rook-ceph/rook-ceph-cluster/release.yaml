@@ -14,3 +14,19 @@ spec:
         count: 1 #change me to 3
       mgr:
         count: 1 #change me to 2
+# route:
+#   # -- Enable an HTTPRoute for the ceph-dashboard
+#   dashboard: {}
+#     # labels:
+#     #   external-dns/private: "true"
+#     # annotations:
+#     #   external-dns.alpha.kubernetes.io/hostname: dashboard.example.com
+#     #   nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
+#     # host:
+#     #   name: dashboard.example.com
+#     #   path: "/"
+#     #   pathType: PathPrefix
+#     # parentRefs:
+#     #   - name: internal
+#     #     namespace: kube-system
+#     #     sectionName: https
