@@ -36,9 +36,9 @@ spec:
     #   #     sectionName: https
     cephClusterSpec:
       mon:
-        count: 1 #change me to 3
+        count: 3
       mgr:
-        count: 1 #change me to 2
+        count: 2
 # route:
 #   # -- Enable an HTTPRoute for the ceph-dashboard
 #   dashboard: {}
