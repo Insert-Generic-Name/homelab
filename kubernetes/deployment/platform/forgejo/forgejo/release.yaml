@@ -7,3 +7,25 @@ spec:
     kind: OCIRepository
     name: forgejo
   values:
+    replicaCount: 2
+    serviceAccount:
+      create: true
+    persistence:
+      storageClass: ceph-block
+      size: 5Gi
+    metrics:
+      enabled: false #changeme
+      serviceMonitor:
+        enabled: false #changeme
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+        add:
+          - SYS_CHROOT
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsGroup: 1000
+      runAsNonRoot: true
+      runAsUser: 1000
