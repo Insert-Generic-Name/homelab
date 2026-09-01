@@ -29,16 +29,16 @@ spec:
           metadataServer:
             activeCount: 1
             activeStandby: true
-        storageClass:
-          reclaimPolicy: Retain
+        # storageClass:
+        #   reclaimPolicy: Retain
     cephObjectStores:
       - name: ceph-objectstore
         spec:
           metadataPool:
             replicated:
               size: 1 #change me to 3
-        storageClass:
-          reclaimPolicy: Retain
+        # storageClass:
+        #   reclaimPolicy: Retain
         # Enable HTTPRoute
     #   route:
     #   # Enable an ingress for the ceph-objectstore
