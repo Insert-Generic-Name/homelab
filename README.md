@@ -32,7 +32,7 @@ Use https://dashboardicons.com/ for homepage
 
 ##### Tools #####
 --------------------------
-- Talos + Talhelper
+- Talos
 - Authentik/Authelia
 - Cilium (CNI/LB) + Hubble UI
 - Envoy gateway (GAPIC)
@@ -43,7 +43,6 @@ Use https://dashboardicons.com/ for homepage
 - Tailscale
 - yamllint + gitleaks + .vscode + .gitattributes.
 - Renovate
-- Talos + Talhelper
 - Custom self-made Helm chart for templating ( avoid 4 manifests per service)
 
 
