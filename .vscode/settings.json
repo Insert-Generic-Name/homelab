@@ -25,52 +25,54 @@
     // Icon theme settings
     "files.associations": {
         "**/*.json5": "json5",
-    },
-    "material-icon-theme.files.associations": {
-        // Builtin
-        "README.md": "document",
-        "*.gotmpl": "go",
-        "release.yaml": "helm",
-        "namespace.yaml": "kubernetes",
-        "helmfile.yaml": "helm",
-        "source.yaml": "parcel",
-        "secrets.yaml": "lock",
-        "kustomization.yaml": "kubernetes",
-        "resourceset.yaml": "azure-pipelines",
-        "inputprovider.yaml": "azure-pipelines",
-    },
-    "material-icon-theme.folders.associations": {
-        "bootstrap": "seeders",
-        "talos": "linux",
-        "gaming": "console",
-        "envoy-gateway-system": "context",
-        "cert-manager": "license",
-        "flux-system": "generator",
-        "forgejo": "git",
-        "kube-system": "controller",
-        "productivity": "tasks",
-        "security": "guard",
-        "storage": "archive",
-        "external-secrets": "secure",
-        "observability": "review",
-        "rook-ceph": "dump",
-        "default": "home",
-        "deployment": "azure-pipelines",
-        "platform": "server",
-        "helmfile": "helm",
-        "ai": "gemini-ai",
-        "lifestyle": "java",
-    },
-    "workbench.productIconTheme": "icons-carbon",
-    // Language configuration
-    "yaml.schemaStore.enable": true,
-    "yaml.schemas": {
-        "kubernetes": "./kubernetes/**/*.yaml"
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
-    },
-    "[json5]": {
-        "editor.defaultFormatter": "BlueGlassBlock.better-json5"
+        "*.yaml.tmpl": "yaml"
     }
+},
+"material-icon-theme.files.associations": {
+    // Builtin
+    "README.md": "document",
+    "*.gotmpl": "go",
+    "release.yaml": "helm",
+    "namespace.yaml": "kubernetes",
+    "helmfile.yaml": "helm",
+    "source.yaml": "parcel",
+    "secrets.yaml": "lock",
+    "kustomization.yaml": "kubernetes",
+    "resourceset.yaml": "azure-pipelines",
+    "inputprovider.yaml": "azure-pipelines",
+},
+"material-icon-theme.folders.associations": {
+    "bootstrap": "seeders",
+    "talos": "linux",
+    "gaming": "console",
+    "envoy-gateway-system": "context",
+    "cert-manager": "license",
+    "flux-system": "generator",
+    "forgejo": "git",
+    "kube-system": "controller",
+    "productivity": "tasks",
+    "security": "guard",
+    "storage": "archive",
+    "external-secrets": "secure",
+    "observability": "review",
+    "rook-ceph": "dump",
+    "default": "home",
+    "deployment": "azure-pipelines",
+    "platform": "server",
+    "helmfile": "helm",
+    "ai": "gemini-ai",
+    "lifestyle": "java",
+},
+"workbench.productIconTheme": "icons-carbon",
+// Language configuration
+"yaml.schemaStore.enable": true,
+"yaml.schemas": {
+    "kubernetes": "./kubernetes/**/*.yaml"
+},
+"[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+},
+"[json5]": {
+    "editor.defaultFormatter": "BlueGlassBlock.better-json5"
+}
 }
