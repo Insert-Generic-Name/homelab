@@ -25,7 +25,7 @@
     // Icon theme settings
     "files.associations": {
         "**/*.json5": "json5",
-        "*.yaml.tmpl": "yaml"
+        "*.yaml.tmpl": "yaml",
     }
 },
 "material-icon-theme.files.associations": {
