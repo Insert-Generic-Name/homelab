@@ -17,6 +17,17 @@ Misc:
 - https://craftycontrol.com/
 - https://modrinth.com/mod/waylandcraft
 Important Todo:
+######
+- CI checks: Helmlint, yamllint, gitleaks, schema validation between others
+Also:
+hadolint (Dockerfile lint)
+kubescape
+Markdown lint
+shellcheck
+Argocd diff
+gitleaks
+helmlint
+######
 - Recheck all values.yaml refering to their charts in ArtifactHub and tune as needed ( especialyl for prometheus)
 - How to manage ExternalSecrets with the split app/config dir ( where does it go) Refer to envoy
 - Learn about Todo, and fix all of the values.yaml regarding prometheus since you can deploy it in different ways
