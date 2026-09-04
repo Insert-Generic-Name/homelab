@@ -1,15 +1,9 @@
-# Add to gitignore all garbage files that should never be part of the final system.
-# this excludes:
-# - chores.md since its the current planning resource, although it will also be deleted on the final deployment.
-# - openbao related, as it represents a crucial "off-the-books" part of infrastructure for k8s ( The ESO)
-
-# Do NOT REMOVE
 .env
 .envrc
-kubernetes/private/**
-!kubernetes/private/secret-template.yaml
-# To move
-openbao/**
-# Garbage
-vmisc/**
+# Used to store sensitive configurations
+omni/config/**
+!omni/config/.gitkeep
+
+## delete me when deployment is done ##
 taloslop/**
+terraslop/**
