@@ -1,0 +1,28 @@
+# https://github.com/dexidp/dex/blob/master/config.yaml.dist
+issuer: https://auth.${OMNI_DOMAIN}
+
+storage:
+  type: sqlite3
+  config:
+    file: /var/dex/dex.db
+
+web:
+  http: 127.0.0.1:5556
+frontend:
+  theme: dark
+
+staticClients:
+  - name: Omni
+    id: "${OMNI_CLIENT_ID}"
+    secret: "${OMNI_CLIENT_SECRET}"
+    redirectURIs:
+      - https://${OMNI_DOMAIN}/oidc/consume
+
+connectors:
+  - type: github
+    id: github
+    name: GitHub
+    config:
+      clientID: "${GITHUB_CLIENT_ID}"
+      clientSecret: "${GITHUB_CLIENT_SECRET}"
+      redirectURI: https://auth.${OMNI_DOMAIN}/callback

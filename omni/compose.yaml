@@ -1,109 +1,47 @@
 services:
   omni:
     container_name: omni
+    image: ghcr.io/siderolabs/omni:v1.11.0
+    restart: unless-stopped
     network_mode: host
+    depends_on:
+      - dex
     cap_add:
       - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
-    restart: no
     volumes:
-      - ./data/omni.asc:/omni.asc:ro,Z
-      - ./data/etcd:/_out/etcd:rw,Z
-      - ./data/sqlite:/_out/sqlite:rw,Z
-    image: ghcr.io/siderolabs/omni:latest
-    command:
-      # https://docs.siderolabs.com/omni/reference/omni-configuration
-      --name=${OMNI_NAME}
-      --private-key-source=file:///omni.asc
-      --bind-addr=127.0.0.1:8080
-      --advertised-api-url=https://${OMNI_DOMAIN}/
-      --siderolink-api-bind-addr=127.0.0.1:8090
-      --siderolink-api-advertised-url=https://api.${OMNI_DOMAIN}:443
-      --k8s-proxy-bind-addr=127.0.0.1:8100
-      --advertised-kubernetes-proxy-url=https://kube.${OMNI_DOMAIN}/
-      --account-id=${OMNI_ACCOUNT_UUID}
-      --auth-auth0-enabled=false
-      --auth-oidc-enabled=true
-      --auth-oidc-provider-url=https://${OMNI_AUTH_ENDPOINT}
-      --auth-oidc-client-id=omni
-      --auth-oidc-client-secret=omni-dex-secret
-      --sqlite-storage-path=/_out/sqlite/omni.db
-    labels:
-      - "traefik.enable=true"
+      - ./config/config.yaml:/config.yaml:ro,Z
+      - ./config/omni.asc:/omni.asc:ro,Z
+      - omni_etcd:/_out/etcd:rw,Z
+      - omni_sqlite:/_out/sqlite:rw,Z
+    command: --config-path=/config.yaml
 
-      - "traefik.http.routers.omni.rule=Host(`${OMNI_DOMAIN:?error}`)"
-      - "traefik.http.routers.omni.entrypoints=websecure"
-      - "traefik.http.routers.omni.tls=true"
-      - "traefik.http.routers.omni.tls.certresolver=cf"
-      - "traefik.http.services.omni.loadbalancer.server.port=8080"
-
-      - "traefik.http.routers.omni-sl.rule=Host(`api.${OMNI_DOMAIN:?error}`)"
-      - "traefik.http.routers.omni-sl.entrypoints=websecure"
-      - "traefik.http.routers.omni-sl.tls=true"
-      - "traefik.http.routers.omni-sl.tls.certresolver=cf"
-      - "traefik.http.services.omni-sl.loadbalancer.server.port=8090"
-
-      - "traefik.http.routers.omni-kp.rule=Host(`kube.${OMNI_DOMAIN:?error}`)"
-      - "traefik.http.routers.omni-kp.entrypoints=websecure"
-      - "traefik.http.routers.omni-kp.tls=true"
-      - "traefik.http.routers.omni-kp.tls.certresolver=cf"
-      - "traefik.http.services.omni-kp.loadbalancer.server.port=8100"
   dex:
     container_name: dex
-    restart: unless-stopped
-    # network_mode: host
-    volumes:
-      - ./dex.yaml:/etc/dex/dex.yaml:ro,Z
     image: ghcr.io/dexidp/dex:v2.41.1
-    command: dex serve /etc/dex/dex.yaml
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dex.rule=Host(`auth.${OMNI_DOMAIN:?error}`)"
-      - "traefik.http.routers.dex.entrypoints=websecure"
-      - "traefik.http.routers.dex.tls=true"
-      - "traefik.http.routers.dex.tls.certresolver=cf"
-      - "traefik.http.services.dex.loadbalancer.server.port=5556"
-  traefik:
-    image: traefik:v3.7
-    container_name: traefik
     restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    command:
-      # EntryPoints
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
-      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
-      - "--entrypoints.websecure.address=:443"
-      - "--entrypoints.websecure.http.tls=true"
-      # Providers
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      # - "--providers.docker.network=proxy"
-      # API & Dashboard
-      - "--api=false"
-      # Certificate management
-      - "--certificatesresolvers.cf.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
-      - "--certificatesresolvers.cf.acme.storage=/certs/acme.json"
-      - "--certificatesresolvers.cf.acme.profile=shortlived"
-      - "--certificatesresolvers.cf.acme.dnsChallenge=true"
-      - "--certificatesresolvers.cf.acme.dnsChallenge.provider=cloudflare"
-      - "--certificatesresolvers.cf.acme.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53"
-      - "--entrypoints.websecure.http.tls.certresolver=cf"
-      # Logs
-      - "--log.level=DEBUG"
-      - "--accesslog=true"
-    ports:
-      - "80:80"
-      - "443:443"
-    environment:
-      - CLOUDFLARE_EMAIL=${EMAIL:?}
-      - CF_DNS_API_TOKEN=${CF_TOKEN:?}
+    network_mode: host
+    depends_on:
+      - caddy
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - certs:/certs
+      - ./config/dex.yaml:/etc/dex/dex.yaml:ro,Z
+      - dex_db:/var/dex/
+    command: dex serve /etc/dex/dex.yaml
+
+  caddy:
+    container_name: caddy_omni
+    image: ghcr.io/caddy-dns/cloudflare:v0.2.4
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./config/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_omni_data:/data
+      - caddy_omni_config:/config
 
 volumes:
-  certs:
+  caddy_omni_data:
+  caddy_omni_config:
+  dex_db:
+  omni_etcd:
+  omni_sqlite:

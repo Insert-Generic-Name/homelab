@@ -1,5 +1,3 @@
-
-# VERY IMPORTANT: CHECK CONFIG INSIDE OPENBAO VM
 # General Settings
 ui            = true
 cluster_addr  = "http://0.0.0.0:8201"

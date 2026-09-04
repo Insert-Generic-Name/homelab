@@ -1,0 +1,42 @@
+# https://docs.siderolabs.com/omni/reference/omni-configuration
+account:
+  id: "${OMNI_ACCOUNT_UUID}"
+  name: omni
+services:
+  api:
+    endpoint: "127.0.0.1:8080"
+    advertisedURL: "https://${OMNI_DOMAIN}/"
+  kubernetesProxy:
+    endpoint: "127.0.0.1:8095"
+    advertisedURL: "https://kube.${OMNI_DOMAIN}/"
+  siderolink:
+    joinTokensMode: strict
+    wireGuard:
+      endpoint: "0.0.0.0:50180"
+      advertisedEndpoint: "192.168.1.60:50180"
+  machineAPI:
+    endpoint: "127.0.0.1:8090"
+    advertisedURL: "https://api.${OMNI_DOMAIN}"
+auth:
+  initialUsers:
+    - "${EMAIL}"
+  auth0:
+    enabled: false
+  oidc:
+    enabled: true
+    providerURL: "https://auth.${OMNI_DOMAIN}"
+    clientID: "${OMNI_CLIENT_ID}"
+    clientSecret: "${OMNI_CLIENT_SECRET}"
+    scopes:
+      - openid
+      - email
+      - profile
+storage:
+  default:
+    etcd:
+      privateKeySource: "file:///omni.asc"
+  sqlite:
+    path: "/_out/sqlite/omni.db"
+eulaAccept:
+  name: "user"
+  email: "example@mail.com"
