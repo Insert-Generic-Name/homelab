@@ -24,7 +24,7 @@
     "files.trimTrailingWhitespace": true,
     // Icon theme settings
     "files.associations": {
-        "**/*.json5": "json5",
+        "*.json5": "json5",
         "*.yaml.tmpl": "yaml",
     },
     "material-icon-theme.files.associations": {
@@ -37,12 +37,10 @@
         "source.yaml": "parcel",
         "secrets.yaml": "lock",
         "kustomization.yaml": "kubernetes",
-        "resourceset.yaml": "azure-pipelines",
-        "inputprovider.yaml": "azure-pipelines",
+        "rs.yaml": "azure-pipelines",
     },
     "material-icon-theme.folders.associations": {
         "bootstrap": "seeders",
-        "talos": "linux",
         "gaming": "console",
         "envoy-gateway-system": "context",
         "cert-manager": "license",
@@ -60,6 +58,7 @@
         "platform": "server",
         "helmfile": "helm",
         "ai": "gemini-ai",
+        "omni": "core",
         "lifestyle": "java",
     },
     "workbench.productIconTheme": "icons-carbon",
