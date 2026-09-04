@@ -58,6 +58,7 @@
         "platform": "server",
         "helmfile": "helm",
         "ai": "gemini-ai",
+        "vault": "guard",
         "omni": "core",
         "lifestyle": "java",
     },
