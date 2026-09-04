@@ -11,7 +11,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     volumes:
-      - ./config/config.yaml:/config.yaml:ro,Z
+      - ./config/omni.yaml:/omni.yaml:ro,Z
       - ./config/omni.asc:/omni.asc:ro,Z
       - omni_etcd:/_out/etcd:rw,Z
       - omni_sqlite:/_out/sqlite:rw,Z
