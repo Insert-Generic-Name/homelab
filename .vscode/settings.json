@@ -60,6 +60,7 @@
         "ai": "gemini-ai",
         "vault": "guard",
         "omni": "core",
+        ".mise": "project",
         "lifestyle": "java",
     },
     "workbench.productIconTheme": "icons-carbon",
