@@ -1,5 +1,5 @@
 [tools]
-omnictl = "latest"
+omnictl = "10.5"
 
 [env]
 NODE_ENV = 'development'
