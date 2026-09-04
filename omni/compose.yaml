@@ -15,7 +15,7 @@ services:
       - ./config/omni.asc:/omni.asc:ro,Z
       - omni_etcd:/_out/etcd:rw,Z
       - omni_sqlite:/_out/sqlite:rw,Z
-    command: --config-path=/config.yaml
+    command: --config-path=/omni.yaml
 
   dex:
     container_name: dex
