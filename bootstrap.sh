@@ -30,9 +30,6 @@ envsubst -i ./omni/templates/Caddyfile.tmpl -o ./omni/config/Caddyfile
 
 ## Kubernetes phase
 
-# Create both namespaces so the secrets can be created.
-
-kubectl create ns flux-system && kubectl create ns external-secrets
 
 # Create the real templates based on environment variables injected by mise, which retrieved from OpenBao
 
