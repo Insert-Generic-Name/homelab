@@ -72,6 +72,9 @@
     "[yaml]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
     "[json5]": {
         "editor.defaultFormatter": "BlueGlassBlock.better-json5"
     }
