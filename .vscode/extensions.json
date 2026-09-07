@@ -7,6 +7,7 @@
     "tamasfe.even-better-toml",
     "blueglassblock.better-json5",
     "nefrob.vscode-just-syntax",
+    "hverlin.mise-vscode",
     // Visual
     "pkief.material-icon-theme",
     "antfu.icons-carbon"
