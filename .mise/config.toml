@@ -3,9 +3,10 @@ omnictl = "1.11.0"
 terraform = "1.16.1"
 helmfile = "1.7.4"
 openbao = "2.6.2"
-fnox = "1.35.1"
+envsubst = "1.4.3"
 
 [env]
 # OpenBao
-BAO_ADDR = "https://192.168.1.35:8200"
-BAO_SKIP_VERIFY = false
+BAO_ADDR = "http://127.0.0.1:8200"
+BAO_NAMESPACE = "root"
+BAO_SKIP_VERIFY = true
