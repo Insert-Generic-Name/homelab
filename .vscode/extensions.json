@@ -6,6 +6,7 @@
     "hashicorp.terraform",
     "tamasfe.even-better-toml",
     "blueglassblock.better-json5",
+    "nefrob.vscode-just-syntax",
     // Visual
     "pkief.material-icon-theme",
     "antfu.icons-carbon"
