@@ -1,20 +1,21 @@
 # General Settings
 ui            = true
-cluster_addr  = "http://0.0.0.0:8201"
-api_addr      = "http://0.0.0.0:8200"
+cluster_addr  = "http://127.0.0.1:8201"
+api_addr      = "http://127.0.0.1:8200"
 cluster_name  = "openbao"
 
 # Listeners
 listener "tcp" {
-  address          = "0.0.0.0:8200"
+  address          = "127.0.0.1:8200"
+  tls_disable     = "true"
   # Use default signed certs that get installed ( atleast on debian)
-  tls_cert_file = "/openbao/tls/tls.crt"
-  tls_key_file  = "/openbao/tls/tls.key"
+  # tls_cert_file = "/openbao/tls/tls.crt"
+  # tls_key_file  = "/openbao/tls/tls.key"
 }
 
 # Storage
 storage "raft" {
-  path    = "/openbao/data"
+  path    = "/openbao/config"
   node_id = "main"
 }
 
@@ -30,7 +31,7 @@ audit "file" "Live" {
 audit "file" "Persistent" {
   description = "Persistent logging via file path"
   options = {
-    file_path = "/openbao/audit"
+    file_path = "/openbao/logs/openbao.logs"
     log_raw   = "false"
   }
 }
