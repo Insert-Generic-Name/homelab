@@ -8,7 +8,7 @@ set shell := ['bash', '-euo', 'pipefail', '-c']
 set script-interpreter := ['bash', '-euo', 'pipefail']
 
 [confirm("Ready to deploy Stage 1? [y|n] ")]
-default: greeter checks create_key vars_tmpl end
+default: greeter checks create_key vars_tmpl run end
 greeter:
     echo "=========================================="
     echo "Activating Stage 1"
@@ -78,6 +78,12 @@ vars_tmpl:
 
     # Unset variables
     unset "${omni_secrets[@]}"
+
+run:
+    echo "=========================================="
+    echo "Starting containers"
+    echo "=========================================="
+    docker compose up -d
 
 end:
     echo "=========================================="
