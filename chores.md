@@ -18,7 +18,7 @@ Misc:
 - https://modrinth.com/mod/waylandcraft
 Important Todo:
 ######
-- CI checks: Helmlint, yamllint, gitleaks, schema validation between others
+- CI checks: Helmlint, kubelinter, yamllint, gitleaks, schema validation between others
 Also:
 hadolint (Dockerfile lint)
 kubescape

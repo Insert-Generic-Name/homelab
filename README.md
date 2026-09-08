@@ -1,6 +1,11 @@
 # Kubernetes homelabbing = Suffering #
 Personal testing battlefield
 
+Stage based deployment:
+0 Bootstrap openbao
+1 Bootstrap omni
+2 Bootstrap KUbernetes
+3- Flux takes over
 - Dont forget to run helmfile init to install needed plugins!
 ## Planning ##
 

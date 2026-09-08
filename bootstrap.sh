@@ -6,7 +6,9 @@ set -euo pipefail
  # Add Stage0 aka Openbao bootstrap
 
 ## Omni phase
-
+echo "=========================================="
+echo "Activating Stage 1"
+echo "=========================================="
 
 # Check if Openbao is able to read Omni secrets.
 if  ! bao kv get -mount=omni omni >/dev/null 2>&1 ; then
@@ -34,9 +36,9 @@ echo "=========================================="
 echo "Generating Omni asc key for etcd encryption"
 echo "=========================================="
 
-gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never
-FINGERPRINT=$(gpg --with-colons --list-keys "omni@internal.local"  | awk -F: '$1 == "fpr" {print $10; exit}')
-gpg --batch --passphrase '' --quick-add-key ${FINGERPRINT} rsa4096 encr never
+gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never >/dev/null 2>&1
+FINGERPRINT=$(gpg --with-colons --list-keys "omni@internal.local"  | awk -F: '$1 == "fpr" {print $10; exit}') >/dev/null 2>&1
+gpg --batch --passphrase '' --quick-add-key ${FINGERPRINT} rsa4096 encr never >/dev/null 2>&1
 gpg --export-secret-key --armor omni@internal.local > ./omni/config/omni.asc
 
 fi
@@ -75,6 +77,10 @@ echo "=========================================="
 
 ## Kubernetes phase
 
+echo "=========================================="
+echo "Activating Stage 2"
+echo "=========================================="
+
 if ! bao kv get -mount=kubernetes bootstrap >/dev/null 2>&1  ; then
 echo "=========================================="
 echo "Openbao CLI is unable to retrieve secrets, exiting"
@@ -87,7 +93,6 @@ k8s_secrets=(
   DOMAIN
   BAO_TOKEN
 )
-0= openbao 1= omni 2=
 echo "=========================================="
 echo "Creating inital kubernetes secrets"
 echo "=========================================="
@@ -102,5 +107,9 @@ unset "${k8s_secrets[@]}"
 
 
 echo "=========================================="
-echo "Stage 2 has been completed sucessfully, initalising step 3"
+echo "Stage 2 has been completed sucessfully"
+echo "=========================================="
+
+echo "=========================================="
+echo "Activating Stage 3"
 echo "=========================================="
