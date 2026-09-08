@@ -75,6 +75,9 @@
     "[toml]": {
         "editor.defaultFormatter": "tamasfe.even-better-toml"
     },
+    "[just]": {
+        "editor.defaultFormatter": "nefrob.vscode-just-syntax"
+    },
     "[json5]": {
         "editor.defaultFormatter": "BlueGlassBlock.better-json5"
     },
