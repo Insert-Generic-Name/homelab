@@ -40,7 +40,7 @@ create_key:
     gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never >/dev/null 2>&1
     FINGERPRINT=$(gpg --with-colons --list-keys "omni@internal.local"  | awk -F: '$1 == "fpr" {print $10; exit}') >/dev/null 2>&1
     gpg --batch --passphrase '' --quick-add-key ${FINGERPRINT} rsa4096 encr never >/dev/null 2>&1
-    gpg --export-secret-key --armor omni@internal.local > ./omni/config/omni.asc
+    gpg --export-secret-key --armor omni@internal.local > ./config/omni.asc
     fi
 
 vars_tmpl:
@@ -73,7 +73,7 @@ vars_tmpl:
 
     # Envsubst creates configuration files by applying the values inside the templates
     for config_files in "${config_files[@]}"; do
-    envsubst -i "./omni/templates/$config_files.tmpl" -o "./omni/config/$config_files" --no-unset --no-empty -fail-fast
+    envsubst -i "./templates/$config_files.tmpl" -o "./config/$config_files" --no-unset --no-empty -fail-fast
     done
 
     # Unset variables
