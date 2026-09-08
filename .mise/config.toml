@@ -9,4 +9,3 @@ kubelogin = "1.36.3"
 [env]
 BAO_ADDR = "http://127.0.0.1:8200"
 BAO_SKIP_VERIFY = true
-# OpenBao
