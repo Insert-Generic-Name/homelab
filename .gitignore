@@ -1,8 +1,8 @@
 .env
 .envrc
 # Used to store sensitive configurations
-omni/config/**
-!omni/config/.gitkeep
+omni/generated/**
+!omni/generated/.gitkeep
 
 ## delete me when deployment is done ##
 taloslop/**

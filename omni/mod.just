@@ -73,7 +73,7 @@ vars_tmpl:
 
     # Envsubst creates configuration files by applying the values inside the templates
     for config_files in "${config_files[@]}"; do
-    envsubst -i "./templates/$config_files.tmpl" -o "./config/$config_files" --no-unset --no-empty -fail-fast
+    envsubst -i "./templates/$config_files.tmpl" -o "./generated/$config_files" --no-unset --no-empty -fail-fast
     done
 
     # Unset variables
@@ -83,7 +83,12 @@ run:
     echo "=========================================="
     echo "Starting containers"
     echo "=========================================="
-    docker compose up -d
+    if ! docker compose up -d; then
+    echo "=========================================="
+    echo "Unable to run containers, ensure that Docker is ready"
+    echo "=========================================="
+    exit 1
+    fi
 
 end:
     echo "=========================================="
