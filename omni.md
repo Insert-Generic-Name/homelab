@@ -19,4 +19,6 @@ Create ISO manually :kek: ( To avoid mental overhead)
 Download it and flash it manually
 
 Create machineclass.yaml ( For dynamic provision instead of relying on UUID pasting)
+And Create cluster
 omnictl apply -f machine-class.yaml
+omnictl cluster template sync -f cluster.yaml --verbose
