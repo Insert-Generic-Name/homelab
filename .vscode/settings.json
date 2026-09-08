@@ -38,6 +38,7 @@
         "secrets.yaml": "lock",
         "kustomization.yaml": "kubernetes",
         "rs.yaml": "azure-pipelines",
+        "*.just": "just"
     },
     "material-icon-theme.folders.associations": {
         "bootstrap": "seeders",
