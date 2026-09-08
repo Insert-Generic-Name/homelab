@@ -249,6 +249,45 @@ checksum = "sha256:759f16fb7aa17c5c8b9594b6d4a8c1a6630dfd042cf2b3ff84841454d3d18
 url = "https://github.com/casey/just/releases/download/1.58.0/just-1.58.0-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/casey/just/releases/assets/500511374"
 
+[[tools.kubelogin]]
+version = "1.36.3"
+backend = "aqua:int128/kubelogin"
+
+[tools.kubelogin."platforms.linux-arm64"]
+checksum = "sha256:c1502297738af4054507cc0675b54db1ebec67cedc32498028ba889906386462"
+url = "https://github.com/int128/kubelogin/releases/download/v1.36.3/kubelogin_linux_arm64.zip"
+url_api = "https://api.github.com/repos/int128/kubelogin/releases/assets/480967853"
+
+[tools.kubelogin."platforms.linux-arm64-musl"]
+checksum = "sha256:c1502297738af4054507cc0675b54db1ebec67cedc32498028ba889906386462"
+url = "https://github.com/int128/kubelogin/releases/download/v1.36.3/kubelogin_linux_arm64.zip"
+url_api = "https://api.github.com/repos/int128/kubelogin/releases/assets/480967853"
+
+[tools.kubelogin."platforms.linux-x64"]
+checksum = "sha256:54428b2be68ce297c5c743feed65a2fa2ed2a671881ff70fb6560e560bb18eaf"
+url = "https://github.com/int128/kubelogin/releases/download/v1.36.3/kubelogin_linux_amd64.zip"
+url_api = "https://api.github.com/repos/int128/kubelogin/releases/assets/480967826"
+
+[tools.kubelogin."platforms.linux-x64-musl"]
+checksum = "sha256:54428b2be68ce297c5c743feed65a2fa2ed2a671881ff70fb6560e560bb18eaf"
+url = "https://github.com/int128/kubelogin/releases/download/v1.36.3/kubelogin_linux_amd64.zip"
+url_api = "https://api.github.com/repos/int128/kubelogin/releases/assets/480967826"
+
+[tools.kubelogin."platforms.macos-arm64"]
+checksum = "sha256:52f445067da35b442cdcaf4aff884379188373c97d0564d61036caa178a6f62b"
+url = "https://github.com/int128/kubelogin/releases/download/v1.36.3/kubelogin_darwin_arm64.zip"
+url_api = "https://api.github.com/repos/int128/kubelogin/releases/assets/480967886"
+
+[tools.kubelogin."platforms.macos-x64"]
+checksum = "sha256:cee45b7452984d6b8b3c0fbc4a6cef40698e65aa43948f0468a2b054657aacbb"
+url = "https://github.com/int128/kubelogin/releases/download/v1.36.3/kubelogin_darwin_amd64.zip"
+url_api = "https://api.github.com/repos/int128/kubelogin/releases/assets/480967845"
+
+[tools.kubelogin."platforms.windows-x64"]
+checksum = "sha256:6f1ea25914fb5c1ae7c48bcb688bea37e54960a6143208c35b4fb506ac947611"
+url = "https://github.com/int128/kubelogin/releases/download/v1.36.3/kubelogin_windows_amd64.zip"
+url_api = "https://api.github.com/repos/int128/kubelogin/releases/assets/480968191"
+
 [[tools.omnictl]]
 version = "1.11.0"
 backend = "aqua:siderolabs/omni/omnictl"
