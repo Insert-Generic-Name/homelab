@@ -6,7 +6,6 @@ openbao = "2.6.2"
 envsubst = "1.4.3"
 just = "1.58.0"
 [env]
-# OpenBao
 BAO_ADDR = "http://127.0.0.1:8200"
-BAO_NAMESPACE = "root"
 BAO_SKIP_VERIFY = true
+# OpenBao
