@@ -1,6 +1,6 @@
 # https://docs.siderolabs.com/omni/getting-started/create-a-cluster
 kind: Cluster
-name: insert-generic-cluster-name
+name: kube-ops
 kubernetes:
   version: "v1.37.0"
 talos:
