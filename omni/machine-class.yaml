@@ -5,5 +5,5 @@ metadata:
   id: main-pool
 spec:
   matchlabels:
-    # matches machines with amd64 architecture and more than 2 cores
+    # matches machines that are not inside a cluster
     - omni.sidero.dev/available

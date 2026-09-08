@@ -1,0 +1,12 @@
+# https://docs.siderolabs.com/omni/getting-started/create-a-cluster
+kind: Cluster
+name: insert-generic-cluster-name
+kubernetes:
+  version: "v1.37.0"
+talos:
+  version: "v1.14.0"
+---
+kind: ControlPlane
+machineClass:
+  name: main-pool
+  size: unlimited

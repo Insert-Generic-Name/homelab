@@ -73,7 +73,7 @@ vars_tmpl:
 
     # Envsubst creates configuration files by applying the values inside the templates
     for config_files in "${config_files[@]}"; do
-    envsubst -i "./templates/$config_files.tmpl" -o "./generated/$config_files" --no-unset --no-empty -fail-fast
+    envsubst -i "./templates/$config_files.tmpl" -o "./.generated/$config_files" --no-unset --no-empty -fail-fast
     done
 
     # Unset variables
