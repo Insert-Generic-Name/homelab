@@ -132,6 +132,45 @@ url = "https://github.com/jdx/fnox/releases/download/v1.35.1/fnox-x86_64-pc-wind
 url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/546210974"
 provenance = "github-attestations"
 
+[[tools."github:terror/just-lsp"]]
+version = "0.7.1"
+backend = "github:terror/just-lsp"
+
+[tools."github:terror/just-lsp"."platforms.linux-arm64"]
+checksum = "sha256:a56b0e86bd507b0b8969ad212e90dd78b0dd5ad9fb396317424dafaaecac18c6"
+url = "https://github.com/terror/just-lsp/releases/download/0.7.1/just-lsp-0.7.1-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/542941951"
+
+[tools."github:terror/just-lsp"."platforms.linux-arm64-musl"]
+checksum = "sha256:058eb51e700d908aacbad96d7f229ec4a0a8c0d4e042a3e1807e06fd4065d93b"
+url = "https://github.com/terror/just-lsp/releases/download/0.7.1/just-lsp-0.7.1-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/542942486"
+
+[tools."github:terror/just-lsp"."platforms.linux-x64"]
+checksum = "sha256:97b852d22da826dc4ac2b2a5715397865d643bafbe00b4bb474127d4432bc462"
+url = "https://github.com/terror/just-lsp/releases/download/0.7.1/just-lsp-0.7.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/542941402"
+
+[tools."github:terror/just-lsp"."platforms.linux-x64-musl"]
+checksum = "sha256:11b96b40bb055466f0a03bf0b8de4e47b397b91486e362e31020a96912432dcd"
+url = "https://github.com/terror/just-lsp/releases/download/0.7.1/just-lsp-0.7.1-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/542941598"
+
+[tools."github:terror/just-lsp"."platforms.macos-arm64"]
+checksum = "sha256:c84da4039ef497868b7e9866b9fa9d1b0a2c936587c340522b62b7d8583d62ef"
+url = "https://github.com/terror/just-lsp/releases/download/0.7.1/just-lsp-0.7.1-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/542942042"
+
+[tools."github:terror/just-lsp"."platforms.macos-x64"]
+checksum = "sha256:ce6b21015704c9cadfa8eb39421093a2ae370fc668c927aa096ede01639fc280"
+url = "https://github.com/terror/just-lsp/releases/download/0.7.1/just-lsp-0.7.1-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/542942818"
+
+[tools."github:terror/just-lsp"."platforms.windows-x64"]
+checksum = "sha256:94bba0d4ff3adae93a10df9e6d83847a66f55489e1e75f1649921412131bdbcb"
+url = "https://github.com/terror/just-lsp/releases/download/0.7.1/just-lsp-0.7.1-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/542943449"
+
 [[tools.helmfile]]
 version = "1.7.4"
 backend = "aqua:helmfile/helmfile"
