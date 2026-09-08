@@ -15,7 +15,7 @@ listener "tcp" {
 
 # Storage
 storage "raft" {
-  path    = "/openbao/config"
+  path    = "/openbao/data"
   node_id = "main"
 }
 
