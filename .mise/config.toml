@@ -6,6 +6,7 @@ openbao = "2.6.2"
 envsubst = "1.4.3"
 just = "1.58.0"
 kubelogin = "1.36.3"
+kubectl = "1.37.0"
 [env]
 BAO_ADDR = "http://127.0.0.1:8200"
 BAO_SKIP_VERIFY = true
