@@ -6,6 +6,9 @@ Stage based deployment:
 1 Bootstrap omni
 2 Bootstrap KUbernetes
 3- Flux takes over
+
+# Assumes that
+Openbao mounts Omni secrets at /omni/omni and Kubernetes bootstrap ones at /kubernetes/boostrap
 - Dont forget to run helmfile init to install needed plugins!
 ## Planning ##
 
