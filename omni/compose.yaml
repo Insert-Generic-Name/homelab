@@ -13,8 +13,8 @@ services:
     volumes:
       - ./.generated/omni.yaml:/omni.yaml:ro,Z
       - ./.generated/omni.asc:/omni.asc:ro,Z
-      - omni_etcd:/etcd:rw,Z
-      - omni_sqlite:/sqlite:rw,Z
+      - omni_etcd:/etcd
+      - omni_sqlite:/sqlite
     command: --config-path=/omni.yaml
 
   dex:
