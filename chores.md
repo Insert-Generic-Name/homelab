@@ -18,6 +18,7 @@ Misc:
 - https://modrinth.com/mod/waylandcraft
 Important Todo:
 ######
+- Migrate to a secure autounsealing method
 - CI checks: Helmlint, kubelinter, yamllint, gitleaks, schema validation between others
 Also:
 hadolint (Dockerfile lint)

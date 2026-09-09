@@ -7,8 +7,10 @@ Stage based deployment:
 2 Bootstrap KUbernetes
 3- Flux takes over
 
-# Assumes that
+# Considerations
 Openbao mounts Omni secrets at /omni/omni and Kubernetes bootstrap ones at /kubernetes/boostrap
+just-lsp must be installed manually if you want the Just vscode extension to work
+
 - Dont forget to run helmfile init to install needed plugins!
 ## Planning ##
 
