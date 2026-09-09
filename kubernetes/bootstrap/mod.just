@@ -39,7 +39,7 @@ vars_tmpl:
     done
 
     # Envsubst replaces the values, writes to stdout and kubectl applies the generated manifest on the fly
-    envsubst -i ./bootstrap/secrets/secrets.yaml.tmpl  --no-unset --no-empty -fail-fast | kubectl apply -f -
+    envsubst -i ./secrets/secrets.yaml.tmpl  --no-unset --no-empty -fail-fast | kubectl apply -f -
 
     # Unset variables
     unset "${k8s_secrets[@]}"
