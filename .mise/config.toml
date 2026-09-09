@@ -11,3 +11,5 @@ kubectl = "1.37.0"
 BAO_ADDR = "http://127.0.0.1:8200"
 BAO_SKIP_VERIFY = true
 CLUSTER_NAME = "talops"
+OMNICONFIG = "{{config_root}}/.private/omniconfig"
+KUBECONFIG = "{{config_root}}/.private/kubeconfig"

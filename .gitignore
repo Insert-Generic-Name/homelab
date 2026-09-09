@@ -1,8 +1,13 @@
 .env
 .envrc
-# Used to store sensitive configurations
+# Used to store sensitive configurations for omni
 omni/.generated/**
 !omni/.generated/.gitkeep
+# Used to store sensitive configurations like kubeconfig and omniconfig
+.private/**
+!.private/.gitkeep
+
+
 
 ## delete me when deployment is done ##
 taloslop/**
