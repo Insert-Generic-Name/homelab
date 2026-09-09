@@ -34,8 +34,9 @@ storage:
   default:
     etcd:
       privateKeySource: "file:///omni.asc"
+      embeddedDBPath: "/etcd"
   sqlite:
-    path: "/_out/sqlite/omni.db"
+    path: "/sqlite/omni.db"
 eulaAccept:
   name: "user"
   email: "example@mail.com"
