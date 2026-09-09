@@ -139,6 +139,9 @@ cluster:
     exit 1
     fi
 kubeconfig:
+    echo "=========================================="
+    echo "Connecting Kubectl. Authenticate in your browser if prompted."
+    echo "=========================================="
     if ! omnictl kubeconfig --cluster $CLUSTER_NAME >/dev/null 2>&1; then
     echo "=========================================="
     echo "Failed to download kubeconfig, make sure that $CLUSTER_NAME is set, exiting"
