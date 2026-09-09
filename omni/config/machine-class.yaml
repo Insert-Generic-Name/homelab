@@ -5,5 +5,5 @@ metadata:
   id: main-pool
 spec:
   matchlabels:
-    # matches machines that are not inside a cluster
+    # matches machines that are not in a cluster.
     - omni.sidero.dev/available

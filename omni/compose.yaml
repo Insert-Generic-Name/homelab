@@ -11,8 +11,8 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     volumes:
-      - ./config/omni.yaml:/omni.yaml:ro,Z
-      - ./config/omni.asc:/omni.asc:ro,Z
+      - ./.generated/omni.yaml:/omni.yaml:ro,Z
+      - ./.generated/omni.asc:/omni.asc:ro,Z
       - omni_etcd:/_out/etcd:rw,Z
       - omni_sqlite:/_out/sqlite:rw,Z
     command: --config-path=/omni.yaml
@@ -25,7 +25,7 @@ services:
     depends_on:
       - caddy
     volumes:
-      - ./config/dex.yaml:/etc/dex/dex.yaml:ro,Z
+      - ./.generated/dex.yaml:/etc/dex/dex.yaml:ro,Z
       - dex_db:/var/dex/
     command: dex serve /etc/dex/dex.yaml
 
@@ -35,7 +35,7 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - ./config/Caddyfile:/etc/caddy/Caddyfile
+      - ./.generated/Caddyfile:/etc/caddy/Caddyfile
       - caddy_omni_data:/data
       - caddy_omni_config:/config
 
