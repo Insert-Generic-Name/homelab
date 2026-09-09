@@ -4,13 +4,13 @@
 set quiet
 set no-exit-message
 set default-script
+set default-list
 set shell := ['bash', '-euo', 'pipefail', '-c']
 set script-interpreter := ['bash', '-euo', 'pipefail']
 
 [confirm("Ready to deploy Stage 1? [y|n] ")]
-default: step-1 step-2
-step-1: greeter checks create_key vars_tmpl run
-step-2: omniconfig_halter omniconfig cluster kubeconfig end
+bootstrap: greeter checks create_key vars_tmpl run
+deploy: omniconfig_halter omniconfig cluster kubeconfig end
 greeter:
     echo "=========================================="
     echo "Activating Stage 1"

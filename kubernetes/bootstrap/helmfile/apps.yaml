@@ -50,7 +50,7 @@ releases:
 
   - name: flux-operator
     namespace: flux-system
-    needs: ["kube-system/cilium"]
+    needs: ["cert-manager/cert-manager"]
 
   - name: flux-instance
     namespace: flux-system

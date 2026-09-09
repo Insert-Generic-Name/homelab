@@ -9,16 +9,19 @@ spec:
   values:
     monitoring:
       enabled: false #changeme
-    cephBlockPools:
-      storageClass:
-        reclaimPolicy: Retain
-    cephFileSystems:
-      storageClass:
-        reclaimPolicy: Retain
-    cephObjectStores:
-      storageClass:
-        reclaimPolicy: Retain
-      # Enable HTTPRoute
+    # cephBlockPools:
+    #   storageClass:
+    #     enabled: true
+    #     reclaimPolicy: Retain
+    # cephFileSystems:
+    #   storageClass:
+    #     enable: true
+    #     reclaimPolicy: Retain
+    # cephObjectStores:
+    #   storageClass:
+    #     enable: true
+    #     reclaimPolicy: Retain
+    # Enable HTTPRoute
     #   route:
     #   # Enable an ingress for the ceph-objectstore
     #   enabled: false
