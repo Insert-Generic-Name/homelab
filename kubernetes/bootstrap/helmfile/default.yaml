@@ -3,4 +3,5 @@ templates:
     chart: '{{ (fromYaml (tpl (readFile "./templates/release.yaml.gotmpl") .)).chart }}'
     version: '{{ (fromYaml (tpl (readFile "./templates/release.yaml.gotmpl") .)).version }}'
     createNamespace: true
+    disableValidation: true
     values: ["./templates/values.yaml.gotmpl"]

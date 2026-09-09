@@ -14,18 +14,39 @@ bases:
 
 defaultInherit: default
 
+repositories:
+  - name: rook
+    url: https://charts.rook.io/release
+
+  - name: ceph-csi
+    url: https://ceph.github.io/ceph-csi-operator
+
 releases:
   - name: cilium
     namespace: kube-system
 
-  # # Rook goes here
-  # - name: external-secrets
-  #   namespace: external-secrets
-  #   needs: ["kube-system/cilium"]
+  - name: rook-ceph
+    namespace: rook-ceph
+    chart: rook/rook-ceph
+    needs: ["kube-system/cilium"]
 
-  # - name: cert-manager
-  #   namespace: cert-manager
-  #   needs: ["external-secrets/external-secrets"]
+  - name: ceph-csi-drivers
+    namespace: rook-ceph
+    chart: ceph-csi/ceph-csi-drivers
+    needs: ["rook-ceph/rook-ceph"]
+
+  - name: rook-ceph-cluster
+    namespace: rook-ceph
+    chart: rook/rook-ceph-cluster
+    needs: ["rook-ceph/ceph-csi-drivers"]
+
+  - name: external-secrets
+    namespace: external-secrets
+    needs: ["rook-ceph/rook-ceph-cluster"]
+
+  - name: cert-manager
+    namespace: cert-manager
+    needs: ["external-secrets/external-secrets"]
 
   - name: flux-operator
     namespace: flux-system
@@ -34,4 +55,3 @@ releases:
   - name: flux-instance
     namespace: flux-system
     needs: ["flux-system/flux-operator"]
-    disableValidation: true # Avoid breaking deployment due to missing CRDs
