@@ -1,5 +1,6 @@
-.env
-.envrc
+*.env
+*.envrc
+*.iso
 # Used to store sensitive configurations for omni
 omni/.generated/**
 !omni/.generated/.gitkeep
