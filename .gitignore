@@ -1,6 +1,9 @@
 *.env
 *.envrc
 *.iso
+kubeconfig
+omniconfig
+talosconfig
 # Used to store sensitive configurations for omni
 omni/.generated/**
 !omni/.generated/.gitkeep
