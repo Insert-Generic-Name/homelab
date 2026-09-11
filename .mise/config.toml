@@ -8,11 +8,9 @@ just = "1.58.0"
 kubelogin = "1.36.4"
 kubectl = "1.37.0"
 yq = "4.53.6"
-talosctl = "1.14.0"
 [env]
 BAO_ADDR = "http://127.0.0.1:8200"
 BAO_SKIP_VERIFY = true
 CLUSTER_NAME = "talops"
 OMNICONFIG = "{{config_root}}/omniconfig"
 KUBECONFIG = "{{config_root}}/kubeconfig"
-TALOSCONFIG = "{{config_root}}/talosconfig"
