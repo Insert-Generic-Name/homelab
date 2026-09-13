@@ -5,10 +5,10 @@ kubernetes:
   version: "v1.37.0"
 talos:
   version: "v1.14.0"
-patches:
-  - file: ./patch.yaml
 ---
 kind: ControlPlane
 machineClass:
   name: main-pool
-  size: unlimited
+  size: 10
+patches:
+  - file: ./patch.yaml
