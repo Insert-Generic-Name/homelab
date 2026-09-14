@@ -9,5 +9,5 @@ mod s1 './omni/mod.just'
 mod s2 './kubernetes/bootstrap/mod.just'
 
 [private]
-log lvl msg:
-    gum log -s -l "{{ lvl }}" "{{ msg }}"
+log lvl msg *args:
+    gum log -s -l "{{ lvl }}" "{{ msg }}" {{ args }}
