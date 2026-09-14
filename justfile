@@ -9,7 +9,5 @@ mod s1 './omni/mod.just'
 mod s2 './kubernetes/bootstrap/mod.just'
 
 [private]
-log lvl stage:
-    echo "==============================="
-    gum log -s -l "{{ lvl }}" "{{ stage }}"
-    echo "==============================="
+log lvl msg:
+    gum log -s -l "{{ lvl }}" "{{ msg }}"

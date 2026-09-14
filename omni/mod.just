@@ -10,28 +10,22 @@ set script-interpreter := ['bash', '-euo', 'pipefail']
 
 [confirm("Ready to deploy Stage 1? [y|n] ")]
 [doc('Initial bootstrapping & platform configuration')]
-bootstrap: greeter checks create_key vars_tmpl run
+bootstrap: checks create_key vars_tmpl run
 
 [doc('Cluster & s3 deployment configuration')]
-deploy: omniconfig_halter omniconfig cluster kubeconfig end
+deploy: omniconfig_halter omniconfig cluster kubeconfig
 
 [private]
-greeter:
-    echo "pap"
-
 checks:
     # Check if Openbao is able to read Omni secrets
     if ! bao kv get -mount=omni omni >/dev/null 2>&1; then
-    just log error "stage" "{{ recipe_name() }}" "Openbao CLI is unable to retrieve secrets, exiting"
-
+    just log error "Openbao CLI is unable to retrieve secrets, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
 
     # Check if GNUPG is installed on the system.
     if ! gpg --version >/dev/null 2>&1; then
-    echo "=========================================="
-    echo "GNUPG must be installed manually in the system, exiting"
-    echo "=========================================="
+    just log error "GNUPG must be installed, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
 
@@ -39,9 +33,8 @@ checks:
 create_key:
     # Create omni.asc key used for etcd encryption if not already present
     if ! gpg --batch --list-keys "omni@internal.local" >/dev/null 2>&1; then
-    echo "=========================================="
-    echo "Generating Omni asc key for etcd encryption"
-    echo "=========================================="
+    just log info "Generating Omni asc key for etcd encryption" "stage" "{{ recipe_name() }}"
+
     gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never >/dev/null 2>&1
     FINGERPRINT=$(gpg --with-colons --list-keys "omni@internal.local"  | awk -F: '$1 == "fpr" {print $10; exit}') >/dev/null 2>&1
     gpg --batch --passphrase '' --quick-add-key ${FINGERPRINT} rsa4096 encr never >/dev/null 2>&1
@@ -50,9 +43,7 @@ create_key:
 
 [private]
 vars_tmpl:
-    echo "=========================================="
-    echo "Creating omni configuration files"
-    echo "=========================================="
+    just log info "Creating omni configuration files" "stage" "{{ recipe_name() }}"
 
     # Needed secret refs on templates
     omni_secrets=(
@@ -101,9 +92,7 @@ run:
 omniconfig_halter:
     dir=$(dirname "$(pwd)")
     if  [ ! -s ../.private/omniconfig ]; then
-    echo "=========================================="
-    echo "Download the omniconfig and move it to ${dir} before proceeding"
-    echo "=========================================="
+    just log info "Download the omniconfig and move it to ${dir} before proceeding" "stage" "{{ recipe_name() }}"
     read -p "Ready to proceed? [y|n]" answer
     if  [[ "$answer" != "y" && "$answer" != "yes" ]]; then
     exit 1
@@ -113,57 +102,35 @@ omniconfig_halter:
 [private]
 omniconfig:
     if ! omnictl config contexts >/dev/null 2>&1; then
-    echo "=========================================="
-    echo "Unable to get contexts from omnictl, exiting"
-    echo "=========================================="
+    just log error "Unable to get contexts from omnictl, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
+    just log info "Connecting Omnictl. Authenticate in your browser if prompted." "stage" "{{ recipe_name() }}"
 
-    echo "=========================================="
-    echo "Connecting Omnictl. Authenticate in your browser if prompted."
-    echo "=========================================="
     if ! omnictl get clusters >/dev/null 2>&1; then
-    echo "=========================================="
-    echo "Could not initiate authentication, make sure that kubelogin is installed, exiting"
-    echo "=========================================="
+    just log error "Could not initiate authentication, make sure that kubelogin is installed, exiting." "stage" "{{ recipe_name() }}"
     exit 1
     fi
 
 [private]
 cluster:
-    echo "=========================================="
-    echo "Applying configurations"
-    echo "=========================================="
-
+    just log info "Applying configurations" "stage" "{{ recipe_name() }}"
 
     if !  omnictl apply -f ./config/machine-class.yaml >/dev/null 2>&1; then
-    echo "=========================================="
-    echo "machineclass configuration not found, exiting"
-    echo "=========================================="
+    just log  error "machineclass configuration not found, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
 
     if ! omnictl cluster template sync -f ./config/cluster.yaml; then
-    echo "=========================================="
-    echo "cluster configuration not found, exiting"
-    echo "=========================================="
+    just log error "cluster configuration not found, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
 
 [private]
 kubeconfig:
-    echo "=========================================="
-    echo "Connecting Kubectl. Authenticate in your browser if prompted."
-    echo "=========================================="
-    if ! omnictl kubeconfig --cluster $CLUSTER_NAME >/dev/null 2>&1; then
-    echo "=========================================="
-    echo "Failed to download kubeconfig, make sure that $CLUSTER_NAME is set, exiting"
-    echo "=========================================="
+    just log info "Connecting Kubectl. Authenticate in your browser if prompted." "stage" "{{ recipe_name() }}"
+
+    if ! omnictl kubeconfig --cluster "$CLUSTER_NAME" >/dev/null 2>&1; then
+    just log info "Failed to download kubeconfig, make sure that $CLUSTER_NAME is set, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
-
-[private]
-end:
-    echo "=========================================="
-    echo "Stage 1 has been completed sucessfully"
-    echo "=========================================="
