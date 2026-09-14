@@ -93,9 +93,10 @@ run:
     fi
 
 omniconfig_halter:
+    dir=$(dirname "$(pwd)")
     if  [ ! -s ../.private/omniconfig ]; then
     echo "=========================================="
-    echo "Download the omniconfig and move it to '.private' before proceeding"
+    echo "Download the omniconfig and move it to ${dir} before proceeding"
     echo "=========================================="
     read -p "Ready to proceed? [y|n]" answer
     if  [[ "$answer" != "y" && "$answer" != "yes" ]]; then

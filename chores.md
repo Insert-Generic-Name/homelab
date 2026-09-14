@@ -19,6 +19,7 @@ Misc:
 Important Todo:
 ######
 - Migrate to a secure autounsealing method
+- Re-enable Rook-ceph when deployment is done and hardware is avaliable
 - CI checks: Helmlint, kubelinter, yamllint, gitleaks, schema validation between others
 Also:
 hadolint (Dockerfile lint)
