@@ -12,14 +12,17 @@ default: checks create-resources deploy-crds deploy-apps
 
 checks:
     # Checks if Openbao is able to read Kubernetes secrets
-    if ! bao kv get -mount=kubernetes bootstrap >/dev/null 2>&1  ; then
+    if ! bao kv get -mount=kubernetes bootstrap >/dev/null 2>&1 ; then
     just log error "Openbao CLI is unable to retrieve secrets, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
 # Check if Kubectl is able to communicate with the cluster
 create-resources:
     just log info "Creating initial kubernetes resources" "stage" "{{ recipe_name() }}"
-    kubectl apply -f "./resources/namespaces.yaml"
+    if ! kubectl apply -f "./resources/namespaces.yaml" > /dev/null 2>&1; then
+    just log error "Unable to apply resource 'namespaces.yaml', exiting" "stage" "{{ recipe_name() }}"
+    exit 1
+    fi
 
     # Needed secret refs on templates
     k8s_secrets=(
@@ -37,7 +40,6 @@ create-resources:
 
     # Unset variables
     unset "${k8s_secrets[@]}"
-
 deploy-crds:
     just log info "Applying CRDs" "stage" "{{ recipe_name() }}"
     if ! helmfile -f "./helmfile/crds.yaml" template -q | yq ea -r -e 'select(.kind == "CustomResourceDefinition")' | kubectl apply --server-side --force-conflicts -f -; then

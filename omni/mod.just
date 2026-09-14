@@ -10,7 +10,7 @@ set script-interpreter := ['bash', '-euo', 'pipefail']
 
 [confirm("Ready to deploy Stage 1? [y|n] ")]
 [doc('Initial bootstrapping & platform configuration')]
-bootstrap: checks create_key vars_tmpl run
+bootstrap: checks create_key vars_tmpl
 
 [doc('Cluster & s3 deployment configuration')]
 deploy: omniconfig_halter omniconfig cluster kubeconfig
@@ -32,7 +32,7 @@ checks:
 [private]
 create_key:
     # Create omni.asc key used for etcd encryption if not already present
-    if ! gpg --batch --list-keys "omni@internal.local" >/dev/null 2>&1; then
+    if [[ ! gpg --batch --list-keys "omni@internal.local" ]] >/dev/null 2>&1; then
     just log info "Generating Omni asc key for etcd encryption" "stage" "{{ recipe_name() }}"
 
     gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never >/dev/null 2>&1
