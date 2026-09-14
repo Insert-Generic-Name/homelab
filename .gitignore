@@ -6,8 +6,8 @@ kubeconfig
 omniconfig
 talosconfig
 # Used to store sensitive configurations for omni
-omni/bootstrap/.generated/**
-!omni/bootstrap/.generated/.gitkeep
+omni/.generated/**
+!omni/.generated/.gitkeep
 
 
 
