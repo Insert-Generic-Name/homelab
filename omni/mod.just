@@ -8,22 +8,22 @@ set default-list
 set shell := ['bash', '-euo', 'pipefail', '-c']
 set script-interpreter := ['bash', '-euo', 'pipefail']
 
-mod bootstrap './bootstrap/mod.just'
-mod configure './config/mod.just'
 [confirm("Ready to deploy Stage 1? [y|n] ")]
+[doc('Initial bootstrapping & platform configuration')]
 bootstrap: greeter checks create_key vars_tmpl run
+
+[doc('Cluster & s3 deployment configuration')]
 deploy: omniconfig_halter omniconfig cluster kubeconfig end
+
+[private]
 greeter:
-    echo "=========================================="
-    echo "Activating Stage 1"
-    echo "=========================================="
+    echo "pap"
 
 checks:
     # Check if Openbao is able to read Omni secrets
     if ! bao kv get -mount=omni omni >/dev/null 2>&1; then
-    echo "=========================================="
-    echo "Openbao CLI is unable to retrieve secrets, exiting"
-    echo "=========================================="
+    just log error "stage" "{{ recipe_name() }}" "Openbao CLI is unable to retrieve secrets, exiting"
+
     exit 1
     fi
 
@@ -35,6 +35,7 @@ checks:
     exit 1
     fi
 
+[private]
 create_key:
     # Create omni.asc key used for etcd encryption if not already present
     if ! gpg --batch --list-keys "omni@internal.local" >/dev/null 2>&1; then
@@ -47,6 +48,7 @@ create_key:
     gpg --export-secret-key --armor omni@internal.local > ./config/omni.asc
     fi
 
+[private]
 vars_tmpl:
     echo "=========================================="
     echo "Creating omni configuration files"
@@ -83,6 +85,7 @@ vars_tmpl:
     # Unset variables
     unset "${omni_secrets[@]}"
 
+[private]
 run:
     echo "=========================================="
     echo "Start the Docker containers before proceeding with step2"
@@ -94,6 +97,7 @@ run:
     exit 1
     fi
 
+[private]
 omniconfig_halter:
     dir=$(dirname "$(pwd)")
     if  [ ! -s ../.private/omniconfig ]; then
@@ -105,6 +109,8 @@ omniconfig_halter:
     exit 1
     fi
     fi
+
+[private]
 omniconfig:
     if ! omnictl config contexts >/dev/null 2>&1; then
     echo "=========================================="
@@ -122,6 +128,8 @@ omniconfig:
     echo "=========================================="
     exit 1
     fi
+
+[private]
 cluster:
     echo "=========================================="
     echo "Applying configurations"
@@ -141,6 +149,8 @@ cluster:
     echo "=========================================="
     exit 1
     fi
+
+[private]
 kubeconfig:
     echo "=========================================="
     echo "Connecting Kubectl. Authenticate in your browser if prompted."
@@ -152,6 +162,7 @@ kubeconfig:
     exit 1
     fi
 
+[private]
 end:
     echo "=========================================="
     echo "Stage 1 has been completed sucessfully"
