@@ -83,11 +83,5 @@ vars_tmpl:
 
 run:
     echo "=========================================="
-    echo "Starting containers"
+    echo "Start the Docker containers before proceeding with step2"
     echo "=========================================="
-    if ! docker compose up -d; then
-    echo "=========================================="
-    echo "Unable to run containers, ensure that Docker is ready, exiting"
-    echo "=========================================="
-    exit 1
-    fi
