@@ -77,18 +77,6 @@ vars_tmpl:
     unset "${omni_secrets[@]}"
 
 [private]
-run:
-    echo "=========================================="
-    echo "Start the Docker containers before proceeding with step2"
-    echo "=========================================="
-    if ! docker compose up -d; then
-    echo "=========================================="
-    echo "Unable to run containers, ensure that Docker is ready, exiting"
-    echo "=========================================="
-    exit 1
-    fi
-
-[private]
 omniconfig_halter:
     dir=$(dirname "$(pwd)")
     if  [ ! -s ../.private/omniconfig ]; then
