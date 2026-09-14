@@ -8,31 +8,19 @@ set shell := ['bash', '-euo', 'pipefail', '-c']
 set script-interpreter := ['bash', '-euo', 'pipefail']
 
 [confirm("Ready to deploy Stage 2? [y|n] ")]
-default: greeter checks namespaces secrets crds apps end
-
-greeter:
-    echo "=========================================="
-    echo "Activating Stage 2"
-    echo "=========================================="
+default: checks create-resources deploy-crds deploy-apps
 
 checks:
-    echo "Running: {{ recipe_name() }}"
     # Checks if Openbao is able to read Kubernetes secrets
     if ! bao kv get -mount=kubernetes bootstrap >/dev/null 2>&1  ; then
-    echo "=========================================="
-    echo "Openbao CLI is unable to retrieve secrets, exiting"
-    echo "=========================================="
+    just log error "Openbao CLI is unable to retrieve secrets, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
-
-namespaces:
-    echo "=========================================="
-    echo "Creating inital kubernetes resources"
-    echo "=========================================="
-    echo "Running: {{ recipe_name() }}"
+# Check if Kubectl is able to communicate with the cluster
+create-resources:
+    just log info "Creating initial kubernetes resources" "stage" "{{ recipe_name() }}"
     kubectl apply -f "./resources/namespaces.yaml"
-secrets:
-    echo "Running: {{ recipe_name() }}"
+
     # Needed secret refs on templates
     k8s_secrets=(
     DOMAIN
@@ -50,24 +38,13 @@ secrets:
     # Unset variables
     unset "${k8s_secrets[@]}"
 
-crds:
-    echo "=========================================="
-    echo "Applying CRDs"
-    echo "=========================================="
+deploy-crds:
+    just log info "Applying CRDs" "stage" "{{ recipe_name() }}"
     if ! helmfile -f "./helmfile/crds.yaml" template -q | yq ea -r -e 'select(.kind == "CustomResourceDefinition")' | kubectl apply --server-side --force-conflicts -f -; then
+    just log error "Unable to apply CRDs" "stage" "{{ recipe_name() }}"
     exit 1
     fi
 
-apps:
-    echo "=========================================="
-    echo "Deploying applications"
-    echo "=========================================="
+deploy-apps:
+    just log info "Deploying infrastructure" "stage" "{{ recipe_name() }}"
     helmfile apply -f "./helmfile/apps.yaml"
-end:
-    echo "=========================================="
-    echo "Stage 2 has been completed sucessfully"
-    echo "=========================================="
-
-    echo "=========================================="
-    echo "Stage 3 will be activated automatically"
-    echo "=========================================="
