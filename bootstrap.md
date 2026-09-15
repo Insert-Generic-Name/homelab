@@ -29,3 +29,5 @@ Path: kubernetes/bootstrap
   "DOMAIN": ""
 }
 
+## Stage 1 | Step 2
+Note that the Omni container must be running and operative before proceeding, the script will NOT warn about this!
