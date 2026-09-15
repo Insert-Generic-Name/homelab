@@ -32,13 +32,13 @@ checks:
 [private]
 create_key:
     # Create omni.asc key used for etcd encryption if not already present
-    if  ! gpg --batch --list-keys "omni@internal.local" >/dev/null 2>&1 ||[[ -s ./generated/omni.asc ]] >/dev/null 2>&1; then
+    if  ! [[ -s ./generated/omni.asc ]] >/dev/null 2>&1; then
     just log info "Generating Omni asc key for etcd encryption" "stage" "{{ recipe_name() }}"
 
     gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never >/dev/null 2>&1
     FINGERPRINT=$(gpg --with-colons --list-keys "omni@internal.local"  | awk -F: '$1 == "fpr" {print $10; exit}') >/dev/null 2>&1
     gpg --batch --passphrase '' --quick-add-key ${FINGERPRINT} rsa4096 encr never >/dev/null 2>&1
-    gpg --export-secret-key --armor omni@internal.local > ./config/omni.asc
+    gpg --export-secret-key --armor omni@internal.local > ./.generated/omni.asc
     fi
 
 [private]
