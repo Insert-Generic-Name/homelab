@@ -8,10 +8,11 @@ set default-list
 set shell := ['bash', '-euo', 'pipefail', '-c']
 set script-interpreter := ['bash', '-euo', 'pipefail']
 
-[confirm("Ready to deploy Stage 1? [y|n] ")]
+[confirm("Ready to deploy Stage 1|Layer 1? [y|n] ")]
 [doc('Initial bootstrapping & platform configuration')]
 bootstrap: checks create_key create_config
 
+[confirm("Ready to deploy Stage 1|Layer 2? [y|n] ")]
 [doc('Cluster & s3 deployment configuration')]
 deploy: get_omniconfig create_cluster get_kubeconfig
 
@@ -25,16 +26,15 @@ checks:
 
     # Check if GNUPG is installed on the system.
     if ! gpg --version >/dev/null 2>&1; then
-    just log error "GNUPG must be installed, exiting" "stage" "{{ recipe_name() }}"
+    just log error "GNUPG is not installed, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
 
 [private]
 create_key:
     # Create omni.asc key used for etcd encryption if not already present
-    if  ! [[ -s ./generated/omni.asc ]] >/dev/null 2>&1; then
+    if  ! [[ -e ./generated/omni.asc ]] >/dev/null 2>&1; then
     just log info "Generating Omni asc key for etcd encryption" "stage" "{{ recipe_name() }}"
-
     gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never >/dev/null 2>&1
     FINGERPRINT=$(gpg --with-colons --list-keys "omni@internal.local"  | awk -F: '$1 == "fpr" {print $10; exit}') >/dev/null 2>&1
     gpg --batch --passphrase '' --quick-add-key ${FINGERPRINT} rsa4096 encr never >/dev/null 2>&1
