@@ -10,7 +10,7 @@ kubectl = "1.37.0"
 yq = "4.53.6"
 gum = "2.0.1"
 [env]
-BAO_ADDR = "http://127.0.0.1:8200"
+BAO_ADDR = "https://192.168.1.60:8201"
 BAO_SKIP_VERIFY = true
 CLUSTER_NAME = "talops"
 OMNICONFIG = "{{config_root}}/omniconfig"
