@@ -13,7 +13,7 @@ set script-interpreter := ['bash', '-euo', 'pipefail']
 bootstrap: checks create_key render_config
 
 [confirm("Ready to deploy Stage 1|Step: Deploy? [y|n] ")]
-[doc('Cluster & s3 deployment configuration')]
+[doc('Deployment & cluster configuration')]
 deploy: get_omniconfig create_cluster get_kubeconfig
 
 [private]
@@ -33,7 +33,7 @@ checks:
 [private]
 create_key:
     # Create omni.asc key used for etcd encryption if not already present
-    if !  [[ -e ./.generated/omni.asc ]] >/dev/null 2>&1; then
+    if !  [[ -s ./.generated/omni.asc ]] >/dev/null 2>&1; then
     just log info "Generating Omni asc key for etcd encryption" "stage" "{{ recipe_name() }}"
     gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never >/dev/null 2>&1
     FINGERPRINT=$(gpg --with-colons --list-keys "omni@internal.local"  | awk -F: '$1 == "fpr" {print $10; exit}') >/dev/null 2>&1
@@ -63,9 +63,18 @@ render_config:
     Caddyfile
     )
 
+
     # Export the secrets as environment variables
     for secret in "${omni_secrets[@]}"; do
     export $secret="$(bao kv get -mount=omni -field="$secret" omni)"
+    done
+
+    # Check if all variables are set
+    for secret in "${omni_secrets[@]}"; do
+    if [[ -z "${secret}" ]]; then
+    just log error "One or more secrets failed to export, exiting" "stage" "{{ recipe_name() }}"
+    exit 1
+    fi
     done
 
     # Envsubst creates configuration files by applying the values inside the templates
