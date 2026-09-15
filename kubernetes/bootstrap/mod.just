@@ -3,16 +3,16 @@
 # "=========================================="
 set quiet
 set no-exit-message
-set default-script
 set shell := ['bash', '-euo', 'pipefail', '-c']
 set script-interpreter := ['bash', '-euo', 'pipefail']
 
 [confirm("Ready to deploy Stage 2? [y|n] ")]
+[doc('Initial kubernetes resource generation for bootstrapping')]
 default: checks create-resources deploy-crds deploy-apps
 
 checks:
     # Checks if Openbao is able to read Kubernetes secrets
-    if ! bao kv get -mount=kubernetes bootstrap >/dev/null 2>&1 ; then
+    if ! bao kv get -mount=kubernetes bootstrap >/dev/null 2>&1; then
     just log error "Openbao CLI is unable to retrieve secrets, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
