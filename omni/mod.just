@@ -10,10 +10,10 @@ set script-interpreter := ['bash', '-euo', 'pipefail']
 
 [confirm("Ready to deploy Stage 1? [y|n] ")]
 [doc('Initial bootstrapping & platform configuration')]
-bootstrap: checks create_key vars_tmpl
+bootstrap: checks create_key create_config
 
 [doc('Cluster & s3 deployment configuration')]
-deploy: omniconfig_halter omniconfig cluster kubeconfig
+deploy: get_omniconfig create_cluster get_kubeconfig
 
 [private]
 checks:
@@ -42,7 +42,7 @@ create_key:
     fi
 
 [private]
-vars_tmpl:
+create_config:
     just log info "Creating omni configuration files" "stage" "{{ recipe_name() }}"
 
     # Needed secret refs on templates
@@ -77,9 +77,9 @@ vars_tmpl:
     unset "${omni_secrets[@]}"
 
 [private]
-omniconfig_halter:
+get_omniconfig:
     dir=$(dirname "$(pwd)")
-    if  [ ! -s ../.private/omniconfig ]; then
+    if  [ ! -s ../omniconfig ]; then
     just log info "Download the omniconfig and move it to ${dir} before proceeding" "stage" "{{ recipe_name() }}"
     read -p "Ready to proceed? [y|n]" answer
     if  [[ "$answer" != "y" && "$answer" != "yes" ]]; then
@@ -87,12 +87,11 @@ omniconfig_halter:
     fi
     fi
 
-[private]
-omniconfig:
     if ! omnictl config contexts >/dev/null 2>&1; then
     just log error "Unable to get contexts from omnictl, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
+
     just log info "Connecting Omnictl. Authenticate in your browser if prompted." "stage" "{{ recipe_name() }}"
 
     if ! omnictl get clusters >/dev/null 2>&1; then
@@ -101,7 +100,7 @@ omniconfig:
     fi
 
 [private]
-cluster:
+create_cluster:
     just log info "Applying configurations" "stage" "{{ recipe_name() }}"
 
     if !  omnictl apply -f ./config/machine-class.yaml >/dev/null 2>&1; then
@@ -115,7 +114,7 @@ cluster:
     fi
 
 [private]
-kubeconfig:
+get_kubeconfig:
     just log info "Connecting Kubectl. Authenticate in your browser if prompted." "stage" "{{ recipe_name() }}"
 
     if ! omnictl kubeconfig --cluster "$CLUSTER_NAME" >/dev/null 2>&1; then
