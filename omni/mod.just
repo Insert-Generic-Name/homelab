@@ -10,7 +10,7 @@ set script-interpreter := ['bash', '-euo', 'pipefail']
 
 [confirm("Ready to deploy Stage 1|Step: Bootstrap? [y|n] ")]
 [doc('Initial bootstrapping & platform configuration')]
-bootstrap: checks create_key create_config
+bootstrap: checks create_key render_config
 
 [confirm("Ready to deploy Stage 1|Step: Deploy? [y|n] ")]
 [doc('Cluster & s3 deployment configuration')]
@@ -42,8 +42,8 @@ create_key:
     fi
 
 [private]
-create_config:
-    just log info "Creating omni configuration files" "stage" "{{ recipe_name() }}"
+render_config:
+    just log info "Rendering omni configuration files from templates" "stage" "{{ recipe_name() }}"
 
     # Needed secret refs on templates
     omni_secrets=(
