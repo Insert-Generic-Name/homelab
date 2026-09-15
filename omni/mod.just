@@ -71,7 +71,7 @@ render_config:
 
     # Check if all variables are set
     for secret in "${omni_secrets[@]}"; do
-    if [[ -z "${secret}" ]]; then
+    if [[ -z "${!secret:-}" ]]; then
     just log error "One or more secrets failed to export, exiting" "stage" "{{ recipe_name() }}"
     exit 1
     fi
