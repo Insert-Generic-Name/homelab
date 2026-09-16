@@ -41,14 +41,14 @@ create_key:
 
     # If file exists do nothing
     if [[ -s ./.generated/omni.asc ]]; then
-    just log info "omni.asc file found, skipping step" "step" "{{ recipe_name() }}"
+    just log info "omni.asc file found, skipping" "step" "{{ recipe_name() }}"
     # If file is missing but gpg key is still in the system it must be placed back, else Omni will fail to deploy.
     elif gpg --list-keys "omni@internal.local" >/dev/null 2>&1; then
     just log info "omni.asc file missing; exporting existing key" "step" "{{ recipe_name() }}"
     gpg --export-secret-key --armor "omni@internal.local" > ./.generated/omni.asc
     # If the file nor gpg key can be found, create a new key
     else
-    just log info "omni key missing; generating new key" "step" "{{ recipe_name() }}"
+    just log info "omni key missing; generating a new key" "step" "{{ recipe_name() }}"
     gen_key
     fi
 
@@ -84,13 +84,18 @@ render_config:
     for secret in "${omni_secrets[@]}"; do
     if [[ -z "${!secret:-}" ]]; then
     just log error "One or more secrets failed to export, exiting" "step" "{{ recipe_name() }}"
+    unset "${omni_secrets[@]}"
     exit 1
     fi
     done
 
     # Envsubst creates configuration files by applying the values inside the templates
     for config_files in "${config_files[@]}"; do
-    envsubst -i "./templates/$config_files.tmpl" -o "./.generated/$config_files" --no-unset --no-empty -fail-fast
+    if ! envsubst -i "./templates/$config_files.tmpl" -o "./.generated/$config_files" --no-unset --no-empty -fail-fast; then
+    just log error "Failed to render templates, exiting" "step" "{{ recipe_name() }}"
+    unset "${omni_secrets[@]}"
+    exit 1
+    fi
     done
 
     # Unset variables
@@ -124,12 +129,12 @@ create_cluster:
     just log info "Applying configurations" "step" "{{ recipe_name() }}"
 
     if !  omnictl apply -f ./config/machine-class.yaml >/dev/null 2>&1; then
-    just log  error "machineclass configuration not found, exiting" "step" "{{ recipe_name() }}"
+    just log  error "Unable to apply machineclass configuration, exiting" "step" "{{ recipe_name() }}"
     exit 1
     fi
 
     if ! omnictl cluster template sync -f ./config/cluster.yaml; then
-    just log error "cluster configuration not found, exiting" "step" "{{ recipe_name() }}"
+    just log error "Unable to apply cluster configuration, exiting" "step" "{{ recipe_name() }}"
     exit 1
     fi
 
