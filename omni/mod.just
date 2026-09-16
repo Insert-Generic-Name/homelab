@@ -41,7 +41,7 @@ create_key:
 
     # If file exists do nothing
     if [[ -s ./.generated/omni.asc ]]; then
-    # If file is missing but gpg key is still in the system it must be placed back, else Omni will fail.
+    # If file is missing but gpg key is still in the system it must be placed back, else Omni will fail to deploy.
     elif gpg --list-keys "omni@internal.local" >/dev/null 2>&1; then
     just log info "Omni.asc file missing; exporting existing key" "stage" "{{ recipe_name() }}"
     gpg --export-secret-key --armor "omni@internal.local" > ./.generated/omni.asc
