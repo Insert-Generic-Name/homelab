@@ -77,7 +77,10 @@ render_config:
 
     # Export the secrets as environment variables
     for secret in "${omni_secrets[@]}"; do
-    export $secret="$(bao kv get -mount=omni -field="$secret" omni)"
+    if ! export $secret="$(bao kv get -mount=omni -field="$secret" omni)"; then
+    unset "${omni_secrets[@]}"
+    exit 1
+    fi
     done
 
     # Check if all variables are set
