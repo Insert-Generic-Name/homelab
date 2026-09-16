@@ -32,13 +32,22 @@ checks:
 
 [private]
 create_key:
-    # Create omni.asc key used for etcd encryption if not already present
-    if !  [[ -s ./.generated/omni.asc ]] >/dev/null 2>&1; then
-    just log info "Generating Omni asc key for etcd encryption" "stage" "{{ recipe_name() }}"
-    gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never >/dev/null 2>&1
-    FINGERPRINT=$(gpg --with-colons --list-keys "omni@internal.local"  | awk -F: '$1 == "fpr" {print $10; exit}') >/dev/null 2>&1
-    gpg --batch --passphrase '' --quick-add-key ${FINGERPRINT} rsa4096 encr never >/dev/null 2>&1
-    gpg --export-secret-key --armor omni@internal.local > ./.generated/omni.asc
+    gen_key () {
+        gpg --batch --passphrase '' --quick-generate-key "Omni (Used for etcd data encryption) omni@internal.local" rsa4096 cert never >/dev/null 2>&1
+        FINGERPRINT=$(gpg --with-colons --list-keys "omni@internal.local" | awk -F: '$1 == "fpr" {print $10; exit}')
+        gpg --batch --passphrase '' --quick-add-key "${FINGERPRINT}" rsa4096 encr never >/dev/null 2>&1
+        gpg --export-secret-key --armor "omni@internal.local" > ./.generated/omni.asc
+    }
+
+    if [[ -s ./.generated/omni.asc ]]; then
+    # If file is missing but gpg key is still in the system it must be placed back, else Omni will fail.
+    elif gpg --list-keys "omni@internal.local" >/dev/null 2>&1; then
+    just log info "Omni.asc file missing; exporting existing key" "stage" "{{ recipe_name() }}"
+    gpg --export-secret-key --armor "omni@internal.local" > ./.generated/omni.asc
+    # If file nor gpg key can be found, create one
+    else
+    just log info "Omni key missing; generating new key" "stage" "{{ recipe_name() }}"
+    gen_key
     fi
 
 [private]
