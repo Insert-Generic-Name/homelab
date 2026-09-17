@@ -11,10 +11,11 @@ spec:
     serviceAccount:
       create: true
     persistence:
-      storageClass: ceph-filesystem
-      size: 10Gi
-      accessModes:
-        - ReadWriteMany
+      enabled: false #changemelater
+      # storageClass: ceph-filesystem
+      # size: 10Gi
+      # accessModes:
+      #   - ReadWriteMany
     metrics:
       enabled: false #changeme
       serviceMonitor:
