@@ -79,6 +79,7 @@ render_config:
     # Export the secrets as environment variables
     for secret in "${omni_secrets[@]}"; do
     if ! export $secret="$(bao kv get -mount=omni -field="$secret" omni)"; then
+    just log error "Unable to export secrets, exiting" "step" "{{ recipe_name() }}"
     exit 1
     fi
     done
@@ -86,7 +87,7 @@ render_config:
     # Check if all variables are set
     for secret in "${omni_secrets[@]}"; do
     if [[ -z "${!secret:-}" ]]; then
-    just log error "One or more secrets failed to export, exiting" "step" "{{ recipe_name() }}"
+    just log error "One or more secrets failed to render, exiting" "step" "{{ recipe_name() }}"
     exit 1
     fi
     done
@@ -121,7 +122,7 @@ get_omniconfig:
     just log info "Connecting Omnictl. Authenticate in your browser if prompted." "step" "{{ recipe_name() }}"
 
     if ! omnictl get clusters >/dev/null 2>&1; then
-    just log error "Could not initiate authentication, make sure that kubelogin is installed, exiting." "step" "{{ recipe_name() }}"
+    just log error "Could not initiate authentication, exiting." "step" "{{ recipe_name() }}"
     exit 1
     fi
 
@@ -144,6 +145,6 @@ get_kubeconfig:
     just log info "Downloading Kubeconfig. Authenticate in your browser if prompted." "step" "{{ recipe_name() }}"
 
     if ! omnictl kubeconfig --cluster "$CLUSTER_NAME" >/dev/null 2>&1; then
-    just log info "Failed to download kubeconfig, make sure that $CLUSTER_NAME is set, exiting" "step" "{{ recipe_name() }}"
+    just log info "Failed to download kubeconfig, exiting" "step" "{{ recipe_name() }}"
     exit 1
     fi

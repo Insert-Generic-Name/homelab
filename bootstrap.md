@@ -4,10 +4,12 @@ Notes:
 Do not change omni.asc. The omni db stores the gpg key for decryption, so changing it requires recreating the db.
 
 ## Common
-1- GNUPG and Docker must be installed manually on the same machine where Omni is beeing deployed
-3- OpenBao CLI must be authenticated and able to retrieve the secrets
 0- The script must be ran on a machine deemed as trusted since secrets interact with the environment
+1- GNUPG and Docker must be installed manually on the same machine where Omni is beeing deployed
 2- Mise must be installed **and activated** Run mise install and hook it to your shell
+3- All the necessary tools must be installed with mise
+4- OpenBao CLI must be authenticated and able to retrieve the secrets
+
 ## Stage 1
 - OpenBao must be populated with secrets already on the following locations and the following tables:
 
