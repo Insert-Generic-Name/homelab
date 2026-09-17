@@ -20,7 +20,7 @@ checks:
     exit 1
     fi
 
-    if ! kubectl get nodes; then
+    if ! kubectl get nodes >/dev/null 2>&1; then
     just log error "kubectl is unable to communicate with the cluster, exiting" "step" "{{ recipe_name() }}"
     exit 1
     fi
@@ -62,7 +62,7 @@ create_secrets:
 
 
     # Envsubst replaces the values, writes to stdout and kubectl applies the generated manifest on the fly
-    if ! envsubst -i ./resources/secrets.yaml.tmpl  --no-unset --no-empty -fail-fast | kubectl apply -f -; then
+    if ! envsubst -i ./resources/secrets.yaml.tmpl  --no-unset --no-empty -fail-fast | kubectl apply -f - >/dev/null 2>&1; then
     just log error "Failed to render templates, exiting" "step" "{{ recipe_name() }}"
     exit 1
     fi
@@ -74,7 +74,7 @@ create_secrets:
 [private]
 deploy_crds:
     just log info "Applying CRDs" "step" "{{ recipe_name() }}"
-    if ! helmfile -f "./helmfile/crds.yaml" template -q | yq ea -r -e 'select(.kind == "CustomResourceDefinition")' | kubectl apply --server-side --force-conflicts -f -; then
+    if ! helmfile -f "./helmfile/crds.yaml" template -q | yq ea -r -e 'select(.kind == "CustomResourceDefinition")' | kubectl apply --server-side --force-conflicts -f - >/dev/null 2>&1; then
     just log error "Unable to apply CRDs" "step" "{{ recipe_name() }}"
     exit 1
     fi
