@@ -14,7 +14,6 @@ deploy: checks create_namespaces create_secrets deploy_crds deploy_apps
 
 [private]
 checks:
-    # Checks if Openbao is able to read Kubernetes secrets
     if ! bao kv get -mount=kubernetes bootstrap >/dev/null 2>&1; then
     just log error "Openbao CLI is unable to retrieve secrets, exiting" "step" "{{ recipe_name() }}"
     exit 1
