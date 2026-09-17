@@ -33,3 +33,5 @@ Path: kubernetes/bootstrap
 
 ## Stage 1 | Step 2
 Note that the Omni container must be running and operative before proceeding, the script will NOT warn about this!
+
+- the omniconfig must be named "omniconfig" not "omniconfig.yaml" nor any other name

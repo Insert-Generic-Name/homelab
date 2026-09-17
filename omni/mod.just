@@ -74,11 +74,11 @@ render_config:
     Caddyfile
     )
 
+    trap 'unset "${omni_secrets[@]}"' EXIT
 
     # Export the secrets as environment variables
     for secret in "${omni_secrets[@]}"; do
     if ! export $secret="$(bao kv get -mount=omni -field="$secret" omni)"; then
-    unset "${omni_secrets[@]}"
     exit 1
     fi
     done
@@ -87,7 +87,6 @@ render_config:
     for secret in "${omni_secrets[@]}"; do
     if [[ -z "${!secret:-}" ]]; then
     just log error "One or more secrets failed to export, exiting" "step" "{{ recipe_name() }}"
-    unset "${omni_secrets[@]}"
     exit 1
     fi
     done
@@ -96,7 +95,6 @@ render_config:
     for config_files in "${config_files[@]}"; do
     if ! envsubst -i "./templates/$config_files.tmpl" -o "./.generated/$config_files" --no-unset --no-empty -fail-fast; then
     just log error "Failed to render templates, exiting" "step" "{{ recipe_name() }}"
-    unset "${omni_secrets[@]}"
     exit 1
     fi
     done
@@ -108,7 +106,7 @@ render_config:
 get_omniconfig:
     dir=$(dirname "$(pwd)")
     if  [ ! -s ../omniconfig ]; then
-    just log info "Download the omniconfig and move it to ${dir} before proceeding" "step" "{{ recipe_name() }}"
+    just log info "Download the omniconfig, name it 'omniconfig' and move it to ${dir} before proceeding" "step" "{{ recipe_name() }}"
     read -p "Ready to proceed? [y|n]" answer
     if  [[ "$answer" != "y" && "$answer" != "yes" ]]; then
     exit 1
@@ -143,7 +141,7 @@ create_cluster:
 
 [private]
 get_kubeconfig:
-    just log info "Connecting Kubectl. Authenticate in your browser if prompted." "step" "{{ recipe_name() }}"
+    just log info "Downloading Kubeconfig. Authenticate in your browser if prompted." "step" "{{ recipe_name() }}"
 
     if ! omnictl kubeconfig --cluster "$CLUSTER_NAME" >/dev/null 2>&1; then
     just log info "Failed to download kubeconfig, make sure that $CLUSTER_NAME is set, exiting" "step" "{{ recipe_name() }}"
