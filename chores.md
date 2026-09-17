@@ -19,6 +19,7 @@ Misc:
 - https://modrinth.com/mod/waylandcraft
 Important Todo:
 ######
+- Patch foregjo: Enable persistance and scale up replicas for HA
 - Migrate to a secure autounsealing method
 - Re-enable Rook-ceph when deployment is done and hardware is avaliable
 - CI checks: Helmlint, kubelinter, yamllint, gitleaks, schema validation between others

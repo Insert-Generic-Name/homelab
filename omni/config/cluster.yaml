@@ -9,6 +9,6 @@ talos:
 kind: ControlPlane
 machineClass:
   name: main-pool
-  size: 10
+  size: unlimited
 patches:
   - file: ./patch.yaml
