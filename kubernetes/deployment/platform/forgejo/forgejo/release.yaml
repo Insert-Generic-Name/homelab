@@ -7,7 +7,7 @@ spec:
     kind: OCIRepository
     name: forgejo
   values:
-    replicaCount: 3
+    replicaCount: 1 #change me later to 2-3 for HA
     serviceAccount:
       create: true
     persistence:
