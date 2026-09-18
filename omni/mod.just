@@ -18,13 +18,11 @@ deploy: get_omniconfig create_cluster get_kubeconfig
 
 [private]
 checks:
-    # Check if Openbao is able to read Omni secrets
     if ! bao kv get -mount=omni omni >/dev/null 2>&1; then
     just log error "Openbao CLI is unable to retrieve secrets, exiting" "step" "{{ recipe_name() }}"
     exit 1
     fi
 
-    # Check if GNUPG is installed on the system.
     if ! gpg --version >/dev/null 2>&1; then
     just log error "GNUPG is not installed, exiting" "step" "{{ recipe_name() }}"
     exit 1
@@ -39,14 +37,11 @@ create_key:
         gpg --export-secret-key --armor "omni@internal.local" > ./.generated/omni.asc
     }
 
-    # If file exists do nothing
     if [[ -s ./.generated/omni.asc ]]; then
     just log info "omni.asc file found, skipping" "step" "{{ recipe_name() }}"
-    # If file is missing but gpg key is still in the system it must be placed back, else Omni will fail to deploy.
     elif gpg --list-keys "omni@internal.local" >/dev/null 2>&1; then
     just log info "omni.asc file missing; exporting existing key" "step" "{{ recipe_name() }}"
     gpg --export-secret-key --armor "omni@internal.local" > ./.generated/omni.asc
-    # If the file nor gpg key can be found, create a new key
     else
     just log info "omni key missing; generating a new key" "step" "{{ recipe_name() }}"
     gen_key
@@ -56,7 +51,6 @@ create_key:
 render_config:
     just log info "Rendering omni configuration files from templates" "step" "{{ recipe_name() }}"
 
-    # Needed secret refs on templates
     omni_secrets=(
     CLOUDFLARE_API_TOKEN
     EMAIL
@@ -67,7 +61,6 @@ render_config:
     OMNI_CLIENT_SECRET
     OMNI_DOMAIN
     )
-    # Configuration file templates
     config_files=(
     omni.yaml
     dex.yaml
@@ -76,7 +69,6 @@ render_config:
 
     trap 'unset "${omni_secrets[@]}"' EXIT
 
-    # Export the secrets as environment variables
     for secret in "${omni_secrets[@]}"; do
     if ! export $secret="$(bao kv get -mount=omni -field="$secret" omni)"; then
     just log error "Unable to export secrets, exiting" "step" "{{ recipe_name() }}"
@@ -84,7 +76,6 @@ render_config:
     fi
     done
 
-    # Check if all variables are set
     for secret in "${omni_secrets[@]}"; do
     if [[ -z "${!secret:-}" ]]; then
     just log error "One or more secrets failed to render, exiting" "step" "{{ recipe_name() }}"
@@ -92,7 +83,6 @@ render_config:
     fi
     done
 
-    # Envsubst creates configuration files by applying the values inside the templates
     for config_files in "${config_files[@]}"; do
     if ! envsubst -i "./templates/$config_files.tmpl" -o "./.generated/$config_files" --no-unset --no-empty -fail-fast; then
     just log error "Failed to render templates, exiting" "step" "{{ recipe_name() }}"
@@ -100,7 +90,6 @@ render_config:
     fi
     done
 
-    # Unset variables
     unset "${omni_secrets[@]}"
 
 [private]

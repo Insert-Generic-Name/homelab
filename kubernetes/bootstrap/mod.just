@@ -35,7 +35,6 @@ create_namespaces:
 [private]
 create_secrets:
     just log info "Creating initial kubernetes secrets" "step" "{{ recipe_name() }}"
-    # Needed secret refs on templates
     k8s_secrets=(
     DOMAIN
     BAO_TOKEN
@@ -43,7 +42,6 @@ create_secrets:
 
     trap 'unset "${k8s_secrets[@]}"' EXIT
 
-    # Export the secrets as environment variables
     for secret in "${k8s_secrets[@]}"; do
     if ! export $secret="$(bao kv get -mount=kubernetes -field="$secret" bootstrap)"; then
     just log error "Unable to export secrets, exiting" "step" "{{ recipe_name() }}"
@@ -51,7 +49,6 @@ create_secrets:
     fi
     done
 
-    # Check if all variables are set
     for secret in "${k8s_secrets[@]}"; do
     if [[ -z "${!secret:-}" ]]; then
     just log error "One or more secrets failed to render, exiting" "step" "{{ recipe_name() }}"
@@ -60,14 +57,12 @@ create_secrets:
     done
 
 
-    # Envsubst replaces the values, writes to stdout and kubectl applies the generated manifest on the fly
     if ! envsubst -i ./resources/secrets.yaml.tmpl  --no-unset --no-empty -fail-fast | kubectl apply -f - >/dev/null 2>&1; then
     just log error "Failed to render templates, exiting" "step" "{{ recipe_name() }}"
     exit 1
     fi
 
 
-    # Unset variables
     unset "${k8s_secrets[@]}"
 
 [private]
