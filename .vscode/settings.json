@@ -64,6 +64,7 @@
         ".mise": "project",
         "lifestyle": "java",
     },
+    "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "icons-carbon",
     // Language configuration
     "yaml.schemaStore.enable": true,
