@@ -1,102 +1,39 @@
-# Kubernetes homelabbing = Suffering #
-Personal testing battlefield
+# Boostrapping pre-requesites #
 
-Stage based deployment:
-0 Bootstrap openbao
-1 Bootstrap omni
-2 Bootstrap KUbernetes
-3- Flux takes over
+Notes:
+Do not change omni.asc. The omni db stores the gpg key for decryption, so changing it requires recreating the db.
 
-# Considerations
-Openbao mounts Omni secrets at /omni/omni and Kubernetes bootstrap ones at /kubernetes/boostrap
-just-lsp must be installed manually if you want the Just vscode extension to work
+## Common
+0- The script must be ran on a machine deemed as trusted since secrets interact with the environment
+1- GNUPG and Docker must be installed manually on the same machine where Omni is beeing deployed
+2- Mise must be installed **and activated** Run mise install and hook it to your shell
+3- All the necessary tools must be installed with mise
+4- OpenBao CLI must be authenticated and able to retrieve the secrets
 
-- Dont forget to run helmfile init to install needed plugins!
-## Planning ##
+## Stage 1
+- OpenBao must be populated with secrets already on the following locations and the following tables:
 
-### Services ###
----------------------------
+Path: omni/omni
 
-#### Not decided yet ####
----------------------------
-- Actual Budget
-- Local git instance to get FluxCD webhooks without port forwarding ( mirrors my main instance or otherwise)
-- ntfy
-- https://docs.stakater.com/reloader/latest/ For reloading certs/secrets in k8s,
-though it seems like envoy-gw does this automatically. ( Use it only for apps that arent served
-by envoy, like authelia that sits in front of it )
-- Feishin ( Navidrome frontend, desktop app it seems)
-- Slskd/Soularr etc ( For soulseek)
-- Home assistant
-- MC Server
-- Mozhi
-- RSS Feeder ( or other tools like homepage/flux/bookmark manager)
-So when there is a new release of a service I get a notification with a link
-( flux only alerts if deployments fails)
-- Make terraform bootstrap Openbao l0 + Talos l1 + Kubernetes l2  to avoid relying on external tools (*l=layer)
+{
+  "CLOUDFLARE_API_TOKEN": "",
+  "EMAIL": "",
+  "GITHUB_CLIENT_ID": "",
+  "GITHUB_CLIENT_SECRET": "",
+  "OMNI_ACCOUNT_UUID": "",
+  "OMNI_CLIENT_ID": "",
+  "OMNI_CLIENT_SECRET": "",
+  "OMNI_DOMAIN": ""
+}
 
-#### Planned ####
----------------------------
-Misc:
-Use https://dashboardicons.com/ for homepage
+Path: kubernetes/bootstrap
 
-##### Tools #####
---------------------------
-- Talos
-- Authentik/Authelia
-- Cilium (CNI/LB) + Hubble UI
-- Envoy gateway (GAPIC)
-- External Secrets Operator (OpenBao provider)
-- FluxCD + Operator
-- Cert-Manager
-- Rook-Ceph
-- Tailscale
-- yamllint + gitleaks + .vscode + .gitattributes.
-- Renovate
-- Custom self-made Helm chart for templating ( avoid 4 manifests per service)
+{
+  "BAO_TOKEN": "",
+  "DOMAIN": ""
+}
 
+## Stage 1 | Step 2
+Note that the Omni container must be running and operative before proceeding, the script will NOT warn about this!
 
-##### Main  #####
----------------------------
-
-- Arrstack ( Sonarr + Radarr + Prowlarr + Recyclarr + SABnzbd + Hotio qbittorrent + Metube)
-- Bentopdf
-- Gamevault
-- Grafana
-- Homepage
-- Immich
-- Invidious
-- Jellyfin
-- Ludusavi
-- Mealie
-- Microbin
-- n8n
-- Navidrome
-- Nextcloud
-- Ollama
-- Open Web UI
-- OnlyOffice
-- Openspeedtest
-- Pi-hole
-- Prometheus
-- Paperless-ngx
-- Scrutiny
-- SearxNG
-- Seer
-- Uptime Kuma
-- Vaultwarden
-- Vikunja
-
-##### Discarded #####
----------------------------
-
-- Gitea/Gitlab ( Dumb idea self hosting your source of truth)
-- Portainer ( Just let CD handle the deployment)
-- age/sops ( Just use an ESO, its safer and more robust)
-- Proxmox ( Will run k8s on bare metal to avoid latency and resource overhead)
-- Terraform ( ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^)
-- Ansible   (^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^)
-- Gluetun ((for qbittorrent)) ( Discarded due to Hotio Qbittorrent beeing a better solution)
-- Lidarr ( "non-mainstream" music lack, me-tube is a better suit for my needs)
-
-###### Readded ######
+- the omniconfig must be named "omniconfig" not "omniconfig.yaml" nor any other name
