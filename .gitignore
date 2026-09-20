@@ -3,6 +3,7 @@
 *.iso
 *.tfstate
 *.tfstate.*
+.terraform
 kubeconfig
 omniconfig
 talosconfig
@@ -17,4 +18,4 @@ omni/.generated/**
 proxslop/**
 slopenbao/**
 archive/**
-updatejustfile.md
+planning.md
