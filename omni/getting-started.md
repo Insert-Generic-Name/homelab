@@ -58,6 +58,6 @@ To proceed, type "y" or "yes" inside the terminal
 
 ## Troubleshooting
 
-Make **SURE** you have read properly the [Pre-requesites](#pre-requesites) section. By default the script will give "lazy" warnings and exit, this document is the main source for troubleshooting
+Make **SURE** you have read properly the [Pre-requesites](#pre-requesites) section. By default the script will give "lazy" warnings and exit if it encounters any error, this document is the main source for troubleshooting
 
 > If needed, edit the script manually and delete the /dev/null redirectors to see the issue.
