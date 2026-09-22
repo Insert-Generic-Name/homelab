@@ -11,8 +11,7 @@
 2. All the necessary tools must be installed with mise CLI
 3. Stage 1 must have been finished already and all nodes must be running kubernetes
 
-### Step 1 (Bootstrap) requirements
-0. OpenBao must be populated with key-value type secrets on the following path and with the following table:
+4. OpenBao must be populated with key-value type secrets on the following path and with the following table:
 
 Path: kubernetes/bootstrap
 
@@ -23,8 +22,8 @@ Path: kubernetes/bootstrap
 }
 ```
 
-1. OpenBao CLI must be authenticated and able to retrieve secrets
-2. Kubectl must be able to communicate with the cluster
+5. OpenBao CLI must be authenticated and able to retrieve secrets
+6. Kubectl must be able to communicate with the cluster
 
 ## Getting started
 
