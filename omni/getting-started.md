@@ -3,8 +3,8 @@
 ## Introduction
 **Stage 1 is the responsible for bootstrapping, configuring and deploying Omni, the platform used to manage our kubernetes nodes at the host level. To keep everything simple, Stage 1 splits the deployment into 2 steps:**
 
-* Step 1: Bootstraps and handles initial Omni configuration
-* Step 2: Configures Omni for the kubernetes workload ( cluster settings)
+* Step 1 (Bootstrap): Bootstraps and handles initial Omni configuration
+* Step 2 (Deploy): Configures Omni for the kubernetes workload ( cluster settings)
 
 >Note: Do **NOT** modify omni.asc. Omni stores the gpg key for decryption, so changing it requires recreating the omni db (deleting the docker volume).
 
@@ -15,9 +15,9 @@
 1. Mise must be installed [and activated](https://mise.jdx.dev/getting-started.html#activate-mise) manually on the same machine in which the operations are beeing executed
 2. All the necessary tools must be installed with mise CLI
 
-### Step 1 requirements
+### Step 1 (Bootstrap) requirements
 0. [GNUPG](https://gnupg.org/) and [Docker engine](https://docs.docker.com/engine/) must be installed manually on the same machine in which Omni is going to be deployed
-1. OpenBao must be populated with key-value type secrets on the following locations and with the following tables:
+1. OpenBao must be populated with key-value type secrets on the following path and with the following table:
 
 Path: omni/omni
 
@@ -33,18 +33,11 @@ Path: omni/omni
   "OMNI_DOMAIN": ""
 }
 ```
-Path: kubernetes/bootstrap
 
-```
-{
-  "BAO_TOKEN": "",
-  "DOMAIN": ""
-}
-```
 2. OpenBao CLI must be authenticated and able to retrieve secrets
 
-### Step 2 requirements
-0. Omni container must be ready before proceeding, the script will NOT warn about this!
+### Step 2 (Deploy) requirements
+0. Omni container must be ready before proceeding, the script will **NOT** warn about this!
 1. The omniconfig must be named "omniconfig" not "omniconfig.yaml" nor similars.
 
 
