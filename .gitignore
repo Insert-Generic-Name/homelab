@@ -5,8 +5,12 @@
 *.tfstate.*
 .terraform
 kubeconfig
+kubeconfig.*
 omniconfig
+omniconfig.*
 talosconfig
+talosconfig.*
+.DS_Store
 # Used to store sensitive configurations for omni
 omni/.generated/**
 !omni/.generated/.gitkeep
