@@ -28,7 +28,6 @@
         "*.yaml.tmpl": "yaml",
     },
     "material-icon-theme.files.associations": {
-        // Builtin
         "README.md": "document",
         "*.gotmpl": "go",
         "release.yaml": "helm",
@@ -66,6 +65,13 @@
     },
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "icons-carbon",
+    // Miscellaneous settings
+    "vs-kubernetes": {
+        "vs-kubernetes.kubeconfig": "./kubeconfig",
+        "vs-kubernetes.knownKubeconfigs": [
+            "./kubeconfig"
+        ]
+    },
     // Language configuration
     "yaml.schemaStore.enable": true,
     "yaml.schemas": {
