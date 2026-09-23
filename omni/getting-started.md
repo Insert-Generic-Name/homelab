@@ -1,7 +1,7 @@
 # Stage 1
 
 ## Introduction
-**Stage 1 is the responsible for bootstrapping, configuring and deploying Omni, the platform used to manage kubernetes nodes at the host level. To keep everything simple, Stage 1 splits the deployment into 2 steps:**
+**Stage 1 is the responsible for bootstrapping, configuring and deploying Omni, the platform used to manage Talos nodes at the host level. To keep everything simple, Stage 1 splits the deployment into 2 steps:**
 
 * Step 1 (Bootstrap): Bootstraps and handles initial Omni configuration
 * Step 2 (Deploy): Configures Omni for the kubernetes workload ( cluster settings)
