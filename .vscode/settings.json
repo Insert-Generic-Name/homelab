@@ -59,6 +59,7 @@
         "helmfile": "helm",
         "ai": "gemini-ai",
         "vault": "guard",
+        "woodpecker": "ci",
         "omni": "core",
         ".mise": "project",
         "lifestyle": "java",

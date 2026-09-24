@@ -93,6 +93,13 @@ spec:
         url: oci://code.forgejo.org/forgejo-helm/forgejo
         tag: 17.1.5
 
+    - name: woodpecker
+      namespace: woodpecker
+      source:
+        type: OCIRepository
+        url: oci://ghcr.io/woodpecker-ci/helm/woodpecker
+        tag: 3.7.3
+
   resourcesTemplate: |
     ---
     apiVersion: v1
