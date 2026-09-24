@@ -13,8 +13,8 @@
 ### General requirements
 0. The operations must be executed on a machine deemed as trusted since secrets interact with the environment
 1. This setup uses opinionated defaults such as Caddy & Cloudflare DNS01 challenge and Github OIDC. You will need to edit the setup according to your preferences
-1. Mise must be installed [and activated](https://mise.jdx.dev/getting-started.html#activate-mise) manually on the same machine in which the operations are beeing executed
-2. All the necessary tools must be installed with mise CLI
+2. Mise must be installed [and activated](https://mise.jdx.dev/getting-started.html#activate-mise) manually on the same machine in which the operations are beeing executed
+3. All the necessary tools must be installed with mise CLI
 
 ### Step 1 (Bootstrap) requirements
 0. [GNUPG](https://gnupg.org/) and [Docker engine](https://docs.docker.com/engine/) must be installed manually on the same machine in which Omni is going to be deployed
