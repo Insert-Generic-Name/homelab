@@ -7,12 +7,16 @@ spec:
     kind: OCIRepository
     name: woodpecker
   values:
-    persistence:
-      enabled: false
-    securityContext:
-      capabilities:
-        drop:
-          - ALL
-      readOnlyRootFilesystem: true
-      runAsNonRoot: true
-      runAsUser: 1000
+    agent:
+      persistence:
+        enabled: false
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+    server:
+      persistentVolume:
+        enabled: false
