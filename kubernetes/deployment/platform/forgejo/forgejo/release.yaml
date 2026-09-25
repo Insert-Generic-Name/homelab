@@ -7,15 +7,9 @@ spec:
     kind: OCIRepository
     name: forgejo
   values:
-    replicaCount: 1 #change me later to 2-3 for HA
+    replicaCount: 1
     serviceAccount:
       create: true
-    persistence:
-      enabled: false #changemelater
-      # storageClass: ceph-filesystem
-      # size: 10Gi
-      # accessModes:
-      #   - ReadWriteMany
     metrics:
       enabled: false #changeme
       serviceMonitor:

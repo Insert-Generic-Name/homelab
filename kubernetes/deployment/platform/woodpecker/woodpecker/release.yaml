@@ -8,8 +8,6 @@ spec:
     name: woodpecker
   values:
     agent:
-      persistence:
-        enabled: false
       securityContext:
         capabilities:
           drop:
@@ -18,5 +16,12 @@ spec:
         runAsNonRoot: true
         runAsUser: 1000
     server:
-      persistentVolume:
-        enabled: false
+      serviceAccount:
+        create: true
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
