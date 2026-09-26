@@ -37,7 +37,7 @@ create_secrets:
     just log info "Creating initial kubernetes secrets" "step" "{{ recipe_name() }}"
     k8s_secrets=(
     DOMAIN
-    BAO_TOKEN
+    TOKEN
     )
 
     trap 'unset "${k8s_secrets[@]}"' EXIT

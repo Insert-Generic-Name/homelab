@@ -15,8 +15,8 @@ Path: kubernetes/bootstrap
 
 ```
 {
-  "BAO_TOKEN": "",
-  "DOMAIN": ""
+  "DOMAIN": "",
+  "TOKEN": ""
 }
 ```
 
