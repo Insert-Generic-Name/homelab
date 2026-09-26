@@ -10,10 +10,6 @@ spec:
     replicaCount: 1
     serviceAccount:
       create: true
-    metrics:
-      enabled: false # changeme
-      serviceMonitor:
-        enabled: false # changeme
     containerSecurityContext:
       allowPrivilegeEscalation: false
       capabilities:
@@ -26,3 +22,15 @@ spec:
       runAsGroup: 1000
       runAsNonRoot: true
       runAsUser: 1000
+    gitea:
+      admin:
+        username: forgejo
+        email: "forgejo@local.domain"
+        passwordMode: keepUpdated
+      config:
+        webhook:
+          ALLOWED_HOST_LIST: "external,private" # Allowed since Forgejo is not exposed publicly.
+      metrics:
+      enabled: false # changeme
+      serviceMonitor:
+        enabled: false # changeme
