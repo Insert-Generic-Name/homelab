@@ -17,6 +17,7 @@ spec:
         runAsUser: 1000
     server:
       env:
+        WOODPECKER_HOST: http://127.0.0.1:9000
         WOODPECKER_FORGEJO: true
         WOODPECKER_FORGEJO_URL: http://127.0.0.1:3000
         WOODPECKER_FORGEJO_CLIENT:
