@@ -28,9 +28,9 @@ spec:
         existingSecret: forgejo-admin-secret
         email: "forgejo@local"
         passwordMode: keepUpdated
-      config:
-        webhook:
-          ALLOWED_HOST_LIST: "external,private" # Allowed since Forgejo is not exposed publicly.
+      # config:
+      #   webhook:
+      #     ALLOWED_HOST_LIST: "external,private" # Allowed since Forgejo is not exposed publicly.
       metrics:
       enabled: false # changeme
       serviceMonitor:
