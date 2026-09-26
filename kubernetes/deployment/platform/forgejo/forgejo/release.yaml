@@ -24,8 +24,7 @@ spec:
       runAsUser: 1000
     gitea:
       admin:
-        username: forgejo
-        existingSecret: forgejo-admin-password
+        existingSecret: forgejo-admin
         email: "forgejo@local"
         passwordMode: keepUpdated
       # config:
