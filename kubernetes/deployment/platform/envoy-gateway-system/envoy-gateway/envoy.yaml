@@ -10,6 +10,6 @@ spec:
     type: Kubernetes
     kubernetes:
       envoyDeployment:
-        replicas: 1 #Change me later
+        replicas: 1 # Change me later
         container:
           image: mirror.gcr.io/envoyproxy/envoy:v1.38.3
