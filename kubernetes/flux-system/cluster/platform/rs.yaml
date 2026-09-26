@@ -202,3 +202,17 @@ spec:
           target:
             kind: HelmRelease
             group: helm.toolkit.fluxcd.io
+      - patch: |-
+            apiVersion: external-secrets.io/v1
+            kind: ExternalSecret
+            metadata:
+              name: _
+              namespace: _
+            spec:
+              refreshInterval: "5m"
+              secretStoreRef:
+                name: vault-provider
+                kind: ClusterSecretStore
+          target:
+            kind: ExternalSecret
+            group: external-secrets.io
