@@ -8,6 +8,7 @@ yaml-files:
 
 ignore:
   - "*.yaml.gotmpl"
+
 rules:
   indentation:
     spaces: 2
