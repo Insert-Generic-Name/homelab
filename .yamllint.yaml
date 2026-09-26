@@ -1,0 +1,25 @@
+---
+extends: default
+
+yaml-files:
+  - "*.yaml.tmpl"
+  - "*.yaml"
+  - "*.yml"
+
+ignore:
+  - "*.yaml.gotmpl"
+rules:
+  indentation:
+    spaces: 2
+    indent-sequences: true
+    check-multi-line-strings: false
+  line-length:
+    max: 100
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: false
+  trailing-spaces: {}
+  document-start: disable
+  comments:
+    require-starting-space: true
+    ignore-shebangs: true
+    min-spaces-from-content: 1

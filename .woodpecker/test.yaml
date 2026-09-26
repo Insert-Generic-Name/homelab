@@ -1,0 +1,15 @@
+when:
+  - event: push
+    branch: main
+
+steps:
+  - name: Build fluxcd manifests and validate them
+    image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli
+    commands:
+      - flux-operator build rset --file ../kubernetes/flux-system/cluster/platform/rs.yaml
+      - yamllint .
+  - name: a-test-step
+    image: alpine
+    commands:
+      - echo "Testing ..."
+      - cat some-file.txt
