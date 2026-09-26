@@ -25,8 +25,8 @@ spec:
     gitea:
       admin:
         username: forgejo
-        password: "testtest" # For obvious reasons delete this later on ( when replacing with authentik)
-        email: "forgejo@local.domain"
+        existingSecret: forgejo-admin-secret
+        email: "forgejo@local"
         passwordMode: keepUpdated
       config:
         webhook:
