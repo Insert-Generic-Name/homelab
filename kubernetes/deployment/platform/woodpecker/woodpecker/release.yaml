@@ -17,20 +17,20 @@ spec:
         runAsUser: 1000
     server:
       env:
-      WOODPECKER_FORGEJO: true
-      WOODPECKER_FORGEJO_URL: http://127.0.0.1:3000
-      WOODPECKER_FORGEJO_CLIENT:
-        valueFrom:
-          secretKeyRef:
-            name: woodpecker
-            namespace: woodpecker
-            key: woodpecker-forgejo-client
-      WOODPECKER_FORGEJO_SECRET:
-        valueFrom:
-          secretKeyRef:
-            name: woodpecker
-            namespace: woodpecker
-            key: woodpecker-forgejo-secret
+        WOODPECKER_FORGEJO: true
+        WOODPECKER_FORGEJO_URL: http://127.0.0.1:3000
+        WOODPECKER_FORGEJO_CLIENT:
+          valueFrom:
+            secretKeyRef:
+              name: woodpecker
+              namespace: woodpecker
+              key: woodpecker-forgejo-client
+        WOODPECKER_FORGEJO_SECRET:
+          valueFrom:
+            secretKeyRef:
+              name: woodpecker
+              namespace: woodpecker
+              key: woodpecker-forgejo-secret
       serviceAccount:
         create: true
       securityContext:
