@@ -202,7 +202,7 @@ spec:
           target:
             kind: HelmRelease
             group: helm.toolkit.fluxcd.io
-      - patch: |-
+        - patch: |-
             apiVersion: external-secrets.io/v1
             kind: ExternalSecret
             metadata:
