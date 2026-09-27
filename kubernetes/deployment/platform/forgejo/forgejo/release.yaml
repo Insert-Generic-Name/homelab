@@ -33,8 +33,8 @@ spec:
           SSH_DOMAIN: 192.168.1.60
           SSH_PORT: 22
           SSH_LISTEN_PORT: 2222
-      #   webhook:
-      #     ALLOWED_HOST_LIST: "external,private" # Allowed since Forgejo is not exposed publicly.
+        webhook:
+          ALLOWED_HOST_LIST: "external,private" # Allowed since Forgejo is not exposed publicly.
       metrics:
       enabled: false # changeme
       serviceMonitor:
