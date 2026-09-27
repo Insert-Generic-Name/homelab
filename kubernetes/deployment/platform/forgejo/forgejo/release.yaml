@@ -25,6 +25,7 @@ spec:
     gitea:
       admin:
         existingSecret: forgejo-admin
+        email: forgejo@local.domain
         passwordMode: keepUpdated
       config:
         server:
