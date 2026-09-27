@@ -36,6 +36,6 @@ spec:
         webhook:
           ALLOWED_HOST_LIST: "external,private" # Enable private hosts, else LAN webhooks won't work
       metrics:
-      enabled: false # changeme
-      serviceMonitor:
         enabled: false # changeme
+        serviceMonitor:
+          enabled: false # changeme
