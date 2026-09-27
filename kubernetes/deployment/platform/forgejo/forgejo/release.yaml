@@ -26,7 +26,13 @@ spec:
       admin:
         existingSecret: forgejo-admin
         passwordMode: keepUpdated
-      # config:
+      config:
+        server:
+          ROOT_URL: http://192.168.1.60:3000
+          DOMAIN: 192.168.1.60
+          SSH_DOMAIN: 192.168.1.60
+          SSH_PORT: 22
+          SSH_LISTEN_PORT: 2222
       #   webhook:
       #     ALLOWED_HOST_LIST: "external,private" # Allowed since Forgejo is not exposed publicly.
       metrics:
