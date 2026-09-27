@@ -34,7 +34,7 @@ spec:
           SSH_PORT: 22
           SSH_LISTEN_PORT: 2222
         webhook:
-          ALLOWED_HOST_LIST: "external,private" # Allowed since Forgejo is not exposed publicly.
+          ALLOWED_HOST_LIST: "external,private" # Enable private hosts, else LAN webhooks won't work
       metrics:
       enabled: false # changeme
       serviceMonitor:
