@@ -4,7 +4,7 @@ when:
 
 steps:
   - name: Build fluxcd manifests and validate them
-    image: debian # ghcr.io/controlplaneio-fluxcd/flux-operator-cli
+    image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli # ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
     commands:
       - flux-operator build rset --file ../kubernetes/flux-system/cluster/platform/rs.yaml
       - yamllint .
