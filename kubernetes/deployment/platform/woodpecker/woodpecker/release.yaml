@@ -16,20 +16,20 @@ spec:
         runAsNonRoot: true
         runAsUser: 1000
       env:
-        WOODPECKER_SERVER: "192.168.1.60:9002"
+        #      WOODPECKER_SERVER: "192.168.1.60:9002"
         WOODPECKER_MAX_WORKFLOWS: 3
-        WOODPECKER_AGENT_SECRET:
-          valueFrom:
-            secretKeyRef:
-              name: woodpecker
-              key: woodpecker-agent-secret
+        # WOODPECKER_AGENT_SECRET:
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: woodpecker
+        #       key: woodpecker-agent-secret
     server:
       env:
-        WOODPECKER_AGENT_SECRET:
-          valueFrom:
-            secretKeyRef:
-              name: woodpecker
-              key: woodpecker-agent-secret
+        # WOODPECKER_AGENT_SECRET:
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: woodpecker
+        #       key: woodpecker-agent-secret
         WOODPECKER_OPEN: true
         WOODPECKER_ADMIN: "Insert-Generic-Name"
         WOODPECKER_HOST: http://192.168.1.60:9001
