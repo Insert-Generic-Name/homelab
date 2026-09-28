@@ -36,6 +36,8 @@ spec:
           SSH_LISTEN_PORT: 2222
         webhook:
           ALLOWED_HOST_LIST: "external,private" # Enable private hosts, else LAN webhooks won't work
+        actions:
+          enabled: false
       metrics:
       enabled: false # changeme
       serviceMonitor:
