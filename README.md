@@ -5,3 +5,6 @@
 Maybe use [Trivy](https://trivy.dev/) + kyverno for opsec
 
 Use [flux operator docker image](https://fluxoperator.dev/docs/guides/cli/#:~:text=Container%20Image) as the image inside the CI pipeline since it packages everything necessary to get started, incluiding schema validators
+
+https://oneuptime.com/blog/post/2026-01-17-helm-schema-validation-values/view#validate-during-development
+Maybe use this for validating schemas inside helmreleases or maybe add IDE integration
