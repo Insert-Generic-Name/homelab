@@ -8,3 +8,7 @@ Use [flux operator docker image](https://fluxoperator.dev/docs/guides/cli/#:~:te
 
 https://oneuptime.com/blog/post/2026-01-17-helm-schema-validation-values/view#validate-during-development
 Maybe use this for validating schemas inside helmreleases or maybe add IDE integration
+
+- Maybe build a docker image ( Dockerfile) that contains every necesssary tool that I need
+so I dont need to use diferent images for each task and can run the pipeline on the same single step
+without needing to rebuild steps
