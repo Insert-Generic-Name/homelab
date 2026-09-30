@@ -12,3 +12,6 @@ Maybe use this for validating schemas inside helmreleases or maybe add IDE integ
 - Maybe build a docker image ( Dockerfile) that contains every necesssary tool that I need
 so I dont need to use diferent images for each task and can run the pipeline on the same single step
 without needing to rebuild steps
+
+<<- if hasPrefix "oci://" inputs.source.url >>
+test
