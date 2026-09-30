@@ -15,3 +15,4 @@ without needing to rebuild steps
 
 <<- if hasPrefix "oci://" inputs.source.url >>
 test
+Maybe use this for validating schemas inside helmreleases or maybe add IDE integrationa
