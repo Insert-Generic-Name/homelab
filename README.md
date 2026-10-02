@@ -15,3 +15,5 @@ without needing to rebuild steps
 
 <<- if hasPrefix "oci://" inputs.source.url >>
 test
+
+Add excalidraw, bentopdf and anki to the list
