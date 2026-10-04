@@ -21,11 +21,6 @@ spec:
       # BACKEND_K8S_STORAGE_CLASS: "cephfs"
     server:
       env:
-        # WOODPECKER_AGENT_SECRET:
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: woodpecker
-        #       key: woodpecker-agent-secret
         WOODPECKER_OPEN: true
         WOODPECKER_ADMIN: "Insert-Generic-Name"
         WOODPECKER_HOST: http://192.168.1.60:9001
