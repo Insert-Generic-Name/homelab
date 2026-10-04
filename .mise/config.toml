@@ -1,5 +1,6 @@
 [tools]
 omnictl = "1.11.0"
+talosctl = "1.14.0"
 terraform = "1.16.1"
 helmfile = "1.7.4"
 openbao = "2.6.2"
@@ -15,4 +16,5 @@ BAO_ADDR = "http://127.0.0.1:8200"
 BAO_SKIP_VERIFY = true
 CLUSTER_NAME = "talops"
 OMNICONFIG = "{{config_root}}/omniconfig"
+TALOSCONFIG = "{{config_root}}/talosconfig"
 KUBECONFIG = "{{config_root}}/kubeconfig"
