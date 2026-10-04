@@ -17,3 +17,5 @@ without needing to rebuild steps
 test
 
 Add excalidraw, bentopdf and anki to the list
+
+add a mise task to run local CI seamlessly ( should run linters only not the full pipeline)
