@@ -8,17 +8,17 @@ steps:
     commands:
       - flux-operator build rset --file ../kubernetes/flux-system/cluster/platform/rs.yaml
       - yamllint .
-    backend_options:
-      kubernetes:
-        securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
-          allowPrivilegeEscalation: false
-          # seccompProfile:
-          #   type: RuntimeDefault
-          capabilities:
-            drop:
-              - ALL
+    # backend_options:
+    #   kubernetes:
+    #     securityContext:
+    #       runAsUser: 1000
+    #       runAsGroup: 1000
+    #       allowPrivilegeEscalation: false
+    #       # seccompProfile:
+    #       #   type: RuntimeDefault
+    #       capabilities:
+    #         drop:
+    #           - ALL
 
   - name: a-test-step
     image: alpine
