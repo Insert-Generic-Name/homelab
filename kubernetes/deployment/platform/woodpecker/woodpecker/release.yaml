@@ -17,8 +17,9 @@ spec:
         runAsUser: 1000
       env:
       WOODPECKER_MAX_WORKFLOWS: 3
-      BACKEND_K8S_STORAGE_RWX: false #changme
-      # BACKEND_K8S_STORAGE_CLASS: "cephfs"
+      WOODPECKER_BACKEND_K8S_STORAGE_RWX: false
+      WOODPECKER_BACKEND_K8S_VOLUME_SIZE: "5G" #changme
+      # WOODPECKER_BACKEND_K8S_STORAGE_CLASS: "cephfs"
     server:
       env:
         WOODPECKER_OPEN: true
