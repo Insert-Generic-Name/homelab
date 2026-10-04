@@ -9,6 +9,7 @@ kubelogin = "1.36.4"
 kubectl = "1.37.0"
 yq = "4.53.6"
 gum = "2.0.1"
+"github:woodpecker-ci/woodpecker" = "3.18.1"
 [env]
 BAO_ADDR = "http://127.0.0.1:8200"
 BAO_SKIP_VERIFY = true

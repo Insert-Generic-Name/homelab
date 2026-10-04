@@ -171,6 +171,45 @@ checksum = "sha256:94bba0d4ff3adae93a10df9e6d83847a66f55489e1e75f1649921412131bd
 url = "https://github.com/terror/just-lsp/releases/download/0.7.1/just-lsp-0.7.1-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/542943449"
 
+[[tools."github:woodpecker-ci/woodpecker"]]
+version = "3.18.1"
+backend = "github:woodpecker-ci/woodpecker"
+
+[tools."github:woodpecker-ci/woodpecker"."platforms.linux-arm64"]
+checksum = "sha256:25edfe1f763aed2d8f2c4d8629932b77aec82136625bfbf194e857f34fb39404"
+url = "https://github.com/woodpecker-ci/woodpecker/releases/download/v3.18.1/woodpecker-cli_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/woodpecker-ci/woodpecker/releases/assets/551575524"
+
+[tools."github:woodpecker-ci/woodpecker"."platforms.linux-arm64-musl"]
+checksum = "sha256:25edfe1f763aed2d8f2c4d8629932b77aec82136625bfbf194e857f34fb39404"
+url = "https://github.com/woodpecker-ci/woodpecker/releases/download/v3.18.1/woodpecker-cli_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/woodpecker-ci/woodpecker/releases/assets/551575524"
+
+[tools."github:woodpecker-ci/woodpecker"."platforms.linux-x64"]
+checksum = "sha256:e7e78b0cc2f1172407d4e1439909bf8f55fb9b55f0fa79ae28338b195ecb56a5"
+url = "https://github.com/woodpecker-ci/woodpecker/releases/download/v3.18.1/woodpecker-cli_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/woodpecker-ci/woodpecker/releases/assets/551575417"
+
+[tools."github:woodpecker-ci/woodpecker"."platforms.linux-x64-musl"]
+checksum = "sha256:e7e78b0cc2f1172407d4e1439909bf8f55fb9b55f0fa79ae28338b195ecb56a5"
+url = "https://github.com/woodpecker-ci/woodpecker/releases/download/v3.18.1/woodpecker-cli_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/woodpecker-ci/woodpecker/releases/assets/551575417"
+
+[tools."github:woodpecker-ci/woodpecker"."platforms.macos-arm64"]
+checksum = "sha256:a10f00ca6af4856a7d4c9c1aad83199e30625436def8530702978a496b19e72c"
+url = "https://github.com/woodpecker-ci/woodpecker/releases/download/v3.18.1/woodpecker-cli_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/woodpecker-ci/woodpecker/releases/assets/551575313"
+
+[tools."github:woodpecker-ci/woodpecker"."platforms.macos-x64"]
+checksum = "sha256:0b36bbe885ffec1368527b75459c4aa4f44155c0b9cc885a58a3f708da06713f"
+url = "https://github.com/woodpecker-ci/woodpecker/releases/download/v3.18.1/woodpecker-cli_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/woodpecker-ci/woodpecker/releases/assets/551575273"
+
+[tools."github:woodpecker-ci/woodpecker"."platforms.windows-x64"]
+checksum = "sha256:25c8c27932e477ba0c2bb8f62d25f50f6dc7498727770d0541e3d1e0b8bff585"
+url = "https://github.com/woodpecker-ci/woodpecker/releases/download/v3.18.1/woodpecker-cli_windows_amd64.zip"
+url_api = "https://api.github.com/repos/woodpecker-ci/woodpecker/releases/assets/551576074"
+
 [[tools.gum]]
 version = "2.0.1"
 backend = "aqua:charmbracelet/gum"
