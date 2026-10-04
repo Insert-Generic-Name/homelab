@@ -22,7 +22,6 @@ omni/.generated/**
 proxslop/**
 slopenbao/**
 archive/**
-planning.md
 chores.md
 storage.sh
 loadbalancer.sh
