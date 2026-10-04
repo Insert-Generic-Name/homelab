@@ -15,14 +15,10 @@ spec:
         readOnlyRootFilesystem: true
         runAsNonRoot: true
         runAsUser: 1000
-      # env:
-      #   WOODPECKER_SERVER: "192.168.1.60:9002"
-      # WOODPECKER_MAX_WORKFLOWS: 3
-      # WOODPECKER_AGENT_SECRET:
-      #   valueFrom:
-      #     secretKeyRef:
-      #       name: woodpecker
-      #       key: woodpecker-agent-secret
+      env:
+      WOODPECKER_MAX_WORKFLOWS: 3
+      BACKEND_K8S_STORAGE_RWX: false #changme
+      # BACKEND_K8S_STORAGE_CLASS: "cephfs"
     server:
       env:
         # WOODPECKER_AGENT_SECRET:
