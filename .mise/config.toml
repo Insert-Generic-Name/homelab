@@ -19,3 +19,5 @@ CLUSTER_NAME = "talops"
 OMNICONFIG = "{{config_root}}/omniconfig"
 TALOSCONFIG = "{{config_root}}/talosconfig"
 KUBECONFIG = "{{config_root}}/kubeconfig"
+[settings]
+lockfile = true
