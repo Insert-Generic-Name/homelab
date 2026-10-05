@@ -18,3 +18,6 @@ CLUSTER_NAME = "talops"
 OMNICONFIG = "{{config_root}}/omniconfig"
 TALOSCONFIG = "{{config_root}}/talosconfig"
 KUBECONFIG = "{{config_root}}/kubeconfig"
+[tasks.ci]
+description = "Run basic CI workflows locally"
+run = "woodpecker-cli exec --pipeline-event push --commit-branch main --backend-engine docker .woodpecker/test.yaml"
