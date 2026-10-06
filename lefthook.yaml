@@ -1,4 +1,4 @@
 pre-commit:
   jobs:
     - name: Run basic CI workflow locally
-      run: woodpecker-cli exec  --backend-engine docker .woodpecker/checks.yaml
+      run: woodpecker-cli exec --backend-engine docker .woodpecker/checks.yaml

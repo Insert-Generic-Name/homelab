@@ -39,6 +39,52 @@ checksum = "md5:e35ad08861db03c07b19ba782bb0d53e"
 url = "https://github.com/a8m/envsubst/releases/download/v1.4.3/envsubst.exe"
 url_api = "https://api.github.com/repos/a8m/envsubst/releases/assets/232842598"
 
+[[tools.flux-operator]]
+version = "0.57.0"
+backend = "aqua:controlplaneio-fluxcd/flux-operator"
+
+[tools.flux-operator."platforms.linux-arm64"]
+checksum = "sha256:ac2ac47b55dc42459ab8de71ddb1e8687597e80320dbba43ace5d9904f219d1d"
+url = "https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.57.0/flux-operator_0.57.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/controlplaneio-fluxcd/flux-operator/releases/assets/491633995"
+provenance = "github-attestations"
+
+[tools.flux-operator."platforms.linux-arm64-musl"]
+checksum = "sha256:ac2ac47b55dc42459ab8de71ddb1e8687597e80320dbba43ace5d9904f219d1d"
+url = "https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.57.0/flux-operator_0.57.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/controlplaneio-fluxcd/flux-operator/releases/assets/491633995"
+provenance = "github-attestations"
+
+[tools.flux-operator."platforms.linux-x64"]
+checksum = "sha256:abd705d2772912c482379103163df9537b4828326d29be114ec1da1cbf7a81b3"
+url = "https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.57.0/flux-operator_0.57.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/controlplaneio-fluxcd/flux-operator/releases/assets/491633998"
+provenance = "github-attestations"
+
+[tools.flux-operator."platforms.linux-x64-musl"]
+checksum = "sha256:abd705d2772912c482379103163df9537b4828326d29be114ec1da1cbf7a81b3"
+url = "https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.57.0/flux-operator_0.57.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/controlplaneio-fluxcd/flux-operator/releases/assets/491633998"
+provenance = "github-attestations"
+
+[tools.flux-operator."platforms.macos-arm64"]
+checksum = "sha256:4dc9b3026f3b2d9fc7f13d9f6f5805036cff7d0af94d684abc928431c914138a"
+url = "https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.57.0/flux-operator_0.57.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/controlplaneio-fluxcd/flux-operator/releases/assets/491634000"
+provenance = "github-attestations"
+
+[tools.flux-operator."platforms.macos-x64"]
+checksum = "sha256:dea268f9ae341c81e77bd5dda25f0c94a543c6acf629cd79e2de30f9e999a94b"
+url = "https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.57.0/flux-operator_0.57.0_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/controlplaneio-fluxcd/flux-operator/releases/assets/491633997"
+provenance = "github-attestations"
+
+[tools.flux-operator."platforms.windows-x64"]
+checksum = "sha256:d0161b5aabc2016a12bbcd2763d8da0a59668e0e163df73ffafc57bfaa3010ff"
+url = "https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.57.0/flux-operator_0.57.0_windows_amd64.zip"
+url_api = "https://api.github.com/repos/controlplaneio-fluxcd/flux-operator/releases/assets/491634103"
+provenance = "github-attestations"
+
 [[tools."github:woodpecker-ci/woodpecker"]]
 version = "3.18.1"
 backend = "github:woodpecker-ci/woodpecker"
