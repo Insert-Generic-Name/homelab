@@ -1,5 +1,5 @@
 pre-commit:
-  # follow: true # print stdout
+  follow: false # print stdout
   jobs:
     - name: Run basic CI workflow locally
-      run: echo "test me" # woodpecker-cli exec --backend-engine docker .woodpecker/checks.yaml
+      run: woodpecker-cli exec --backend-engine docker .woodpecker/checks.yaml
