@@ -25,7 +25,10 @@ steps:
         "-f",
         "./kubernetes/flux-system/cluster/platform/rs.yaml",
       ]
-    #  - yamllint .
+  - name: fail script on purpose ( testing)
+    image: debian:latest
+    commands:
+      - yamllint .
     # backend_options:
     #   kubernetes:
     #     securityContext:
