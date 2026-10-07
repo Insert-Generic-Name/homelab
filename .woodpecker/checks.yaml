@@ -11,7 +11,7 @@ steps:
       ["/busybox/sh", "-c", "echo $CI_SCRIPT | base64 -d | /busybox/sh -e"]
     commands:
       - flux-operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml
-  #  Remove manual trigger for this linting step ( despite naturally fitting in the same workflow) so it doesnt run on pre-hook commit
+  #  Remove manual trigger for this linting step ( despite naturally fitting in the same workflow) so it doesnt run on pre-commit hook
   #    when:
   #      - event: push
   #        branch: main
