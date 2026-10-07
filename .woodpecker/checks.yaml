@@ -4,39 +4,25 @@ when:
   - event: manual
 
 steps:
-  # Invoke flux operator CLI via entrypoint instead of command since the container lacks a shell
-  - name: Build fluxcd manifests
+  - name: Build FluxCD resources and validate them
     image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
+    # Shell does not live under /bin/sh which is the default path used by woodpecker
     entrypoint:
-      [
-        "flux-operator",
-        "build",
-        "rset",
-        "-f",
-        "./kubernetes/flux-system/cluster/platform/rs.yaml",
-      ]
-  - name: Validate generated manifests
-    image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
-    entrypoint:
-      [
-        "flux-operator",
-        "build",
-        "rset",
-        "-f",
-        "./kubernetes/flux-system/cluster/platform/rs.yaml",
-      ]
+      ["/busybox/sh", "-c", "echo $CI_SCRIPT | base64 -d | /busybox/sh -e"]
+    commands:
+      - flux-operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml
 
-    # backend_options:
-    #   kubernetes:
-    #     securityContext:
-    #       runAsUser: 1000
-    #       runAsGroup: 1000
-    #       allowPrivilegeEscalation: false
-    #       # seccompProfile:
-    #       #   type: RuntimeDefault
-    #       capabilities:
-    #         drop:
-    #           - ALL
+  # backend_options:
+  #   kubernetes:
+  #     securityContext:
+  #       runAsUser: 1000
+  #       runAsGroup: 1000
+  #       allowPrivilegeEscalation: false
+  #       # seccompProfile:
+  #       #   type: RuntimeDefault
+  #       capabilities:
+  #         drop:
+  #           - ALL
 
   - name: a-test-step
     image: alpine
