@@ -1,3 +1,4 @@
+* text=auto eol=lf
 *.yaml.tmpl linguist-detectable linguist-language=YAML
 *.yaml      linguist-detectable linguist-language=YAML
 *.yml       linguist-detectable linguist-language=YAML
