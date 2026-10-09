@@ -1,3 +1,4 @@
+> Under development, subject to change
 You are allowed to create/modify with AI as long as:
 
 1. You are able to explain said code by yourself
