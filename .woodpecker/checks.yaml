@@ -4,6 +4,12 @@ when:
   - event: manual
 
 steps:
+  - name: yamllint
+    image: alpine:3.24.2
+    commands:
+      - apk add yamllint
+      - yamllint .
+
   - name: Build FluxCD resources and validate them
     image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
     # Shell does not live under /bin/sh which is the default path used by woodpecker
@@ -11,7 +17,9 @@ steps:
       ["/busybox/sh", "-c", "echo $CI_SCRIPT | base64 -d | /busybox/sh -e"]
     commands:
       - flux-operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml
-  #  Remove manual trigger for this linting step ( despite naturally fitting in the same workflow) so it doesnt run on pre-commit hook
+
+  #  Remove manual trigger for this linting step ( despite naturally fitting in the same workflow)
+  #  so it doesnt run on pre-commit hook
   #    when:
   #      - event: push
   #        branch: main
