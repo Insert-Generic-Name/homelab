@@ -11,8 +11,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux-operator
-  # Note: If the input source is a HelmRepository, then the input name and the chart name MUST be equal.
-  # This can be verified with $ helm search repo << myrepo >>.
+  # If .inputs.source is equal to HelmRepository, .inputs.name MUST be equal to the chart name.
+  # Verify the chart name using $ helm search repo <<myrepo>>.
   inputs:
     - name: cilium
       namespace: kube-system
