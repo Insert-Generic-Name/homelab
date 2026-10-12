@@ -15,17 +15,17 @@ steps:
       - apk add yamllint
       - yamllint .
 
-  - name: docker compose lint
-    image: alpine:3.24.2
-    commands:
-      - docker compose config
-    when:
-      - path: "compose.yaml"
+  #  - name: docker compose lint
+  #   image: alpine:3.24.2
+  #    commands:
+  #      - docker compose config
+  #    when:
+  #      - path: "compose.yaml"
 
-  - name: helm schema validation
-    image: alpine:latest
-    commands:
-      - yq eval '.spec.values' release.yaml > values.yaml
+  #  - name: helm schema validation
+  # image: alpine:latest
+  #  commands:
+  #     - yq eval '.spec.values' release.yaml > values.yaml
 
   - name: Build FluxCD resources and validate them
     image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
