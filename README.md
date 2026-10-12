@@ -5,6 +5,14 @@
 Welcome to hell
 
 ## Pre-requesites
+
+1. Setup Openbao access
+On the host system, set the following environment variables
+
+export VAULT_ADDR="https://127.0.0.1:8200"
+export BAO_ADDR="$FNOX_VAULT_ADDR
+
+
 > This step is optional but highly enouraged
 
 Note that .gitleaks.toml.tmpl must be set manually to avoid operational overhead,
