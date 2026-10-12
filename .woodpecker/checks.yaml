@@ -4,11 +4,28 @@ when:
   - event: manual
 
 steps:
+  # - name:  secret scanning
+  #   image: ghcr.io/gitleaks/gitleaks:latest
+  #   commands:
+  #     - gitleaks git
+
   - name: yamllint
     image: alpine:3.24.2
     commands:
       - apk add yamllint
       - yamllint .
+
+  - name: docker compose lint
+    image: alpine:3.24.2
+    commands:
+      - docker compose config
+    when:
+      - path: "compose.yaml"
+
+  - name: helm schema validation
+    image: alpine:latest
+    commands:
+      - yq eval '.spec.values' release.yaml > values.yaml
 
   - name: Build FluxCD resources and validate them
     image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
@@ -23,18 +40,6 @@ steps:
   #    when:
   #      - event: push
   #        branch: main
-
-  # backend_options:
-  #   kubernetes:
-  #     securityContext:
-  #       runAsUser: 1000
-  #       runAsGroup: 1000
-  #       allowPrivilegeEscalation: false
-  #       # seccompProfile:
-  #       #   type: RuntimeDefault
-  #       capabilities:
-  #         drop:
-  #           - ALL
 
   - name: a-test-step
     image: alpine

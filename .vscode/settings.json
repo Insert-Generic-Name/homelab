@@ -26,6 +26,7 @@
     "files.associations": {
         "*.json5": "json5",
         "*.yaml.tmpl": "yaml",
+        "*.toml.tmpl": "toml",
     },
     "material-icon-theme.files.associations": {
         "README.md": "document",
