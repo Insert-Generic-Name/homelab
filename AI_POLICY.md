@@ -10,3 +10,5 @@ Therefore you are also responsible of the vulnerabilities and security risks sai
 
 * Common IaC misconfigurations are _generally_ not punished since humans are prone to comitting errors ( *however they can be punished depending on the severity)
 * Malicious code that tries to make a system vulnerable on purpose  ( such as weakining a service and/or executing untrusted code) is against the rules and will lead to a severe punishment.
+
+If you are using AI to create/modify code, you **must** disclose it; this is done by labeling your pull request with the "AI" tag. While not needed, you are encouraged to mention the specific model used and in what contexts the AI was used ( wether if it was used for creating, assisting or improving )
