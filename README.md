@@ -39,11 +39,33 @@ test
 
 maybe trivy operator for kubernetes? May be useful for securing CD
 
-On pre-commit: local ( staged) secrets --> linters
-On push: Secret scanning ( git wide) --> linters  --> IaC scanning  --> Policy as Code --> SBOM generation --> Document regeneration ( mkdocs) --> Push to OCI registry & git mirrors
+On pre-commit:
+    local ( staged) secrets
+    basic linters
+
+On push:
+    Secret scanning ( git wide)
+    basic & advanced linters
+    SCA
+    IaC scanning
+    Policy as Code
+    SBOM generation
+    Document regeneration ( mkdocs)
+    Push to OCI registry & git mirrors
+
 Tools:
 - gitleaks
 - yamllint, tflint, helmlint, kube-lint, flux-operator...
 - trivy
 - kyverno
+- checkov ( may overlap with trivy )
 - ?
+
+minimumReleaseAge in renovate to avoid auto updating to malicious packages
+encrypt etcd at rest ( EncryptionConfiguration )
+
+helm template myapp ./chart -f prod-values.yaml --output-dir ./rendered
+trivy
+ config ./rendered
+checkov
+ -d ./rendered --framework kubernetes
