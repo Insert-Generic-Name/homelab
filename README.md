@@ -38,7 +38,7 @@ Maybe use this for validating schemas inside helmreleases or maybe add IDE integ
 test
 
 On pre-commit: local ( staged) secrets --> linters
-On push: Secret scanning ( git wide) --> linters  --> IaC scanning  --> Policy as Code --> SBOM generation --> Push to OCI registry & git mirrors
+On push: Secret scanning ( git wide) --> linters  --> IaC scanning  --> Policy as Code --> SBOM generation --> Document regeneration ( mkdocs) --> Push to OCI registry & git mirrors
 Tools:
 - gitleaks
 - yamllint, tflint, helmlint, kube-lint, flux-operator...
