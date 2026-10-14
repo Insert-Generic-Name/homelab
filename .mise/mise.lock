@@ -85,6 +85,45 @@ url = "https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/
 url_api = "https://api.github.com/repos/controlplaneio-fluxcd/flux-operator/releases/assets/491634103"
 provenance = "github-attestations"
 
+[[tools."github:adrienverge/yamllint"]]
+version = "1.38.0"
+backend = "github:adrienverge/yamllint"
+
+[tools."github:adrienverge/yamllint"."platforms.linux-arm64"]
+checksum = "sha256:09e5f29531daab93366bb061e76019d5e91691ef0a40328f04c927387d1d364d"
+url = "https://github.com/adrienverge/yamllint/releases/download/v1.38.0/yamllint-1.38.0.tar.gz"
+url_api = "https://api.github.com/repos/adrienverge/yamllint/releases/assets/339841231"
+
+[tools."github:adrienverge/yamllint"."platforms.linux-arm64-musl"]
+checksum = "sha256:09e5f29531daab93366bb061e76019d5e91691ef0a40328f04c927387d1d364d"
+url = "https://github.com/adrienverge/yamllint/releases/download/v1.38.0/yamllint-1.38.0.tar.gz"
+url_api = "https://api.github.com/repos/adrienverge/yamllint/releases/assets/339841231"
+
+[tools."github:adrienverge/yamllint"."platforms.linux-x64"]
+checksum = "sha256:09e5f29531daab93366bb061e76019d5e91691ef0a40328f04c927387d1d364d"
+url = "https://github.com/adrienverge/yamllint/releases/download/v1.38.0/yamllint-1.38.0.tar.gz"
+url_api = "https://api.github.com/repos/adrienverge/yamllint/releases/assets/339841231"
+
+[tools."github:adrienverge/yamllint"."platforms.linux-x64-musl"]
+checksum = "sha256:09e5f29531daab93366bb061e76019d5e91691ef0a40328f04c927387d1d364d"
+url = "https://github.com/adrienverge/yamllint/releases/download/v1.38.0/yamllint-1.38.0.tar.gz"
+url_api = "https://api.github.com/repos/adrienverge/yamllint/releases/assets/339841231"
+
+[tools."github:adrienverge/yamllint"."platforms.macos-arm64"]
+checksum = "sha256:09e5f29531daab93366bb061e76019d5e91691ef0a40328f04c927387d1d364d"
+url = "https://github.com/adrienverge/yamllint/releases/download/v1.38.0/yamllint-1.38.0.tar.gz"
+url_api = "https://api.github.com/repos/adrienverge/yamllint/releases/assets/339841231"
+
+[tools."github:adrienverge/yamllint"."platforms.macos-x64"]
+checksum = "sha256:09e5f29531daab93366bb061e76019d5e91691ef0a40328f04c927387d1d364d"
+url = "https://github.com/adrienverge/yamllint/releases/download/v1.38.0/yamllint-1.38.0.tar.gz"
+url_api = "https://api.github.com/repos/adrienverge/yamllint/releases/assets/339841231"
+
+[tools."github:adrienverge/yamllint"."platforms.windows-x64"]
+checksum = "sha256:09e5f29531daab93366bb061e76019d5e91691ef0a40328f04c927387d1d364d"
+url = "https://github.com/adrienverge/yamllint/releases/download/v1.38.0/yamllint-1.38.0.tar.gz"
+url_api = "https://api.github.com/repos/adrienverge/yamllint/releases/assets/339841231"
+
 [[tools."github:woodpecker-ci/woodpecker"]]
 version = "3.18.1"
 backend = "github:woodpecker-ci/woodpecker"
@@ -535,6 +574,40 @@ url = "https://github.com/openbao/openbao/releases/download/v2.6.2/openbao_2.6.2
 url_api = "https://api.github.com/repos/openbao/openbao/releases/assets/519667523"
 provenance = "cosign"
 
+[[tools.pipx]]
+version = "1.17.14"
+backend = "aqua:pypa/pipx"
+
+[tools.pipx."platforms.linux-arm64"]
+checksum = "sha256:12cc141f0c668e6f3af40b6d8abc181af0430427eebca102bb93eed453950759"
+url = "https://github.com/pypa/pipx/releases/download/1.17.14/pipx.pyz"
+url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/633012947"
+
+[tools.pipx."platforms.linux-arm64-musl"]
+checksum = "sha256:12cc141f0c668e6f3af40b6d8abc181af0430427eebca102bb93eed453950759"
+url = "https://github.com/pypa/pipx/releases/download/1.17.14/pipx.pyz"
+url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/633012947"
+
+[tools.pipx."platforms.linux-x64"]
+checksum = "sha256:12cc141f0c668e6f3af40b6d8abc181af0430427eebca102bb93eed453950759"
+url = "https://github.com/pypa/pipx/releases/download/1.17.14/pipx.pyz"
+url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/633012947"
+
+[tools.pipx."platforms.linux-x64-musl"]
+checksum = "sha256:12cc141f0c668e6f3af40b6d8abc181af0430427eebca102bb93eed453950759"
+url = "https://github.com/pypa/pipx/releases/download/1.17.14/pipx.pyz"
+url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/633012947"
+
+[tools.pipx."platforms.macos-arm64"]
+checksum = "sha256:12cc141f0c668e6f3af40b6d8abc181af0430427eebca102bb93eed453950759"
+url = "https://github.com/pypa/pipx/releases/download/1.17.14/pipx.pyz"
+url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/633012947"
+
+[tools.pipx."platforms.macos-x64"]
+checksum = "sha256:12cc141f0c668e6f3af40b6d8abc181af0430427eebca102bb93eed453950759"
+url = "https://github.com/pypa/pipx/releases/download/1.17.14/pipx.pyz"
+url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/633012947"
+
 [[tools.talosctl]]
 version = "1.14.0"
 backend = "aqua:siderolabs/talos"
@@ -612,6 +685,102 @@ url = "https://releases.hashicorp.com/terraform/1.16.1/terraform_1.16.1_darwin_a
 [tools.terraform."platforms.windows-x64"]
 checksum = "sha256:5c6c6d8fedf56ce29c55f0c1fc91de3c259f42c2d220a28e827b5b60fd47bfa1"
 url = "https://releases.hashicorp.com/terraform/1.16.1/terraform_1.16.1_windows_amd64.zip"
+
+[[tools.tflint]]
+version = "0.64.0"
+backend = "aqua:terraform-linters/tflint"
+
+[tools.tflint."platforms.linux-arm64"]
+checksum = "sha256:560da89aacf59389d4eb029730dd5b109b7288096c32f2726a0d9e783a5ea8eb"
+url = "https://github.com/terraform-linters/tflint/releases/download/v0.64.0/tflint_linux_arm64.zip"
+url_api = "https://api.github.com/repos/terraform-linters/tflint/releases/assets/480528325"
+provenance = "github-attestations"
+
+[tools.tflint."platforms.linux-arm64-musl"]
+checksum = "sha256:560da89aacf59389d4eb029730dd5b109b7288096c32f2726a0d9e783a5ea8eb"
+url = "https://github.com/terraform-linters/tflint/releases/download/v0.64.0/tflint_linux_arm64.zip"
+url_api = "https://api.github.com/repos/terraform-linters/tflint/releases/assets/480528325"
+provenance = "github-attestations"
+
+[tools.tflint."platforms.linux-x64"]
+checksum = "sha256:cca9d13e2e1d7a2c627af60ff899a3c9b74212899416aeb96ec764d2ef954537"
+url = "https://github.com/terraform-linters/tflint/releases/download/v0.64.0/tflint_linux_amd64.zip"
+url_api = "https://api.github.com/repos/terraform-linters/tflint/releases/assets/480528344"
+provenance = "github-attestations"
+
+[tools.tflint."platforms.linux-x64-musl"]
+checksum = "sha256:cca9d13e2e1d7a2c627af60ff899a3c9b74212899416aeb96ec764d2ef954537"
+url = "https://github.com/terraform-linters/tflint/releases/download/v0.64.0/tflint_linux_amd64.zip"
+url_api = "https://api.github.com/repos/terraform-linters/tflint/releases/assets/480528344"
+provenance = "github-attestations"
+
+[tools.tflint."platforms.macos-arm64"]
+checksum = "sha256:2496e9cb3d24992d553b45e7c87a0fdc9449ca975233876247a9bfeda857e6c0"
+url = "https://github.com/terraform-linters/tflint/releases/download/v0.64.0/tflint_darwin_arm64.zip"
+url_api = "https://api.github.com/repos/terraform-linters/tflint/releases/assets/480528349"
+provenance = "github-attestations"
+
+[tools.tflint."platforms.macos-x64"]
+checksum = "sha256:0f3a9fd17526014646a2dfc3f9122f7b4161abe3d6b0f0f03f9014483ddf4d19"
+url = "https://github.com/terraform-linters/tflint/releases/download/v0.64.0/tflint_darwin_amd64.zip"
+url_api = "https://api.github.com/repos/terraform-linters/tflint/releases/assets/480528324"
+provenance = "github-attestations"
+
+[tools.tflint."platforms.windows-x64"]
+checksum = "sha256:fb42fb859d844b156a8ea9d3363078c4d8b85ca78782e60876b08c9b8e59f303"
+url = "https://github.com/terraform-linters/tflint/releases/download/v0.64.0/tflint_windows_amd64.zip"
+url_api = "https://api.github.com/repos/terraform-linters/tflint/releases/assets/480528323"
+provenance = "github-attestations"
+
+[[tools.uv]]
+version = "0.13.0"
+backend = "aqua:astral-sh/uv"
+
+[tools.uv."platforms.linux-arm64"]
+checksum = "sha256:281ca6cf43f4e26e35474839ad4861be86de42af2682f74134460f5b2071b96d"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.0/uv-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/626003041"
+provenance = "github-attestations"
+
+[tools.uv."platforms.linux-arm64-musl"]
+checksum = "sha256:281ca6cf43f4e26e35474839ad4861be86de42af2682f74134460f5b2071b96d"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.0/uv-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/626003041"
+provenance = "github-attestations"
+
+[tools.uv."platforms.linux-x64"]
+checksum = "sha256:b0828fc4cdc47d65951e94b5f0a15a5364420e8dcd88723f3b21e7a2eb30bbc3"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.0/uv-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/626003353"
+provenance = "github-attestations"
+
+[tools.uv."platforms.linux-x64-musl"]
+checksum = "sha256:b0828fc4cdc47d65951e94b5f0a15a5364420e8dcd88723f3b21e7a2eb30bbc3"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.0/uv-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/626003353"
+provenance = "github-attestations"
+
+[tools.uv."platforms.macos-arm64"]
+checksum = "sha256:a9c1b29002cf3c83f07fa9cd8a887a3be0107d90e23189721221e7257db8e3d6"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.0/uv-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/626002972"
+provenance = "github-attestations"
+
+[tools.uv."platforms.macos-x64"]
+checksum = "sha256:5f44dcbde809b632f47c36fadb241cb4d6f9af71d0c8f172b5d2026d3dde742c"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.0/uv-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/626003261"
+provenance = "github-attestations"
+
+[tools.uv."platforms.windows-x64"]
+checksum = "sha256:088962f9e7b7bd9ea740c04c650b2a21c8928c345bd99ac24350dc924dba656c"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.0/uv-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/626003295"
+provenance = "github-attestations"
+
+[[tools.yamllint]]
+version = "1.38.0"
+backend = "pipx:yamllint"
 
 [[tools.yq]]
 version = "4.53.6"

@@ -12,6 +12,9 @@ omnictl = "1.11.0"
 openbao = "2.6.2"
 talosctl = "1.14.0"
 terraform = "1.16.1"
+tflint = "0.64.0"
+uv = "0.13.0"                                # Needed for yamllint
+yamllint = "1.38.0"
 yq = "4.53.6"
 "github:woodpecker-ci/woodpecker" = "3.18.1"
 
