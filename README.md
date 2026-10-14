@@ -63,6 +63,8 @@ Tools:
 minimumReleaseAge in renovate to avoid auto updating to malicious packages
 encrypt etcd at rest ( EncryptionConfiguration )
 
+# Change renovate appeareance to core mita ( Like onedr0p does with "ross-bot")
+
 helm template myapp ./chart -f prod-values.yaml --output-dir ./rendered
 trivy
  config ./rendered
