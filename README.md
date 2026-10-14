@@ -48,8 +48,8 @@ On push:
     basic & advanced linters
     SCA gate policies + VEX
     IaC scanning + Policy as Code
-    SBOM generation
     Document regeneration ( mkdocs)
+    SBOM generation
     Push to OCI registry & git mirrors
 
 Tools:

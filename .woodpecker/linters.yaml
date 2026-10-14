@@ -4,11 +4,6 @@ when:
   - event: manual
 
 steps:
-  # - name:  secret scanning
-  #   image: ghcr.io/gitleaks/gitleaks:latest
-  #   commands:
-  #     - gitleaks git
-
   - name: yamllint
     image: alpine:3.24.2
     commands:
@@ -40,8 +35,3 @@ steps:
   #    when:
   #      - event: push
   #        branch: main
-
-  - name: a-test-step
-    image: alpine
-    commands:
-      - echo "Testing ... "
