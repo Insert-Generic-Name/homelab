@@ -46,9 +46,8 @@ On pre-commit:
 On push:
     Secret scanning ( git wide)
     basic & advanced linters
-    SCA
-    IaC scanning
-    Policy as Code
+    SCA gate policies + VEX
+    IaC scanning + Policy as Code
     SBOM generation
     Document regeneration ( mkdocs)
     Push to OCI registry & git mirrors
