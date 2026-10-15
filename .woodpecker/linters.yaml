@@ -1,11 +1,6 @@
-variables:
-  - &event_filter
-    - push
-    - pull_request
-    - manual # Allows local CI execution on pre-commit
-
+#depends_on
 when:
-  - event: *event_filter
+  - event: ["push", "pull_request", "manual"] # manual allows local CI execution on pre-commit
 
 steps:
   - name: yamllint
@@ -14,10 +9,8 @@ steps:
       - apk add yamllint
       - yamllint .
     when:
-      - event: *event_filter
-        path:
-          - "*.yaml"
-          - "*.yaml.tmpl"
+      - path:
+          include: ["*.yaml", "*.yaml.tmpl"]
 
   # tflint
   #  - name: docker compose lint
