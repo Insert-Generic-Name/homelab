@@ -4,9 +4,3 @@ pre-commit:
   jobs:
     - name: Local secret scanning ( only for staged files )
       run: gitleaks git --pre-commit --staged --redact --verbose
-
-    - name: Run yamllint
-      run: yamllint .
-
-    # - name: Run tflint
-    #   run: tflint
