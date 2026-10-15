@@ -1,7 +1,8 @@
-variables: &event_filter
-  - push
-  - pull_request
-  - manual # Allows local CI execution on pre-commit
+variables:
+  - &event_filter
+    - push
+    - pull_request
+    - manual # Allows local CI execution on pre-commit
 
 when:
   - event: *event_filter
