@@ -58,7 +58,6 @@ Tools:
 - trivy
 - kyverno
 - checkov ( may overlap with trivy )
-- ?
 
 minimumReleaseAge in renovate to avoid auto updating to malicious packages
 encrypt etcd at rest ( EncryptionConfiguration )
