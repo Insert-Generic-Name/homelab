@@ -1,7 +1,10 @@
+variables: &events
+  - push
+  - pull_request
+  - manual # Allows local CI execution on pre-commit
+
 when:
-  - event: push
-    branch: main
-  - event: manual
+  - event: *events
 
 steps:
   - name: yamllint
@@ -9,7 +12,13 @@ steps:
     commands:
       - apk add yamllint
       - yamllint .
+    when:
+      - event: *events
+        path:
+          - "*.yaml"
+          - "*.yaml.tmpl"
 
+  # tflint
   #  - name: docker compose lint
   #   image: alpine:3.24.2
   #    commands:
@@ -21,17 +30,3 @@ steps:
   # image: alpine:latest
   #  commands:
   #     - yq eval '.spec.values' release.yaml > values.yaml
-
-  - name: Build FluxCD resources and validate them
-    image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
-    # Shell does not live under /bin/sh which is the default path used by woodpecker
-    entrypoint:
-      ["/busybox/sh", "-c", "echo $CI_SCRIPT | base64 -d | /busybox/sh -e"]
-    commands:
-      - flux-operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml
-
-  #  Remove manual trigger for this linting step ( despite naturally fitting in the same workflow)
-  #  so it doesnt run on pre-commit hook
-  #    when:
-  #      - event: push
-  #        branch: main
