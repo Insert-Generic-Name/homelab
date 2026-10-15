@@ -14,7 +14,10 @@ steps:
       - apk add yamllint
       - yamllint .
     when:
-      - event: *event_filter
+      - event:
+          - push
+          - pull_request
+          - manual #*event_filter
         # path:
         #   - "*.yaml"
         #   - "*.yaml.tmpl"
