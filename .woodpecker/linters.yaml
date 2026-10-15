@@ -15,9 +15,9 @@ steps:
       - yamllint .
     when:
       - event: *event_filter
-        path:
-          - "*.yaml"
-          - "*.yaml.tmpl"
+        # path:
+        #   - "*.yaml"
+        #   - "*.yaml.tmpl"
 
   # tflint
   #  - name: docker compose lint
@@ -26,8 +26,3 @@ steps:
   #      - docker compose config
   #    when:
   #      - path: "compose.yaml"
-
-  #  - name: helm schema validation
-  # image: alpine:latest
-  #  commands:
-  #     - yq eval '.spec.values' release.yaml > values.yaml
