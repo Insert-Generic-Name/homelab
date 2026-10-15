@@ -15,9 +15,9 @@ steps:
       - yamllint .
     when:
       - event: *event_filter
-        # path:
-        #   - "*.yaml"
-        #   - "*.yaml.tmpl"
+        path:
+          - "*.yaml"
+          - "*.yaml.tmpl"
 
   # tflint
   #  - name: docker compose lint
