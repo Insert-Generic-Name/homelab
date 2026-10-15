@@ -9,6 +9,7 @@ steps:
       - apk add yamllint
       - yamllint .
     when:
+      - event: [push, pull_request]
       - path:
           include: ["*.yaml", "*.yaml.tmpl"]
 
