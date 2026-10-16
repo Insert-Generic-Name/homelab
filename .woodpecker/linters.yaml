@@ -1,4 +1,7 @@
-# depends_on
+depends_on:
+  - name: secret-scan.yaml
+    optional: true
+
 when:
   - event: ["push", "pull_request", "manual"] # manual allows local CI execution on pre-commit
 
