@@ -1,6 +1,9 @@
 depends_on:
   - name: secret-scan.yaml
     optional: true
+#yq 'del(.depends_on)' .woodpecker/yamllint.yaml > "$tmp"
+#    USe yq instead to delete dependson alocally while keeping it in push/pr standard workflo
+#w wihtout the need of optional
 
 when:
   - event: ["push", "pull_request", "manual"] # manual allows local CI execution on pre-commit
