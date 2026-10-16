@@ -6,4 +6,4 @@ pre-commit:
       run: gitleaks git --pre-commit --staged --redact --verbose
 
     - name: Run a CI workflow locally ( basic linters)
-      run: woodpecker-cli exec .woodpecker/linters.yaml
+      run: woodpecker-cli exec --backend-engine="docker" .woodpecker/linters.yaml
