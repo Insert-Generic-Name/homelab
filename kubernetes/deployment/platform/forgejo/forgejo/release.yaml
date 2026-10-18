@@ -1,0 +1,44 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: forgejo
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: forgejo
+  values:
+    replicaCount: 1
+    serviceAccount:
+      create: true
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+        add:
+          - SYS_CHROOT
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsGroup: 1000
+      runAsNonRoot: true
+      runAsUser: 1000
+    gitea:
+      admin:
+        existingSecret: forgejo-admin
+        email: forgejo@local
+        passwordMode: keepUpdated
+      config:
+        server:
+          ROOT_URL: http://192.168.1.60:3000
+          DOMAIN: 192.168.1.60
+          SSH_DOMAIN: 192.168.1.60
+          SSH_PORT: 22
+          SSH_LISTEN_PORT: 2222
+        webhook:
+          ALLOWED_HOST_LIST: "external,private" # Enable private hosts, else LAN webhooks won't work
+        actions:
+          enabled: false
+      metrics:
+      enabled: false # changeme
+      serviceMonitor:
+        enabled: false # changeme

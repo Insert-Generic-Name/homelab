@@ -1,0 +1,2 @@
+# Temporarily delete rook-ceph deployment, note that helmreleases were deleted only on git not on the local system
+release.yaml

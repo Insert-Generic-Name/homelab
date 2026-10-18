@@ -1,0 +1,1 @@
+{{ (fromYaml (readFile (printf "../../../deployment/platform/%s/%s/release.yaml" .Release.Namespace .Release.Name))).spec.values | toYaml }}

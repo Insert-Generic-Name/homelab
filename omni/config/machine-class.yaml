@@ -1,0 +1,9 @@
+# https://docs.siderolabs.com/omni/omni-cluster-setup/create-a-machine-class
+metadata:
+  namespace: default
+  type: MachineClasses.omni.sidero.dev
+  id: main-pool
+spec:
+  matchlabels:
+    # matches machines that are not in a cluster.
+    - omni.sidero.dev/available

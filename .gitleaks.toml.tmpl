@@ -1,0 +1,12 @@
+[extend]
+
+useDefault = true
+
+[[rules]]
+id = "domain"
+description = "Detect if public domain is present in repo"
+regex = '''${DOMAIN}''' # No "https://",".com"
+
+# Wait how the hell is this supposed to work if Upstream CI doesnt have the real file but the
+# template? Maybe make woodpecker CI pass the environment variable in runtime instead of having
+# to do this?

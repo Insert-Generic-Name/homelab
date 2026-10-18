@@ -1,0 +1,47 @@
+services:
+  omni:
+    container_name: omni
+    image: ghcr.io/siderolabs/omni:v1.11.0
+    restart: unless-stopped
+    network_mode: host
+    depends_on:
+      - dex
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - ./.generated/omni.yaml:/omni.yaml:ro,Z
+      - ./.generated/omni.asc:/omni.asc:ro,Z
+      - omni_etcd:/etcd
+      - omni_sqlite:/sqlite
+    command: --config-path=/omni.yaml
+
+  dex:
+    container_name: dex
+    image: ghcr.io/dexidp/dex:v2.41.1
+    restart: unless-stopped
+    network_mode: host
+    depends_on:
+      - caddy
+    volumes:
+      - ./.generated/dex.yaml:/etc/dex/dex.yaml:ro,Z
+      - dex_db:/var/dex/
+    command: dex serve /etc/dex/dex.yaml
+
+  caddy:
+    container_name: caddy_omni
+    image: ghcr.io/caddy-dns/cloudflare:v0.2.4
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./.generated/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_omni_data:/data
+      - caddy_omni_config:/config
+
+volumes:
+  caddy_omni_data:
+  caddy_omni_config:
+  dex_db:
+  omni_etcd:
+  omni_sqlite:

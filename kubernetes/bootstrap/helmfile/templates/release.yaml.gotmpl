@@ -1,0 +1,18 @@
+{{- $resourceSet := fromYaml (readFile "../../flux-system/cluster/platform/rs.yaml") -}}
+
+{{- $chartUrl := "" -}}
+{{- $chartTag := "" -}}
+
+{{- range $resourceSet.spec.inputs -}}
+  {{- if eq .name $.Release.Name -}}
+    {{- $chartUrl = .source.url -}}
+    {{- $chartTag = .source.tag -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if not $chartUrl -}}
+  {{- fail (printf "Could not find resource input matching release name: %s" .Release.Name) -}}
+{{- end -}}
+
+chart: {{ $chartUrl }}
+version: {{ $chartTag }}

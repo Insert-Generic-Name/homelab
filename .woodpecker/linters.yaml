@@ -1,0 +1,20 @@
+when:
+  - event: ["push", "pull_request"]
+
+steps:
+  - name: Run yamllint
+    image: alpine:3.24.2
+    commands:
+      - apk add yamllint
+      - yamllint .
+    when:
+      - path:
+          include: ["*.yaml", "*.yaml.tmpl"]
+
+  # tflint
+  #  - name: docker compose lint
+  #   image: alpine:3.24.2
+  #    commands:
+  #      - docker compose config
+  #    when:
+  #      - path: "compose.yaml"

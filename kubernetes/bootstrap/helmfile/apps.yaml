@@ -1,0 +1,58 @@
+# Bootstraps core applications that provide a minimal runtime base for the
+# cluster. These releases are installed first so the cluster has the resources
+# Flux needs before its own reconciliation begins.
+
+helmDefaults:
+  cleanupOnFail: true
+  wait: true
+  waitForJobs: true
+  forceConflicts: true
+  timeout: 1000
+
+bases:
+  - default.yaml
+
+defaultInherit: default
+
+repositories:
+  - name: rook
+    url: https://charts.rook.io/release
+
+  - name: ceph-csi
+    url: https://ceph.github.io/ceph-csi-operator
+
+releases:
+  - name: cilium
+    namespace: kube-system
+
+  # - name: rook-ceph
+  #   namespace: rook-ceph
+  #   chart: rook/rook-ceph
+  #   needs: ["kube-system/cilium"]
+
+  # - name: ceph-csi-drivers
+  #   namespace: rook-ceph
+  #   chart: ceph-csi/ceph-csi-drivers
+  #   needs: ["rook-ceph/rook-ceph"]
+
+  # - name: rook-ceph-cluster
+  #   namespace: rook-ceph
+  #   chart: rook/rook-ceph-cluster
+  #   needs: ["rook-ceph/ceph-csi-drivers"]
+
+  - name: external-secrets
+    namespace: external-secrets
+    # needs: ["rook-ceph/rook-ceph-cluster"]
+    needs: ["kube-system/cilium"]
+
+  - name: cert-manager
+    namespace: cert-manager
+    needs: ["external-secrets/external-secrets"]
+
+  - name: flux-operator
+    namespace: flux-system
+    needs: ["cert-manager/cert-manager"]
+
+  - name: flux-instance
+    namespace: flux-system
+    needs: ["flux-system/flux-operator"]

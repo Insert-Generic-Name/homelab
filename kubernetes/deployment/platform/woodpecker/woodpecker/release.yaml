@@ -1,0 +1,48 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: woodpecker
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: woodpecker
+  values:
+    agent:
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+      env:
+        WOODPECKER_MAX_WORKFLOWS: 3
+        WOODPECKER_BACKEND_K8S_STORAGE_RWX: false
+        WOODPECKER_BACKEND_K8S_VOLUME_SIZE: "5G" #changme
+        # WOODPECKER_BACKEND_K8S_STORAGE_CLASS: "cephfs"
+    server:
+      env:
+        WOODPECKER_OPEN: true
+        WOODPECKER_ADMIN: "Insert-Generic-Name"
+        WOODPECKER_HOST: http://192.168.1.60:9001
+        WOODPECKER_FORGEJO: true
+        WOODPECKER_FORGEJO_URL: http://192.168.1.60:3000
+        WOODPECKER_FORGEJO_CLIENT:
+          valueFrom:
+            secretKeyRef:
+              name: woodpecker
+              key: woodpecker-forgejo-client
+        WOODPECKER_FORGEJO_SECRET:
+          valueFrom:
+            secretKeyRef:
+              name: woodpecker
+              key: woodpecker-forgejo-secret
+      serviceAccount:
+        create: true
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000

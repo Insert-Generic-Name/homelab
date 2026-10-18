@@ -1,0 +1,29 @@
+*.env
+*.envrc
+*.iso
+*.tfstate
+*.tfstate.*
+.gitleaks.toml
+.terraform
+kubeconfig
+kubeconfig.*
+omniconfig
+omniconfig.*
+talosconfig
+talosconfig.*
+.DS_Store
+# Used to store sensitive configurations for omni
+omni/.generated/**
+!omni/.generated/.gitkeep
+
+
+
+
+## delete me when deployment is done ##
+proxslop/**
+slopenbao/**
+archive/**
+chores.md
+storage.sh
+loadbalancer.sh
+tokens.md

@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cert-manager
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: cert-manager
+  values:
+    dns01RecursiveNameserversOnly: true
+    dns01RecursiveNameservers: 1.1.1.1:53,1.0.0.1:53
+    replicaCount: 1 #changemelater to 2
+    webhook:
+      replicaCount: 1 #changemelater to 3
+    cainjector:
+      replicaCount: 1 #changemelater to 2
+    prometheus:
+      enabled: true
+      servicemonitor:
+        enabled: false # chagemelater
+    podDisruptionBudget:
+      enabled: true
+    crds:
+      enabled: true
