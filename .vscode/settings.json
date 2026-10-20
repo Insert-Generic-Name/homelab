@@ -23,7 +23,7 @@
     "files.autoSave": "onFocusChange",
     "files.trimTrailingWhitespace": true,
     // Icon theme settings
-    "workbench.iconTheme": "material-icon-theme",
+    // "workbench.iconTheme": "",
     "workbench.productIconTheme": "icons-carbon",
     // Extension settings
     "material-icon-theme.files.associations": {
@@ -51,7 +51,7 @@
         "storage": "archive",
         "external-secrets": "secure",
         "observability": "review",
-        "rook-ceph": "container",
+        "rook-ceph": "dump",
         "default": "home",
         "deployment": "azure-pipelines",
         "platform": "server",
