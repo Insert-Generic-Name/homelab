@@ -1,5 +1,6 @@
 # E
 
+# Use a custom docker image for CI steps that lack a native one ( like yamllint) So the installation of yamllint runs once instead of every time on the pipeline
 ## Introduction
 
   Welcome to hell
