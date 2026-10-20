@@ -1,6 +1,4 @@
 {
-    // Disable AI
-    "chat.disableAIFeatures": true,
     // Visuals and UI
     "editor.bracketPairColorization.enabled": true,
     "editor.cursorSmoothCaretAnimation": "on",
