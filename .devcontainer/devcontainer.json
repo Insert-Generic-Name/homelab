@@ -4,5 +4,5 @@
   "features": {
     "ghcr.io/devcontainers-extra/features/mise:1": {}
   },
-  "postCreateCommand": "mise install"
+  "postCreateCommand": "mise install && echo 'eval \"$(mise activate bash)\"' >> ~/.bashrc"
 }
