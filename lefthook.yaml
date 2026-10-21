@@ -3,7 +3,7 @@ pre-commit:
   piped: true # exit on non-critical failure ( Must set for gitleaks )
   jobs:
     - name: Local secret scanning ( only for staged files )
-      run: gitleaks git --pre-commit --staged --redact --verbose
+      run: mise exec -- gitleaks git --pre-commit --staged --redact --verbose
 
     - name: Run yamllint
-      run: yamllint .
+      run: mise exec -- yamllint .
