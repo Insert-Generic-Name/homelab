@@ -1,4 +1,7 @@
 {
-    "name": "homelab-workstation",
-    "image": "mcr.microsoft.com/devcontainers/base:alpine"
+  "name": "homelab-workstation",
+  "image": "mcr.microsoft.com/devcontainers/base:alpine",
+  "features": {
+    "ghcr.io/devcontainers-extra/features/mise:1": {}
+  }
 }
