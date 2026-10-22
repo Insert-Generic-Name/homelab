@@ -20,10 +20,6 @@ omni/.generated/**
 
 
 ## delete me when deployment is done ##
-proxslop/**
-slopenbao/**
-archive/**
-chores.md
 storage.sh
 loadbalancer.sh
 tokens.md
