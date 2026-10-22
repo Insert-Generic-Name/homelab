@@ -23,3 +23,5 @@ omni/.generated/**
 storage.sh
 loadbalancer.sh
 tokens.md
+# This is used to run slop, not really part of the deployment.
+Makefile
