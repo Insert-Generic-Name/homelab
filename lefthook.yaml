@@ -6,4 +6,12 @@ pre-commit:
       run: mise exec -- gitleaks git --pre-commit --staged --redact --verbose
 
     - name: Run yamllint
-      run: mise exec -- yamllint .
+      run: mise exec -- yamllint {staged_files}
+      glob:
+        - "*.yaml"
+        - "*.yaml.tmpl"
+
+    # Scan all provide regardless if they havent been changed. Its not a bug, its a feature.
+    - name: Run tflint
+      run: mise exec -- tflint --chdir=./terraform --recursive
+      glob: "*.tf"
