@@ -11,13 +11,22 @@ steps:
       - path:
           include: ["*.yaml", "*.yaml.tmpl"]
 
-  # tflint
-  #  - name: docker compose lint
-  #   image: alpine:3.24.2
-  #    commands:
-  #      - docker compose config
-  #    when:
-  #      - path: "compose.yaml"
+  - name: Run tflint
+    image: ghcr.io/terraform-linters/tflint:latest
+    commands:
+      - tflint --chdir=./terraform --recursive
+    when:
+      - path:
+          include: ["*.tf"]
+
+  - name: Run docker compose config
+    image: alpine:3.24.2
+    commands:
+      - apk add docker-compose
+      - docker compose config -q
+    when:
+      - path:
+          include: ["compose.yaml"]
 
   - name: Build FluxCD resources and validate them
     image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
