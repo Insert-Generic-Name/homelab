@@ -1,5 +1,8 @@
 {
   "name": "homelab-workstation",
   "image": "mcr.microsoft.com/devcontainers/base:alpine",
-  "postCreateCommand": " apk add mise && mise install && echo 'eval \"$(mise activate bash)\"' >> ~/.bashrc"
+  "features": {
+    "ghcr.io/devcontainers-extra/features/mise:1": {}
+  },
+  "postCreateCommand": "mise install && echo 'eval \"$(mise activate bash)\"' >> ~/.bashrc"
 }
