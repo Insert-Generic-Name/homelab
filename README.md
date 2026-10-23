@@ -7,6 +7,10 @@ WHILE IGNORING HELMRELEASES ( ACTUALLY IMPLEMENT THIS WITH KUBECONFORM IF POSSIB
 AND APPLY ENVSUBST IF NECESSARY, USE A .IGNORE FOR HELMRELEASES AND/OR EXTERNALSECRETS THAT FOR USING KUSTOMIZE
 OVERLAYS FOR DRY, RUNNING INITIAL SCHEMA VALIDATION WO BUILDING FROM THE RSET FAILS!
 
+TO ADD CONTEXT:
+
+flux-operator build | checkhere from stdin that is built alr, can be with kubecomform, lint and/or flux schema
+
 ## Introduction
 
 # Load every mise script with mise exec -- so hooking into the shell isnt necessary and to be more robust
