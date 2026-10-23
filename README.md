@@ -1,6 +1,12 @@
 # E
 
-# Use a custom docker image for CI steps that lack a native one ( like yamllint) So the installation of yamllint runs once instead of every time on the pipeline
+# ABOUT FLUX SCHEMA LINTING
+USE https://fluxcd.io/flux/cli-plugins/flux-schema/config/
+A FLUX SCHEMA CONFIG TO 1- BE ABLE TO USE IT FOR BASIC SCHEMA VALIDATION
+WHILE IGNORING HELMRELEASES ( ACTUALLY IMPLEMENT THIS WITH KUBECONFORM IF POSSIBLE)
+AND APPLY ENVSUBST IF NECESSARY, USE A .IGNORE FOR HELMRELEASES AND/OR EXTERNALSECRETS THAT FOR USING KUSTOMIZE
+OVERLAYS FOR DRY, RUNNING INITIAL SCHEMA VALIDATION WO BUILDING FROM THE RSET FAILS!
+
 ## Introduction
 
 # Load every mise script with mise exec -- so hooking into the shell isnt necessary and to be more robust
