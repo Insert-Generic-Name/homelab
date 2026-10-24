@@ -2,8 +2,8 @@ when:
   - event: ["push", "pull_request"]
 
 steps:
-  - name: Run yamllint
-    image: alpine:3.24.2
+  - name: YAML linters
+    image: alpine:3.24.2 #change me to a python based image to download me with pypi instead of apk
     commands:
       - apk add yamllint
       - yamllint .
@@ -11,13 +11,31 @@ steps:
       - path:
           include: ["*.yaml", "*.yaml.tmpl"]
 
-  - name: Run tflint
+  - name: Terraform linters
     image: ghcr.io/terraform-linters/tflint:latest
     commands:
       - tflint --chdir=./terraform --recursive
     when:
       - path:
           include: ["*.tf"]
+
+  - name: Kubernetes schema validation
+    image: ghcr.io/yannh/kubeconform:v0.8.0-alpine
+    commands:
+      # Ignore HelmRelease and ExternalSecret CRDs; Missing schema values due to kustomize patching DRY practises
+      - >
+        kubeconform
+        -verbose
+        -output "pretty"
+        -summary
+        -strict
+        -skip "HelmRelease,ExternalSecret"
+        -schema-location default
+        -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json'
+        ./kubernetes
+
+    when:
+      path: "./kubernetes/**"
 
   - name: Build FluxCD resources and validate them
     image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
