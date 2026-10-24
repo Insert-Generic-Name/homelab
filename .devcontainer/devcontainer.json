@@ -4,5 +4,18 @@
   "features": {
     "ghcr.io/devcontainers-extra/features/mise:1": {}
   },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "redhat.vscode-yaml",
+        "hashicorp.terraform",
+        "tamasfe.even-better-toml",
+        "blueglassblock.better-json5",
+        "nefrob.vscode-just-syntax",
+        "hverlin.mise-vscode"
+      ]
+    }
+  },
   "postCreateCommand": "mise install && echo 'eval \"$(mise activate bash)\"' >> ~/.bashrc"
 }
