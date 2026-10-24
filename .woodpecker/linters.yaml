@@ -24,7 +24,6 @@ steps:
     commands:
       # Ignore HelmRelease and ExternalSecret CRDs; Missing schema values due to kustomize patching DRY practises
       - >
-        kubeconform
         -verbose
         -output "pretty"
         -summary
