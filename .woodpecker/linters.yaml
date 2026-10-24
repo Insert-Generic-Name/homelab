@@ -21,6 +21,8 @@ steps:
 
   - name: Kubernetes schema validation
     image: ghcr.io/yannh/kubeconform:v0.8.0-alpine
+    entrypoint:
+      - /kubeconform
     commands:
       # Ignore HelmRelease and ExternalSecret CRDs; Missing schema values due to kustomize patching DRY practises
       - >
