@@ -29,7 +29,7 @@ spec:
         passwordMode: keepUpdated
       config:
         server:
-          ROOT_URL: http://192.168.1.60:3000
+          ROOT_URL: "http://192.168.1.60:3000"
           DOMAIN: 192.168.1.60
           SSH_DOMAIN: 192.168.1.60
           SSH_PORT: 22
