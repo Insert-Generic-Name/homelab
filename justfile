@@ -8,7 +8,7 @@ set script-interpreter := ['bash', '-euo', 'pipefail']
 [doc('Omni bootstrapping & cluster configuration')]
 mod s1 './omni/mod.just'
 [doc('Kubernetes bootstrapping')]
-mod s2 './kubernetes/bootstrap/mod.just'
+mod s2 './bootstrap/mod.just'
 
 [private]
 log lvl msg *args:
