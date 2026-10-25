@@ -3,9 +3,9 @@ when:
 
 steps:
   - name: YAML linters
-    image: alpine:3.24.2 #change me to a python based image to download me with pypi instead of apk
+    image: python:3.13.17-slim-trixie
     commands:
-      - apk add yamllint
+      - pip install yamllint
       - yamllint .
     when:
       - path:
