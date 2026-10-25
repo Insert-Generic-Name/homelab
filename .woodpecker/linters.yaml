@@ -46,7 +46,7 @@ steps:
     entrypoint:
       ["/busybox/sh", "-c", "echo $CI_SCRIPT | base64 -d | /busybox/sh -e"]
     commands:
-      - flux-operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml | flux schema validate -s ecosystem -v
+      - flux-operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml | flux-schema validate -s ecosystem -v
     when:
       - path: "kubernetes/flux-system/cluster/platform/*"
 
