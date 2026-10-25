@@ -17,7 +17,7 @@ steps:
       - tflint --chdir=./terraform --recursive
     when:
       - path:
-          include: ["**.tf"] #broken
+          include: ["*.tf", "**/*.tf"] #broken
 
   - name: Kubernetes schema validation
     image: ghcr.io/yannh/kubeconform:v0.8.0-alpine
