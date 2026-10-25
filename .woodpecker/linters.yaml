@@ -9,11 +9,17 @@ steps:
       - yamllint .
     when:
       - path:
-          include: ["*.yaml", "*.yaml.tmpl"] #broken
+          include:
+            - "*.yaml"
+            - "**/*.yaml"
+            - "*.yaml.tmpl"
+            - "**/*.yaml.tmpl"
 
   - name: Terraform linters
     image: ghcr.io/terraform-linters/tflint:latest
     commands:
+      - ls
+      - pwd
       - tflint --chdir=./terraform --recursive
     when:
       - path:
