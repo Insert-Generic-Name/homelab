@@ -3,7 +3,7 @@ when:
 
 steps:
   - name: YAML linters
-    image: alpine:3.24.2 #change me to a python based image to download me with pypi instead of apk
+    image: alpine:3.24.2
     commands:
       - apk add yamllint
       - yamllint .
