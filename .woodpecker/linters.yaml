@@ -18,12 +18,10 @@ steps:
   - name: Terraform linters
     image: ghcr.io/terraform-linters/tflint:latest
     commands:
-      - ls
-      - pwd
       - tflint --chdir=./terraform --recursive
     when:
       - path:
-          include: ["*.tf", "**/*.tf"] #broken
+          include: ["*.tf", "**/*.tf"]
 
   - name: Kubernetes schema validation
     image: ghcr.io/yannh/kubeconform:v0.8.0-alpine
