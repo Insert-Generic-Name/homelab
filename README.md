@@ -13,7 +13,6 @@ flux-operator build | checkhere from stdin that is built alr, can be with kubeco
 
 ## Introduction
 
-# Load every mise script with mise exec -- so hooking into the shell isnt necessary and to be more robust
   Welcome to hell
 
 ## Pre-requesites
