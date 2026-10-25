@@ -2,7 +2,7 @@ when:
   - event: ["push", "pull_request"]
 
 steps:
-  - name: YAML linters
+  - name: YAML linting
     image: alpine:3.24.2
     commands:
       - apk add yamllint
@@ -15,7 +15,7 @@ steps:
             - "*.yaml.tmpl"
             - "**/*.yaml.tmpl"
 
-  - name: Terraform linters
+  - name: Terraform linting
     image: ghcr.io/terraform-linters/tflint:latest
     commands:
       - tflint --chdir=./terraform --recursive
