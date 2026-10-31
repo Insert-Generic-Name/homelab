@@ -5,6 +5,7 @@ steps:
   - name: YAML linting
     image: ghcr.io/jdx/mise:2026.10.4-debian
     commands:
+      - mise install uv yamllint --locked
       - mise exec yamllint -- yamllint .
     when:
       - path:
