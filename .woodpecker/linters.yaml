@@ -3,10 +3,9 @@ when:
 
 steps:
   - name: YAML linting
-    image: alpine:3.24.2
+    image: ghcr.io/jdx/mise:2026.10.4-debian
     commands:
-      - apk add yamllint
-      - yamllint .
+      - mise exec yamllint -- yamllint .
     when:
       - path:
           include:
