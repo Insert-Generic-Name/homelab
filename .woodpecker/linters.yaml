@@ -43,7 +43,7 @@ steps:
   - name: Flux operator validation
     image: *image
     commands:
-      - mise exec flux --locked -- flux plugin install schema && flux plugin install operator
-      - mise exec flux --locked -- flux operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml | flux schema validate -s ecosystem -v
+      - mise exec flux2 --locked -- flux plugin install schema && flux plugin install operator
+      - mise exec flux2 --locked -- flux operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml | flux schema validate -s ecosystem -v
     when:
       - path: "kubernetes/flux-system/cluster/platform/*"
