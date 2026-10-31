@@ -1,12 +1,15 @@
+variables:
+  - &image ghcr.io/jdx/mise:2026.10.4-debian
+
 when:
   - event: ["push", "pull_request"]
 
 steps:
   - name: YAML linting
-    image: ghcr.io/jdx/mise:2026.10.4-debian
+    image: *image
     commands:
       - mise install uv yamllint --locked
-      - mise exec yamllint -- yamllint .
+      - mise exec -- yamllint .
     when:
       - path:
           include:
@@ -16,41 +19,35 @@ steps:
             - "**/*.yaml.tmpl"
 
   - name: Terraform linting
-    image: ghcr.io/terraform-linters/tflint:latest
+    image: *image
     commands:
-      - tflint --chdir=./terraform --recursive
+      - mise install tflint --locked
+      - mise exec -- tflint --chdir=./terraform --recursive
     when:
       - path:
           include: ["*.tf", "**/*.tf"]
 
-  - name: Kubernetes schema validation
-    image: ghcr.io/yannh/kubeconform:v0.8.0-alpine
+  - name: Cluster resources validation
+    image: *image
     commands:
-      # Ignore HelmRelease and ExternalSecret CRDs; Missing schema values due to kustomize patching DRY practises
+      - mise install github:home-operations/flate kubeconform --locked
       - >
-        /kubeconform
+        mise exec -- flate build all |
+        kubeconform
         -verbose
         -output "pretty"
         -summary
         -strict
-        -skip "HelmRelease,ExternalSecret"
         -schema-location default
         -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json'
-        ./kubernetes
     when:
       path: "kubernetes/**"
 
-  - name: Build FluxCD resources and validate them
-    image: ghcr.io/controlplaneio-fluxcd/flux-operator-cli:v0.57.0
-    # Shell does not live under /bin/sh which is the default path used by woodpecker
-    entrypoint:
-      ["/busybox/sh", "-c", "echo $CI_SCRIPT | base64 -d | /busybox/sh -e"]
+  - name: Flux operator validation
+    image: *image
     commands:
-      - flux-operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml | flux-schema validate -s ecosystem -v
+      - mise install flux
+      - flux plugin install schema && flux plugin install operator
+      - mise exec -- flux operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml | flux schema validate -s ecosystem -v
     when:
       - path: "kubernetes/flux-system/cluster/platform/*"
-
-# #  - name: helm schema validation
-# # image: alpine:latest
-# #  commands:
-# #     - yq eval '.spec.values' release.yaml > values.yaml
