@@ -17,5 +17,5 @@
       ]
     }
   },
-  "postCreateCommand": "mise install --include-lazy --locked && echo 'eval \"$(mise activate bash)\"' >> ~/.bashrc"
+  "postCreateCommand": "mise trust && mise install --include-lazy --locked && echo 'eval \"$(mise activate bash)\"' >> ~/.bashrc"
 }
