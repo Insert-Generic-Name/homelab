@@ -30,7 +30,7 @@ steps:
     commands:
       - >
         mise exec github:home-operations/flate kubeconform --locked -- flate build all |
-        kubeconform
+        mise exec kubeconform --locked --
         -verbose
         -output "pretty"
         -summary
