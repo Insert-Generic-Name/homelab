@@ -8,8 +8,7 @@ steps:
   - name: YAML linting
     image: *image
     commands:
-      - mise install uv yamllint --locked
-      - mise exec -- yamllint .
+      - mise exec uv yamllint --locked -- yamllint .
     when:
       - path:
           include:
@@ -21,8 +20,7 @@ steps:
   - name: Terraform linting
     image: *image
     commands:
-      - mise install tflint --locked
-      - mise exec -- tflint --chdir=./terraform --recursive
+      - mise exec tflint --locked -- tflint --chdir=./terraform --recursive
     when:
       - path:
           include: ["*.tf", "**/*.tf"]
@@ -30,9 +28,8 @@ steps:
   - name: Cluster resources validation
     image: *image
     commands:
-      - mise install github:home-operations/flate kubeconform --locked
       - >
-        mise exec -- flate build all |
+        mise exec github:home-operations/flate kubeconform --locked -- flate build all |
         kubeconform
         -verbose
         -output "pretty"
@@ -46,8 +43,7 @@ steps:
   - name: Flux operator validation
     image: *image
     commands:
-      - mise install flux
-      - flux plugin install schema && flux plugin install operator
-      - mise exec -- flux operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml | flux schema validate -s ecosystem -v
+      - mise exec flux --locked -- flux plugin install schema && flux plugin install operator
+      - mise exec flux --locked -- flux operator build rset -f ./kubernetes/flux-system/cluster/platform/rs.yaml | flux schema validate -s ecosystem -v
     when:
       - path: "kubernetes/flux-system/cluster/platform/*"
