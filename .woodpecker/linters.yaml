@@ -29,8 +29,8 @@ steps:
     image: *image
     commands:
       - >
-        mise exec github:home-operations/flate kubeconform --locked -- flate build all |
-        mise exec kubeconform --locked --
+        mise exec github:home-operations/flate --locked -- flate build all |
+        mise exec kubeconform --locked -- kubeconform
         -verbose
         -output "pretty"
         -summary
