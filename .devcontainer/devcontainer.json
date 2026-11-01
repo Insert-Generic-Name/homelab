@@ -17,5 +17,8 @@
       ]
     }
   },
-  "postCreateCommand": "mise trust && mise install --include-lazy --locked && echo 'eval \"$(mise activate bash)\"' >> ~/.bashrc"
+  "containerEnv": {
+    "MISE_ENV": "dev"
+  },
+  "postCreateCommand": "mise trust && mise install --locked && echo 'eval \"$(mise activate bash)\"' >> ~/.bashrc"
 }
