@@ -37,6 +37,8 @@ spec:
             secretKeyRef:
               name: woodpecker
               key: woodpecker-forgejo-secret
+        extraSecretNamesForEnvFrom:
+          - woodpecker
       serviceAccount:
         create: true
       securityContext:
