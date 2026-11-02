@@ -8,5 +8,3 @@ COPY config.ci.toml mise.ci.lock ./.mise
 ENV MISE_ENV="ci"
 
 RUN mise trust && mise install --locked --verbose
-
-#teste

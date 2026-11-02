@@ -8,9 +8,13 @@ steps:
   - name: Build & push image to registry
     image: alpine:latest # docker:29.9.2-dind-alpine3.24
     commands:
-      - echo "${woodpecker-forgejo-registry}"
-      - docker build -t ${woodpecker-forgejo-registry}/insert-generic-name/toolbox:latest .mise
-      - docker push ${woodpecker-forgejo-registry}/insert-generic-name/toolbox:latest
-    environment:
-      woodpecker-forgejo-registry:
-        from_secret: woodpecker
+      - echo "${REGISTRY}"
+      - docker build -t ${REGISTRY}/insert-generic-name/toolbox:latest .mise
+      - docker push ${REGISTRY}/insert-generic-name/toolbox:latest
+    backend_options:
+      kubernetes:
+        secrets:
+          - name: woodpecker
+            key: woodpecker-forgejo-registry
+            target:
+              env: REGISTRY
