@@ -1,0 +1,15 @@
+when:
+  - event: ["push", "pull_request"]
+    path:
+      include:
+        [".mise/config.ci.toml", ".mise/mise.ci.lock", ".mise/Dockerfile"]
+
+steps:
+  - name: Build & push image to registry
+    image: docker:29.9.2-dind-alpine3.24
+    commands:
+      - docker build -t ${woodpecker-forgejo-registry}/insert-generic-name/toolbox:latest .mise
+      - docker push ${woodpecker-forgejo-registry}/insert-generic-name/toolbox:latest
+    environment:
+      woodpecker-forgejo-registry:
+        from_secret: woodpecker-forgejo-registry
