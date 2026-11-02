@@ -9,4 +9,4 @@ ENV MISE_ENV="ci"
 
 RUN mise trust && mise install --locked --verbose
 
-#test
+#teste

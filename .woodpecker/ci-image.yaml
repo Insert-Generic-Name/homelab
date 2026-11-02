@@ -13,4 +13,4 @@ steps:
       - docker push ${woodpecker-forgejo-registry}/insert-generic-name/toolbox:latest
     environment:
       woodpecker-forgejo-registry:
-        from_secret: woodpecker-forgejo-registry
+        from_secret: woodpecker
