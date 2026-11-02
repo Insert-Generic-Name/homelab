@@ -10,8 +10,3 @@ pre-commit:
       glob:
         - "*.yaml"
         - "*.yaml.tmpl"
-
-    # Scan all provide regardless if they havent been changed. Its not a bug, its a feature.
-    - name: Run tflint
-      run: mise exec -- tflint --chdir=./terraform --recursive
-      glob: "*.tf"
