@@ -4,7 +4,8 @@ WORKDIR /src
 
 COPY config.ci.toml mise.ci.lock ./.mise
 
-# Load config.ci.toml
+# Configure mise to target CI environment
 ENV MISE_ENV="ci"
 
 RUN mise trust && mise install --locked --verbose
+
