@@ -6,7 +6,7 @@ when:
 
 steps:
   - name: Build & push image to registry
-    image: alpine:latest # docker:29.9.2-dind-alpine3.24
+    image: docker:29.9.2-dind
     commands:
       - docker build -t ${REGISTRY}/insert-generic-name/toolbox:latest .mise
       - docker push ${REGISTRY}/insert-generic-name/toolbox:latest
