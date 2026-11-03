@@ -1,6 +1,5 @@
 when:
   - event: ["push", "pull_request"]
-
     path:
       include:
         [".mise/config.ci.toml", ".mise/mise.ci.lock", ".mise/Dockerfile"]
