@@ -5,7 +5,8 @@ when:
   - event: ["push", "pull_request"]
 
 steps:
-  - name: Terraform linting
+  - depends_on: [] # Enable parallel execution on steps
+    name: Terraform linting
     image: *image
     commands:
       - mise exec -- tflint --chdir=./terraform --recursive
