@@ -3,7 +3,9 @@
 *.iso
 *.tfstate
 *.tfstate.*
-.gitleaks.toml
+*.gitleaks.toml
+*.gitleaks.toml.*
+!.gitleaks.toml.tmpl
 .terraform
 kubeconfig
 kubeconfig.*
