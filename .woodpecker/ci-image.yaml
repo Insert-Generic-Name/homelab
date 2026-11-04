@@ -7,6 +7,7 @@ when:
 steps:
   - name: dockerd
     image: docker:29.9.3-dind
+    privileged: true
     detach: true
 
   - name: Build & push image to registry
