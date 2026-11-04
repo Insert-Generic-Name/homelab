@@ -5,14 +5,15 @@ when:
         [".mise/config.ci.toml", ".mise/mise.ci.lock", ".mise/Dockerfile"]
 
 steps:
-  - name: Start docker daemon
+  - name: dockerd
     image: docker:29.9.3-cli
+    detach: true
 
   - name: Build & push image to registry
     image: docker:29.9.3-dind
     commands:
-      - docker build -t ${REGISTRY}/insert-generic-name/toolbox:latest .mise
-      - docker push ${REGISTRY}/insert-generic-name/toolbox:latest
+      - docker build -t ${REGISTRY}/insert-generic-name/toolbox:${CI_COMMIT_TAG} .mise
+      - docker push ${REGISTRY}/insert-generic-name/toolbox:${CI_COMMIT_TAG}
     backend_options:
       kubernetes:
         secrets:
