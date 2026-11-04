@@ -1,10 +1,23 @@
-FROM ghcr.io/jdx/mise:2026.10.4-debian
+FROM alpine:3.24
+
+RUN apk add curl
+
+# mise must be installed inside $PATH
+RUN curl -fsSL https://mise.run | \
+    MISE_INSTALL_PATH="/usr/local/bin/mise" \
+    MISE_VERSION=v2026.10.4 sh
 
 WORKDIR /src
 
-COPY config.ci.toml mise.ci.lock ./.mise
+COPY config.ci.toml mise.ci.lock .mise/
 
 # Configure mise to target CI environment
 ENV MISE_ENV="ci"
+
+RUN addgroup mise && adduser -S -G mise mise
+
+RUN chown -R mise:mise .
+
+USER mise
 
 RUN mise trust && mise install --locked --verbose

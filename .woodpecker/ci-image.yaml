@@ -5,6 +5,11 @@ when:
         [".mise/config.ci.toml", ".mise/mise.ci.lock", ".mise/Dockerfile"]
 
 steps:
+  - name: Exit workflow if repo does not have permissions to run privileged containers
+    image: alpine:3.24
+    when:
+      - evaluate: 'CI_REPO_TRUSTED_SECURITY == "false"'
+
   - name: dockerd
     image: docker:29.9.3-dind
     privileged: true
@@ -13,8 +18,8 @@ steps:
   - name: Build & push image to registry
     image: docker:29.9.3-cli
     commands:
-      - "docker build -t $REGISTRY/insert-generic-name/toolbox:$CI_COMMIT_TAG .mise"
-      - docker push $REGISTRY/insert-generic-name/toolbox:$CI_COMMIT_TAG
+      - "docker build --progress=plain --no-cache -t $REGISTRY/insert-generic-name/toolbox:$CI_COMMIT_SHA .mise"
+      - docker push $REGISTRY/insert-generic-name/toolbox:$CI_COMMIT_SHA
     backend_options:
       kubernetes:
         secrets:
