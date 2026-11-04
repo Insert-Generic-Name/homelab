@@ -6,11 +6,11 @@ when:
 
 steps:
   - name: dockerd
-    image: docker:29.9.3-cli
+    image: docker:29.9.3-dind
     detach: true
 
   - name: Build & push image to registry
-    image: docker:29.9.3-dind
+    image: docker:29.9.3-cli
     commands:
       - docker build -t ${REGISTRY}/insert-generic-name/toolbox:${CI_COMMIT_TAG} .mise
       - docker push ${REGISTRY}/insert-generic-name/toolbox:${CI_COMMIT_TAG}
