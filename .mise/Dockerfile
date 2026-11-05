@@ -13,9 +13,7 @@ COPY config.ci.toml mise.ci.lock .mise/
 # Configure mise to target CI environment
 ENV MISE_ENV="ci"
 
-RUN addgroup mise && adduser -S -G mise mise
-
-RUN chown -R mise:mise .
+RUN addgroup mise && adduser -S -G mise mise && chown -R mise:mise .
 
 USER mise
 
