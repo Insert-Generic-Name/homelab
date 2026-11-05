@@ -6,7 +6,7 @@ RUN apk add curl && \
     MISE_INSTALL_PATH="/usr/local/bin/mise" \
     MISE_VERSION=v2026.10.4 sh
 
-WORKDIR /src
+WORKDIR /mise
 
 COPY config.ci.toml mise.ci.lock .mise/
 
