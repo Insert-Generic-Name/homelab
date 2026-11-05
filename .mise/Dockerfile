@@ -1,9 +1,8 @@
 FROM alpine:3.24
 
-RUN apk add curl
-
 # mise must be installed inside $PATH
-RUN curl -fsSL https://mise.run | \
+RUN apk add curl && \
+    curl -fsSL https://mise.run | \
     MISE_INSTALL_PATH="/usr/local/bin/mise" \
     MISE_VERSION=v2026.10.4 sh
 
