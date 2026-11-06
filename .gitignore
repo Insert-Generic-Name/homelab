@@ -17,13 +17,3 @@ talosconfig.*
 # Used to store sensitive configurations for omni
 omni/.generated/**
 !omni/.generated/.gitkeep
-
-
-
-
-## delete me when deployment is done ##
-storage.sh
-loadbalancer.sh
-tokens.md
-# This is used to run slop, not really part of the deployment.
-Makefile
