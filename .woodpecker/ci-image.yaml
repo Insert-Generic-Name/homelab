@@ -5,25 +5,44 @@ when:
         [".mise/config.ci.toml", ".mise/mise.ci.lock", ".mise/Dockerfile"]
 
 steps:
-  - name: Exit workflow if repo does not have permissions to run privileged containers
-    image: alpine:3.24
-    when:
-      - evaluate: 'CI_REPO_TRUSTED_SECURITY == "false"'
+  # - name: Exit workflow if repo does not have permissions to run privileged containers
+  #   image: alpine:3.24
+  #   when:
+  #     - evaluate: 'CI_REPO_TRUSTED_SECURITY == "false"'
 
-  - name: dockerd
-    image: docker:29.9.3-dind
-    privileged: true
-    detach: true
+  # - name: dockerd
+  #   image: docker:29.9.3-dind
+  #   privileged: true
+  #   detach: true
 
-  - name: Build & push image to registry
-    image: docker:29.9.3-cli
+  # - name: Build & push image to registry
+  #   image: docker:29.9.3-cli
+  #   commands:
+  #     - "docker build --progress=plain --no-cache -t $REGISTRY/insert-generic-name/toolbox:$CI_COMMIT_SHA .mise"
+  #     - docker push $REGISTRY/insert-generic-name/toolbox:$CI_COMMIT_SHA
+  #   backend_options:
+  #     kubernetes:
+  #       secrets:
+  #         - name: woodpecker
+  #           key: woodpecker-forgejo-registry
+  #           target:
+  #             env: REGISTRY
+
+  - name: Build & push to image registry
+    image: moby/buildkit:rootless
     commands:
-      - "docker build --progress=plain --no-cache -t $REGISTRY/insert-generic-name/toolbox:$CI_COMMIT_SHA .mise"
-      - docker push $REGISTRY/insert-generic-name/toolbox:$CI_COMMIT_SHA
+      - >
+        buildctl --addr docker-container://buildkitd build
+        --frontend=dockerfile.v0
+        --local context=.mise
+        --local dockerfile=.mise
+        --local context=.mise
+        --output type=image,name=$REGISTRY,push=true,registry.insecure=true
+      # This last one is only used because forgejo doesnt serve on HTTPS YET
     backend_options:
       kubernetes:
         secrets:
-          - name: woodpecker
-            key: woodpecker-forgejo-registry
+          - name: ci
+            key: ci-registry
             target:
               env: REGISTRY
