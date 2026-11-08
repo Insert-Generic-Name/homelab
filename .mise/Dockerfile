@@ -20,3 +20,4 @@ RUN addgroup mise && \
 USER mise
 
 RUN mise trust && mise install --locked --verbose
+slop
