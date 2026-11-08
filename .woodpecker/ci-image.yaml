@@ -30,6 +30,7 @@ steps:
 
   - name: Build & push to image registry
     image: moby/buildkit:rootless
+    entrypoint: ["rootlesskit", "buildkitd"]
     commands:
       - >
         buildctl --addr docker-container://buildkitd build
@@ -38,7 +39,7 @@ steps:
         --local dockerfile=.mise
         --local context=.mise
         --output type=image,name=$REGISTRY,push=true,registry.insecure=true
-      # This last one is only used because forgejo doesnt serve on HTTPS YET
+      #  "registry.insecure" is only used because forgejo doesnt serve on HTTPS YET
     backend_options:
       kubernetes:
         secrets:
