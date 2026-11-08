@@ -28,9 +28,10 @@ steps:
   #           target:
   #             env: REGISTRY
 
+  # Refer to: https://github.com/moby/buildkit/blob/master/docs/rootless.md#containerized-deployment
   - name: Build & push to image registry
     image: moby/buildkit:rootless
-    entrypoint: ["rootlesskit", "buildkitd"]
+    entrypoint: ["rootlesskit", "buildkitd", "--oci-worker-no-process-sandbox"]
     commands:
       - >
         buildctl --addr docker-container://buildkitd build
@@ -42,6 +43,11 @@ steps:
       #  "registry.insecure" is only used because forgejo doesnt serve on HTTPS YET
     backend_options:
       kubernetes:
+        securityContext:
+          seccompProfile:
+            type: Unconfined
+          appArmorProfile:
+            type: Unconfined
         secrets:
           - name: ci
             key: ci-registry
