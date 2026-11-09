@@ -56,9 +56,9 @@ steps:
 
   - name: Build & push to registry
     image: ghcr.io/osscontainertools/kaniko:latest
+    entrypoint: ["/kaniko/executor"]
     commands:
       - >
-        /kaniko/executor
         --dockerfile=.mise/Dockerfile
         --context=dir:///.mise
         --destination=$REGISTRY:$CI_COMMIT_SHA
