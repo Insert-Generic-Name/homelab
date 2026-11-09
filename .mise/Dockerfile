@@ -9,7 +9,7 @@ RUN apk add curl && \
 WORKDIR /mise
 
 COPY config.ci.toml mise.ci.lock .mise/
-e
+
 # Configures mise to target CI environment
 ENV MISE_ENV="ci"
 

@@ -54,6 +54,8 @@ steps:
   #           target:
   #             env: REGISTRY
 
+  # MAKE STEP 1 GET SECRETS FROM K8S AND STORE THEM SOMEWHERE AND THEN PASS THEM TO THE KANIKO PLUGIN ( STEP 2)
+  # SINCE WORKDIR IS SHARED ACROSS STEPS
   - name: Build & push to registry
     image: ghcr.io/osscontainertools/kaniko:latest
     entrypoint: ["/kaniko/executor"]
