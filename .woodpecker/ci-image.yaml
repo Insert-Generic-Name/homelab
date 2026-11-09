@@ -70,6 +70,7 @@ steps:
   - name: Build & push to registry
     image: woodpeckerci/plugin-kaniko
     settings:
+      dockerfile: .mise/Dockerfile
       repo: $REGISTRY
       registry: $REGISTRY
       username: $USER
