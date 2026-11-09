@@ -29,25 +29,53 @@ steps:
   #             env: REGISTRY
 
   # Refer to: https://github.com/moby/buildkit/blob/master/docs/rootless.md#containerized-deployment
-  - name: Build & push to image registry
-    image: moby/buildkit:rootless
-    entrypoint: ["rootlesskit", "buildkitd", "--oci-worker-no-process-sandbox"]
-    commands:
-      - >
-        buildctl --addr docker-container://buildkitd build
-        --frontend=dockerfile.v0
-        --local context=.mise
-        --local dockerfile=.mise
-        --local context=.mise
-        --output type=image,name=$REGISTRY,push=true,registry.insecure=true
-      #  "registry.insecure" is only used because forgejo doesnt serve on HTTPS YET
+  # - name: Build & push to image registry
+  #   image: moby/buildkit:rootless
+  #   entrypoint: ["rootlesskit", "buildkitd", "--oci-worker-no-process-sandbox"]
+  #   commands:
+  #     - >
+  #       buildctl --addr docker-container://buildkitd build
+  #       --frontend=dockerfile.v0
+  #       --local context=.mise
+  #       --local dockerfile=.mise
+  #       --local context=.mise
+  #       --output type=image,name=$REGISTRY,push=true,registry.insecure=true
+  #     #  "registry.insecure" is only used because forgejo doesnt serve on HTTPS YET
+  #   backend_options:
+  #     kubernetes:
+  #       securityContext:
+  #         seccompProfile:
+  #           type: Unconfined
+  #         appArmorProfile:
+  #           type: Unconfined
+  #       secrets:
+  #         - name: ci
+  #           key: ci-registry
+  #           target:
+  #             env: REGISTRY
+
+  # - name: Build & push to registry
+  #   image: ghcr.io/osscontainertools/kaniko:latest
+  #   commands: --dockerfile=.
+  #     --context=dir:///mise
+  #     --destination=$REGISTRY:$CI_COMMIT_SHA
+  #   backend_options:
+  #     kubernetes:
+  #       secrets:
+  #         - name: ci
+  #           key: ci-registry
+  #           target:
+  #             env: REGISTRY
+
+  - name: Build & push to registry
+    image: woodpeckerci/plugin-kaniko
+    settings:
+      repo: $REGISTRY
+      registry: $REGISTRY
+      username: $USER
+      password: $PASSWORD
     backend_options:
       kubernetes:
-        securityContext:
-          seccompProfile:
-            type: Unconfined
-          appArmorProfile:
-            type: Unconfined
         secrets:
           - name: ci
             key: ci-registry
