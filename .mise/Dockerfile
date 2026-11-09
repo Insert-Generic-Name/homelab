@@ -8,8 +8,7 @@ RUN apk add curl && \
 
 WORKDIR /mise
 
-# Paths are relative to the repository root (build context)
-COPY .mise/config.ci.toml .mise/mise.ci.lock .mise/
+COPY config.ci.toml mise.ci.lock .mise/
 
 # Configures mise to target CI environment
 ENV MISE_ENV="ci"
